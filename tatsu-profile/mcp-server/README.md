@@ -1,129 +1,65 @@
-# tatsu-profile-mcp
+# tatsu-profile-mcp (Val Town)
 
 Tatsu Profile（Notion）をライブ参照する **リモート MCP サーバー**。
-Cloudflare Workers にデプロイし、Claude と ChatGPT の両方からカスタムコネクタとして接続する。
+単一ファイル `main.ts` を Val Town に貼るだけ。CLI / Cloudflare / GitHub設定すべて不要。
 
 ## ツール
 
-| tool | 用途 | クライアント |
-|---|---|---|
-| `search` | プロフィールから関連セクションを検索 | ChatGPT / Claude |
-| `fetch` | セクション本文を全文取得 | ChatGPT / Claude |
-| `get_tatsu_profile` | 12セクション一括 or 単一取得 | 主に Claude |
-
-`search` + `fetch` は ChatGPT カスタムコネクタが要求する標準ツール構成。
-`get_tatsu_profile` は Claude で一括コンテキスト投入する用の利便ツール。
-
-> 正直な限界: MCP でもモデルがツールを「呼ぶか」は判断次第で、毎回強制ではない。
-> ただし専用ツールがあることで Notion 検索より摩擦が低く、参照率は上がる。
-
----
-
-## 事前準備: Notion Internal Integration トークン
-
-このサーバーは Notion API を直接叩く。Anthropic の Notion コネクタとは別に、
-**Internal Integration トークン**が必要。
-
-```
-□ https://www.notion.so/profile/integrations を開く
-□ "New integration" → Internal
-  - Name: Tatsu Profile MCP
-  - Capabilities: Read content（Update/Insert は不要）
-  - Save
-□ "Internal Integration Secret" をコピー（後で wrangler secret に入れる）
-□ Notion で「🧠 Tatsu Profile」ページを開く
-  → 右上「...」→ Connections → "Tatsu Profile MCP" を Connect
-  （親ページに付ければ12サブページにも継承される）
-```
-
-PARENT_PAGE_ID は `wrangler.toml` に設定済み
-（`36329082-7880-811d-91b6-ca4d9b057b1d` = 🧠 Tatsu Profile）。
-
----
-
-## スマホから自動デプロイ（Cloudflare Git 連携・推奨）
-
-GitHub の設定画面は不要。Cloudflare の Workers & Pages で
-"Connect GitHub" → このリポジトリを選び、以下を設定:
-
-- Repository: `masakasakasama/brain`
-- Branch: `claude/new-session-bjJxe`
-- Root directory（モノレポ設定）: `tatsu-profile/mcp-server`
-- Build command: `npm ci`
-- Deploy command: `npx wrangler deploy`
-
-シークレットは Cloudflare の Worker → Settings → Variables and Secrets に
-"Secret" 種別で登録（モバイルUIで完結）:
-
-| Secret | 値 |
+| tool | 用途 |
 |---|---|
-| `NOTION_TOKEN` | Notion Internal Integration トークン（`ntn_...`） |
-| `AUTH_SECRET` | コネクタURLに入れる長いランダム文字列 |
+| `search` | プロフィールから関連セクションを検索（ChatGPT互換） |
+| `fetch` | セクション本文を全文取得（ChatGPT互換） |
+| `get_tatsu_profile` | 12セクション一括 or 単一取得（Claude向け） |
 
-`PARENT_PAGE_ID` は `wrangler.toml` に設定済み。push するたび Cloudflare が自動デプロイ。
+## 事前準備（一度だけ）
 
----
-
-## デプロイ（Cloudflare Workers / ローカル）
-
-```bash
-cd tatsu-profile/mcp-server
-npm install
-npx wrangler login                 # ブラウザで Cloudflare 認証
-
-# シークレット投入
-npx wrangler secret put NOTION_TOKEN   # 上で取得した Internal Secret
-npx wrangler secret put AUTH_SECRET    # 自分で決める長いランダム文字列（URLに入る）
-
-npm run deploy
-```
-
-デプロイ後の URL は `https://tatsu-profile-mcp.<account>.workers.dev`。
-**コネクタ URL は次の形**（`AUTH_SECRET` を第1パスに入れる）:
+Notion の Internal Integration トークンが必要（Anthropicコネクタとは別物）。
+作成済みなら飛ばす:
 
 ```
-https://tatsu-profile-mcp.<account>.workers.dev/<AUTH_SECRET>/mcp
+□ https://www.notion.so/profile/integrations → New integration → Internal
+  Name: Tatsu Profile MCP / Capabilities: Read content
+□ Internal Integration Secret（ntn_...）をコピー
+□ Notion「🧠 Tatsu Profile」ページ → ... → 接続 → Tatsu Profile MCP を追加
 ```
 
-ヘルスチェック: `https://.../` → `tatsu-profile-mcp ok` が返ればデプロイ成功。
+## デプロイ（スマホのブラウザだけで完結）
 
----
+1. `val.town` にサインイン（GitHub/メール、普通のモバイルページ）
+2. 右上 **New → HTTP val**
+3. `main.ts` の中身を全部コピペ
+4. 左の歯車 or **Settings → Environment Variables** で登録:
 
-## クライアント接続
+   | 名前 | 値 |
+   |---|---|
+   | `NOTION_TOKEN` | Notion の `ntn_...` |
+   | `AUTH_SECRET` | URLに入れる長いランダム文字列 |
+   | `PARENT_PAGE_ID` | （任意。未設定なら 🧠 Tatsu Profile に固定） |
 
-### Claude（claude.ai / デスクトップ / モバイル）
+5. val は自動保存・自動デプロイ。URL は `https://<you>-<valname>.web.val.run`
+6. 動作確認: その URL を開いて `tatsu-profile-mcp ok` が出ればOK
 
-1. 設定 → Connectors → "Add custom connector"
-2. URL に上記の `.../<AUTH_SECRET>/mcp` を貼る
-3. 接続後、`search` / `fetch` / `get_tatsu_profile` が出れば成功
+## 接続
 
-### ChatGPT
+**コネクタURL**（`AUTH_SECRET` を第1パスに入れる）:
 
-1. 設定 → Connectors（または Developer mode）→ カスタムコネクタを追加
-2. 同じ `.../<AUTH_SECRET>/mcp` URL を登録（認証は "No authentication"。
-   秘密は URL のパスに含まれている）
-3. `search` / `fetch` が認識されれば成功
-   （ChatGPT のカスタムコネクタはプラン/モードにより可否が変わる）
-
----
-
-## セキュリティ
-
-- 認証は `AUTH_SECRET` を URL パスに含める方式（bearer-in-URL）。
-  個人用1コネクタなら実用上十分。より強くするなら Cloudflare Access を前段に。
-- `NOTION_TOKEN` / `AUTH_SECRET` は `wrangler secret`（コード/Git に出さない）。
-- `.dev.vars` は `.gitignore` 済み。
-
-## ローカル確認
-
-```bash
-cp .dev.vars.example .dev.vars   # NOTION_TOKEN, AUTH_SECRET 記入
-npm run dev
-# http://localhost:8787/<AUTH_SECRET>/mcp に MCP Inspector 等で接続
+```
+https://<you>-<valname>.web.val.run/<AUTH_SECRET>/mcp
 ```
 
-## 注意
+- **Claude**（アプリ/Web）: 設定 → Connectors → Add custom connector → 上のURL
+- **ChatGPT**: 設定 → Connectors → カスタム追加 → 同URL（認証 No authentication）
 
-このリポジトリの実行環境からは Cloudflare へデプロイできないため、
-`wrangler deploy` と初回接続テストは手動。失敗したら `npm run tail`
-（`wrangler tail`）のログを共有してくれれば調査する。
+## 仕組み・注意
+
+- ステートレス Streamable HTTP（JSON応答）で MCP を実装。SDK不使用、依存ゼロ。
+- Notion を5分キャッシュでライブ読み（Notionで編集すれば最大5分で反映）。
+- 認証は `AUTH_SECRET` を URL パスに入れる方式。個人1コネクタなら実用上十分。
+  URLは秘密扱い（人に見せない）。
+- このリポジトリの実行環境からはデプロイ・テスト不可。Val Town上で
+  動かしてみて不調なら Logs を共有してくれれば調査する。
+
+## 他ホストで動かす場合
+
+`main.ts` は web 標準 `fetch` ハンドラ。Deno Deploy なら末尾を
+`Deno.serve(handler)` に差し替えるだけで動く（Val Town は `export default` のまま）。
