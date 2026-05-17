@@ -41,7 +41,25 @@ PARENT_PAGE_ID は `wrangler.toml` に設定済み
 
 ---
 
-## デプロイ（Cloudflare Workers）
+## スマホから自動デプロイ（GitHub Actions・推奨）
+
+`.github/workflows/deploy-mcp.yml` が push 時に Cloudflare へ自動デプロイする。
+ターミナル不要、GitHub と Cloudflare の設定をブラウザでやるだけ。
+
+必要な GitHub Secrets（リポジトリ Settings → Secrets and variables → Actions）:
+
+| Secret | 値 |
+|---|---|
+| `CLOUDFLARE_API_TOKEN` | Cloudflare の "Edit Cloudflare Workers" API トークン |
+| `CLOUDFLARE_ACCOUNT_ID` | Cloudflare アカウントID |
+| `NOTION_TOKEN` | Notion Internal Integration トークン（`ntn_...`） |
+| `AUTH_SECRET` | コネクタURLに入れる長いランダム文字列 |
+
+4つ登録したら Actions タブ → "Deploy Tatsu Profile MCP" → Run workflow で実行。
+
+---
+
+## デプロイ（Cloudflare Workers / ローカル）
 
 ```bash
 cd tatsu-profile/mcp-server

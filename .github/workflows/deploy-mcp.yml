@@ -1,0 +1,37 @@
+name: Deploy Tatsu Profile MCP
+
+on:
+  push:
+    branches: [claude/new-session-bjJxe]
+    paths:
+      - "tatsu-profile/mcp-server/**"
+      - ".github/workflows/deploy-mcp.yml"
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: tatsu-profile/mcp-server
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - run: npm ci
+
+      - name: Deploy to Cloudflare Workers
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          workingDirectory: tatsu-profile/mcp-server
+          secrets: |
+            NOTION_TOKEN
+            AUTH_SECRET
+        env:
+          NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+          AUTH_SECRET: ${{ secrets.AUTH_SECRET }}
