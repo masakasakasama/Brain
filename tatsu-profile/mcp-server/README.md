@@ -41,21 +41,26 @@ PARENT_PAGE_ID は `wrangler.toml` に設定済み
 
 ---
 
-## スマホから自動デプロイ（GitHub Actions・推奨）
+## スマホから自動デプロイ（Cloudflare Git 連携・推奨）
 
-`.github/workflows/deploy-mcp.yml` が push 時に Cloudflare へ自動デプロイする。
-ターミナル不要、GitHub と Cloudflare の設定をブラウザでやるだけ。
+GitHub の設定画面は不要。Cloudflare の Workers & Pages で
+"Connect GitHub" → このリポジトリを選び、以下を設定:
 
-必要な GitHub Secrets（リポジトリ Settings → Secrets and variables → Actions）:
+- Repository: `masakasakasama/brain`
+- Branch: `claude/new-session-bjJxe`
+- Root directory（モノレポ設定）: `tatsu-profile/mcp-server`
+- Build command: `npm ci`
+- Deploy command: `npx wrangler deploy`
+
+シークレットは Cloudflare の Worker → Settings → Variables and Secrets に
+"Secret" 種別で登録（モバイルUIで完結）:
 
 | Secret | 値 |
 |---|---|
-| `CLOUDFLARE_API_TOKEN` | Cloudflare の "Edit Cloudflare Workers" API トークン |
-| `CLOUDFLARE_ACCOUNT_ID` | Cloudflare アカウントID |
 | `NOTION_TOKEN` | Notion Internal Integration トークン（`ntn_...`） |
 | `AUTH_SECRET` | コネクタURLに入れる長いランダム文字列 |
 
-4つ登録したら Actions タブ → "Deploy Tatsu Profile MCP" → Run workflow で実行。
+`PARENT_PAGE_ID` は `wrangler.toml` に設定済み。push するたび Cloudflare が自動デプロイ。
 
 ---
 
