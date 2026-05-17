@@ -1,7 +1,11 @@
 # tatsu-profile-mcp (Val Town)
 
 Tatsu Profile（Notion）をライブ参照する **リモート MCP サーバー**。
-単一ファイル `main.ts` を Val Town に貼るだけ。CLI / Cloudflare / GitHub設定すべて不要。
+単一ファイル `main.http.ts` を Val Town に貼るだけ。CLI / Cloudflare / GitHub設定すべて不要。
+
+> **重要**: Val Town は **ファイル名に "http" が含まれる**ファイルだけを
+> HTTPエンドポイントとして公開する。ファイル名は必ず `main.http.ts`。
+> `main.ts` のままだと Run しても何も起きない（エンドポイント未生成）。
 
 ## ツール
 
@@ -27,7 +31,7 @@ Notion の Internal Integration トークンが必要（Anthropicコネクタと
 
 1. `val.town` にサインイン（GitHub/メール、普通のモバイルページ）
 2. 右上 **New → HTTP val**
-3. `main.ts` の中身を全部コピペ
+3. `main.http.ts` の中身を全部コピペ
 4. 左の歯車 or **Settings → Environment Variables** で登録:
 
    | 名前 | 値 |
@@ -61,5 +65,5 @@ https://<you>-<valname>.web.val.run/<AUTH_SECRET>/mcp
 
 ## 他ホストで動かす場合
 
-`main.ts` は web 標準 `fetch` ハンドラ。Deno Deploy なら末尾を
+`main.http.ts` は web 標準 `fetch` ハンドラ。Deno Deploy なら末尾を
 `Deno.serve(handler)` に差し替えるだけで動く（Val Town は `export default` のまま）。
