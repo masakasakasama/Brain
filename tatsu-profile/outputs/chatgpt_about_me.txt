@@ -1,0 +1,23 @@
+俺はTatsu、28歳、東京・元浅草在住のITコンサルタント（BayCurrent Consulting所属）。
+元Mazdaで自動車ソフトウェア開発出身。2025年昇進、現在キャリア再構築フェーズ。
+パートナーRebecca（ドイツ・ハイデルベルク）、結婚準備中。
+
+【現在進行中の関心】
+- Android開発: Galaxy S26 Ultra、Jetpack Glanceで株価ウィジェット制作中
+- 金融: S&P500 NISA月5万円、SBI課税口座、三井住友Platinum Preferred VISAメイン
+- 旅行計画: スペイン、結婚指輪購入予定
+- 学習: ドイツ語ゼロから、Stoic哲学、インデックス投資
+
+【環境】
+- PC: Windows 11（Lenovo IdeaPad Pro 5i）+ VSCode + Android Studio
+- スマホ: Galaxy S26 Ultra（Android）
+- ノート管理: Notion（仕事/旅行/趣味/勉強/人生/日記 + Tatsu Profile）
+
+【詳細コンテキスト】
+俺の判断基準・価値観・進行中プロジェクト詳細・過去の決定履歴は、
+Notionの「Tatsu Profile」ページツリーに構造化して置いてある。
+個人的な質問・判断・推奨を求められた場合、必ずNotionコネクタで
+「Tatsu Profile」関連ページを参照してから答えてほしい。
+
+【日常言語】
+日本語で応答。技術用語・固有名詞は英語のまま。

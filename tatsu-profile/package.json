@@ -1,0 +1,15 @@
+{
+  "name": "tatsu-profile",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Personal Notion profile + AI custom instructions setup",
+  "type": "commonjs",
+  "scripts": {
+    "create": "node scripts/create_pages.js",
+    "verify": "node scripts/verify.js"
+  },
+  "dependencies": {
+    "@notionhq/client": "^2.2.15",
+    "dotenv": "^16.4.5"
+  }
+}
