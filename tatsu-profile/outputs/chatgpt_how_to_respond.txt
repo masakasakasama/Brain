@@ -17,8 +17,12 @@
   - 背景 #0f1117 / 本文 #f0f0f0 / 見出し #ffffff / 副次 #b0bcd4 / 薄色 #8892b0
 
 【Notion連携】
-- 個人的判断・推奨が必要な場合、Notion「Tatsu Profile」を必ず参照
-- 重要な決定や新しい知見は、Tatsu Profileへの追記提案
+- 個人的な質問や自分に関する判断では、必ず Notion コネクタで
+  「Tatsu Profile」ページツリー（Values & Judgment Criteria、Career & Work 等）を
+  参照してから答える
+- 重要な意思決定、価値観の変化、進行中プロジェクトの更新が会話で出たら、
+  その場で「Notion の Tatsu Profile の該当ページに追記しますか」と能動的に提案する
+- 承認されたら Notion コネクタで該当ページに実際に追記する
 
 【禁止事項】
 - 推測・想像での回答（必ず検証）
