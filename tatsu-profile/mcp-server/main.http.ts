@@ -43,6 +43,52 @@ async function notionGet(token: string, path: string): Promise<any> {
   return res.json();
 }
 
+async function notionWrite(
+  token: string,
+  method: "POST" | "PATCH",
+  path: string,
+  body: unknown,
+): Promise<any> {
+  const res = await fetch(`${NOTION_API}${path}`, {
+    method,
+    headers: notionHeaders(token),
+    body: JSON.stringify(body),
+  });
+  if (!res.ok) {
+    throw new Error(
+      `Notion ${res.status} on ${method} ${path}: ${(await res.text()).slice(0, 300)}`,
+    );
+  }
+  return res.json();
+}
+
+// Tiny markdown -> Notion blocks (matches the read formatting).
+function mdToBlocks(md: string): any[] {
+  const rt = (s: string) => [{ type: "text", text: { content: s } }];
+  const blocks: any[] = [];
+  for (const raw of md.split("\n")) {
+    const line = raw.trimEnd();
+    if (line.trim() === "") continue;
+    if (line.startsWith("### ")) {
+      blocks.push({ type: "heading_3", heading_3: { rich_text: rt(line.slice(4)) } });
+    } else if (line.startsWith("## ")) {
+      blocks.push({ type: "heading_2", heading_2: { rich_text: rt(line.slice(3)) } });
+    } else if (line.startsWith("# ")) {
+      blocks.push({ type: "heading_2", heading_2: { rich_text: rt(line.slice(2)) } });
+    } else if (line.startsWith("> ")) {
+      blocks.push({ type: "quote", quote: { rich_text: rt(line.slice(2)) } });
+    } else if (line.startsWith("- ")) {
+      blocks.push({
+        type: "bulleted_list_item",
+        bulleted_list_item: { rich_text: rt(line.slice(2)) },
+      });
+    } else {
+      blocks.push({ type: "paragraph", paragraph: { rich_text: rt(line) } });
+    }
+  }
+  return blocks;
+}
+
 async function listChildren(token: string, blockId: string): Promise<any[]> {
   const out: any[] = [];
   let cursor: string | undefined;
@@ -167,6 +213,63 @@ async function toolFullProfile(section?: string) {
   return all.map((s) => `# ${s.title}\n${s.text}`).join("\n\n---\n\n");
 }
 
+async function resolveSection(idOrTitle: string): Promise<Section | null> {
+  const all = await getSections();
+  const norm = idOrTitle.replace(/-/g, "").toLowerCase();
+  return (
+    all.find((s) => s.id.replace(/-/g, "").toLowerCase() === norm) ??
+    all.find((s) => s.title.toLowerCase().includes(idOrTitle.toLowerCase())) ??
+    null
+  );
+}
+
+async function toolAppend(section: string, markdown: string): Promise<string> {
+  const sec = await resolveSection(section);
+  if (!sec) {
+    const all = await getSections();
+    return `Section not found: "${section}". Available: ${all.map((s) => s.title).join(", ")}`;
+  }
+  const token = env("NOTION_TOKEN");
+  const blocks = mdToBlocks(markdown);
+  if (blocks.length === 0) return "Nothing to append (empty markdown).";
+  // Notion caps children at 100 per request.
+  for (let i = 0; i < blocks.length; i += 100) {
+    await notionWrite(token, "PATCH", `/blocks/${sec.id}/children`, {
+      children: blocks.slice(i, i + 100),
+    });
+  }
+  cache = null; // force re-read so subsequent fetches see the change
+  return `Appended ${blocks.length} block(s) to "${sec.title}".`;
+}
+
+async function toolUpdate(
+  section: string,
+  find: string,
+  replace: string,
+): Promise<string> {
+  const sec = await resolveSection(section);
+  if (!sec) {
+    const all = await getSections();
+    return `Section not found: "${section}". Available: ${all.map((s) => s.title).join(", ")}`;
+  }
+  const token = env("NOTION_TOKEN");
+  const blocks = await listChildren(token, sec.id);
+  for (const b of blocks) {
+    const t = b.type;
+    const node = b[t];
+    if (!node || !node.rich_text) continue;
+    const plain = richText(node.rich_text);
+    if (!plain.includes(find)) continue;
+    const updated = plain.split(find).join(replace);
+    await notionWrite(token, "PATCH", `/blocks/${b.id}`, {
+      [t]: { rich_text: [{ type: "text", text: { content: updated } }] },
+    });
+    cache = null;
+    return `Updated a ${t} block in "${sec.title}".`;
+  }
+  return `No block containing "${find}" found in "${sec.title}".`;
+}
+
 const TOOLS = [
   {
     name: "search",
@@ -198,12 +301,50 @@ const TOOLS = [
       },
     },
   },
+  {
+    name: "append_to_section",
+    description:
+      "指定セクション（サブページ）の末尾に内容を追記する。削除・上書きはしない安全な追加。新しい決定・興味・メモの記録に使う。markdown は ## 見出し / - 箇条書き / > 引用 / 通常行 をサポート。",
+    inputSchema: {
+      type: "object",
+      properties: {
+        section: {
+          type: "string",
+          description: "セクション名（例 'Key Decisions Log'）またはID",
+        },
+        markdown: { type: "string", description: "追記する本文（簡易markdown）" },
+      },
+      required: ["section", "markdown"],
+    },
+    annotations: { readOnlyHint: false, destructiveHint: false },
+  },
+  {
+    name: "update_section",
+    description:
+      "指定セクション内の、find に一致する既存ブロックの文字列を replace に置換する。1ブロックずつ訂正・修正する用途。該当が無ければ何もしない。",
+    inputSchema: {
+      type: "object",
+      properties: {
+        section: { type: "string", description: "セクション名またはID" },
+        find: { type: "string", description: "既存テキスト（部分一致）" },
+        replace: { type: "string", description: "置換後テキスト" },
+      },
+      required: ["section", "find", "replace"],
+    },
+    annotations: { readOnlyHint: false, destructiveHint: true },
+  },
 ];
 
 async function callTool(name: string, args: any): Promise<string> {
   if (name === "search") return JSON.stringify(await toolSearch(args?.query ?? ""));
   if (name === "fetch") return JSON.stringify(await toolFetch(args?.id ?? ""));
   if (name === "get_tatsu_profile") return await toolFullProfile(args?.section);
+  if (name === "append_to_section") {
+    return await toolAppend(args?.section ?? "", args?.markdown ?? "");
+  }
+  if (name === "update_section") {
+    return await toolUpdate(args?.section ?? "", args?.find ?? "", args?.replace ?? "");
+  }
   throw new Error(`Unknown tool: ${name}`);
 }
 

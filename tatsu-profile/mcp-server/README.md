@@ -14,6 +14,8 @@ Tatsu Profile（Notion）をライブ参照する **リモート MCP サーバ�
 | `search` | プロフィールから関連セクションを検索（ChatGPT互換） |
 | `fetch` | セクション本文を全文取得（ChatGPT互換） |
 | `get_tatsu_profile` | 12セクション一括 or 単一取得（Claude向け） |
+| `append_to_section` | 指定セクション末尾に追記（追加のみ・安全） |
+| `update_section` | セクション内テキストを find→replace で訂正 |
 
 ## 事前準備（一度だけ）
 
