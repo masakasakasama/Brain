@@ -235,7 +235,7 @@ const PAGES = [
 - ChatGPT Plus
 
 ## ノート・知識管理
-- Notion（有料）。トップ階層: 仕事 / 旅行 / 趣味 / 勉強 / 人生 / 日記 + 本ページ群「Tatsu Profile」
+- Notion Plus（個人の有料プラン）。トップ階層: 仕事 / 旅行 / 趣味 / 勉強 / 人生 / 日記 + 本ページ群「Tatsu Profile」
 
 ## 支払い
 - カード: 三井住友 Platinum Preferred VISA（メイン）`,
