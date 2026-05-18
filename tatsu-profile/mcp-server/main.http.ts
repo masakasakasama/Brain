@@ -12,6 +12,12 @@
 // connector in Claude and ChatGPT. No CLI, no Cloudflare, no GitHub settings.
 
 const DEFAULT_PARENT_PAGE_ID = "36329082-7880-811d-91b6-ca4d9b057b1d";
+const CHANGELOG_PAGE_ID = "36429082-7880-81f7-bc3f-ea6e85a8554b";
+const DIGEST_PAGE_ID = "36429082-7880-818e-8adb-f57459bb01e1";
+const DECISIONS_DB_ID = "9a0ca89ab09f43699b46d7b4966edbc4";
+const PROJECTS_DB_ID = "1251d8e7d8fc4eb3b6eb9a25f7a7dc6e";
+// Pages excluded from the main profile read (meta pages, not profile content).
+const EXCLUDE_TITLES = ["Changelog", "Context Digest"];
 const NOTION_API = "https://api.notion.com/v1";
 const NOTION_VERSION = "2022-06-28";
 const TTL_MS = 5 * 60 * 1000;
@@ -145,7 +151,11 @@ async function getSections(): Promise<Section[]> {
   const token = env("NOTION_TOKEN");
   const parent = env("PARENT_PAGE_ID") || DEFAULT_PARENT_PAGE_ID;
   const children = await listChildren(token, parent);
-  const pages = children.filter((b) => b.type === "child_page");
+  const pages = children.filter(
+    (b) =>
+      b.type === "child_page" &&
+      !EXCLUDE_TITLES.some((t) => (b.child_page?.title ?? "").includes(t)),
+  );
   const sections: Section[] = [];
   for (const p of pages) {
     sections.push({
@@ -239,6 +249,7 @@ async function toolAppend(section: string, markdown: string): Promise<string> {
     });
   }
   cache = null; // force re-read so subsequent fetches see the change
+  await logChangelog("append", `${sec.title}: ${markdown.slice(0, 120)}`);
   return `Appended ${blocks.length} block(s) to "${sec.title}".`;
 }
 
@@ -265,9 +276,212 @@ async function toolUpdate(
       [t]: { rich_text: [{ type: "text", text: { content: updated } }] },
     });
     cache = null;
+    await logChangelog("update", `${sec.title}: "${find}" → "${replace}"`);
     return `Updated a ${t} block in "${sec.title}".`;
   }
   return `No block containing "${find}" found in "${sec.title}".`;
+}
+
+// ---- Changelog (audit trail). Best-effort; never throws to the caller. ----
+async function logChangelog(action: string, detail: string): Promise<void> {
+  try {
+    const token = env("NOTION_TOKEN");
+    const ts = new Date().toISOString().replace("T", " ").slice(0, 16);
+    await notionWrite(token, "PATCH", `/blocks/${CHANGELOG_PAGE_ID}/children`, {
+      children: [
+        {
+          type: "bulleted_list_item",
+          bulleted_list_item: {
+            rich_text: [
+              { type: "text", text: { content: `${ts} UTC — ${action}: ${detail}` } },
+            ],
+          },
+        },
+      ],
+    });
+  } catch (_e) {
+    // swallow: audit logging must never break a write
+  }
+}
+
+// ---- remember: route a free-form fact to the right profile section ----
+function classifyFact(fact: string): string {
+  const f = fact.toLowerCase();
+  if (/(決定|決めた|決断|やめた|移行|選んだ|decision)/.test(fact)) {
+    return "Key Decisions Log";
+  }
+  if (/(投資|nisa|株|資産|円|年収|お金|finance|口座|カード)/.test(f) || /投資|資産|年収/.test(fact)) {
+    return "Finance & Investments";
+  }
+  if (/(仕事|転職|異動|キャリア|career|oem|プロジェクト評価)/.test(f) || /仕事|転職|異動|キャリア/.test(fact)) {
+    return "Career & Work";
+  }
+  if (/(健康|筋トレ|サプリ|体重|health|睡眠)/.test(f) || /健康|筋トレ|サプリ|体重/.test(fact)) {
+    return "Health & Habits";
+  }
+  if (/(興味|学習|勉強|趣味|旅行|ドイツ語|interest)/.test(f) || /興味|学習|勉強|趣味|旅行/.test(fact)) {
+    return "Interests & Learning";
+  }
+  if (/(rebecca|パートナー|家族|結婚|relationship)/.test(f) || /パートナー|家族|結婚/.test(fact)) {
+    return "Relationships";
+  }
+  if (/(価値観|判断基準|方針|value)/.test(f) || /価値観|判断基準|方針/.test(fact)) {
+    return "Values & Judgment Criteria";
+  }
+  if (/(プロジェクト|開発|project|アプリ)/.test(f) || /プロジェクト|開発|アプリ/.test(fact)) {
+    return "Active Projects";
+  }
+  return "Key Decisions Log";
+}
+
+async function toolRemember(fact: string, sectionHint?: string): Promise<string> {
+  const target = sectionHint && sectionHint.trim()
+    ? sectionHint
+    : classifyFact(fact);
+  const date = new Date().toISOString().slice(0, 10);
+  const res = await toolAppend(target, `- ${date}: ${fact}`);
+  await logChangelog("remember", `→ ${target} : ${fact.slice(0, 120)}`);
+  return `${res} (routed to "${target}")`;
+}
+
+// ---- Context Digest: compact one-page summary, rebuilt on demand ----
+async function buildDigestText(): Promise<string> {
+  const all = await getSections();
+  const parts: string[] = [
+    `# Tatsu Context Digest`,
+    `_自動生成: ${new Date().toISOString().slice(0, 16)} UTC_`,
+    "",
+  ];
+  for (const s of all) {
+    const lines = s.text
+      .split("\n")
+      .filter((l) => l.trim() && !l.startsWith(">"))
+      .slice(0, 4);
+    parts.push(`## ${s.title}`);
+    for (const l of lines) parts.push(l.startsWith("#") ? `- ${l.replace(/^#+\s*/, "")}` : l);
+    parts.push("");
+  }
+  return parts.join("\n");
+}
+
+async function toolRebuildDigest(): Promise<string> {
+  const token = env("NOTION_TOKEN");
+  const text = await buildDigestText();
+  // Clear existing digest blocks, then write fresh ones.
+  const existing = await listChildren(token, DIGEST_PAGE_ID);
+  for (const b of existing) {
+    try {
+      await notionWrite(token, "PATCH", `/blocks/${b.id}`, { archived: true });
+    } catch (_e) { /* keep going */ }
+  }
+  const blocks = mdToBlocks(text);
+  for (let i = 0; i < blocks.length; i += 100) {
+    await notionWrite(token, "PATCH", `/blocks/${DIGEST_PAGE_ID}/children`, {
+      children: blocks.slice(i, i + 100),
+    });
+  }
+  await logChangelog("rebuild_digest", `${blocks.length} blocks`);
+  return `Context Digest rebuilt (${blocks.length} blocks).`;
+}
+
+async function toolGetDigest(): Promise<string> {
+  const token = env("NOTION_TOKEN");
+  try {
+    const text = await blocksToText(token, DIGEST_PAGE_ID);
+    if (text && text.replace(/\s/g, "").length > 40) return text;
+  } catch (_e) { /* fall through to rebuild */ }
+  await toolRebuildDigest();
+  return await blocksToText(token, DIGEST_PAGE_ID);
+}
+
+// ---- Structured DB inserts (additive; never affects the read path) ----
+async function toolAddDecision(
+  decision: string,
+  date?: string,
+  reason?: string,
+  result?: string,
+  status?: string,
+): Promise<string> {
+  const token = env("NOTION_TOKEN");
+  const props: any = {
+    Decision: { title: [{ text: { content: decision } }] },
+  };
+  if (date) props.Date = { date: { start: date } };
+  if (reason) props.Reason = { rich_text: [{ text: { content: reason } }] };
+  if (result) props.Result = { rich_text: [{ text: { content: result } }] };
+  if (status) props.Status = { select: { name: status } };
+  await notionWrite(token, "POST", `/pages`, {
+    parent: { database_id: DECISIONS_DB_ID },
+    properties: props,
+  });
+  await logChangelog("add_decision", decision.slice(0, 120));
+  return `Added decision row: "${decision}".`;
+}
+
+async function toolAddProject(
+  project: string,
+  category?: string,
+  stack?: string,
+  status?: string,
+  notes?: string,
+): Promise<string> {
+  const token = env("NOTION_TOKEN");
+  const props: any = {
+    Project: { title: [{ text: { content: project } }] },
+  };
+  if (category) props.Category = { select: { name: category } };
+  if (stack) props.Stack = { rich_text: [{ text: { content: stack } }] };
+  if (status) props.Status = { select: { name: status } };
+  if (notes) props.Notes = { rich_text: [{ text: { content: notes } }] };
+  await notionWrite(token, "POST", `/pages`, {
+    parent: { database_id: PROJECTS_DB_ID },
+    properties: props,
+  });
+  await logChangelog("add_project", project.slice(0, 120));
+  return `Added project row: "${project}".`;
+}
+
+// ---- Backup to Val Town blob storage (self-contained, no extra token) ----
+async function getBlob(): Promise<any | null> {
+  try {
+    const mod = await import("https://esm.town/v/std/blob");
+    return (mod as any).blob ?? null;
+  } catch (_e) {
+    return null;
+  }
+}
+
+async function toolBackupNow(): Promise<string> {
+  const blob = await getBlob();
+  if (!blob) return "Backup unavailable (blob storage not reachable).";
+  const all = await getSections();
+  const key = `tatsuprofile-backup-${new Date().toISOString().slice(0, 19)}`;
+  await blob.setJSON(key, { at: new Date().toISOString(), sections: all });
+  try {
+    const keys: any[] = await blob.list("tatsuprofile-backup-");
+    const names = keys
+      .map((k: any) => k.key ?? k)
+      .filter((n: string) => n.startsWith("tatsuprofile-backup-"))
+      .sort();
+    while (names.length > 14) {
+      const old = names.shift()!;
+      await blob.delete(old);
+    }
+  } catch (_e) { /* pruning is best-effort */ }
+  await logChangelog("backup", key);
+  return `Backup saved: ${key} (${all.length} sections).`;
+}
+
+async function toolListBackups(): Promise<string> {
+  const blob = await getBlob();
+  if (!blob) return "Backup storage not reachable.";
+  try {
+    const keys: any[] = await blob.list("tatsuprofile-backup-");
+    const names = keys.map((k: any) => k.key ?? k).sort().reverse();
+    return names.length ? names.join("\n") : "No backups yet.";
+  } catch (e) {
+    return `Could not list backups: ${(e as Error).message}`;
+  }
 }
 
 const TOOLS = [
@@ -333,6 +547,89 @@ const TOOLS = [
     },
     annotations: { readOnlyHint: false, destructiveHint: true },
   },
+  {
+    name: "remember",
+    description:
+      "言われた事実を適切なセクションへ自動振り分けして記録する。雑に「これ覚えといて」用。section を指定すれば強制先指定。",
+    inputSchema: {
+      type: "object",
+      properties: {
+        fact: { type: "string", description: "覚えておく事実（自由文）" },
+        section: { type: "string", description: "任意。振り分け先を強制する場合" },
+      },
+      required: ["fact"],
+    },
+    annotations: { readOnlyHint: false, destructiveHint: false },
+  },
+  {
+    name: "get_digest",
+    description:
+      "Tatsu の全プロフィールを1ページに圧縮した Context Digest を取得する。会話開始時や、まず素早く全体像が要るときに最初に呼ぶ（get_tatsu_profile より軽い）。",
+    inputSchema: { type: "object", properties: {} },
+    annotations: { readOnlyHint: true },
+  },
+  {
+    name: "rebuild_digest",
+    description:
+      "Context Digest ページを最新のプロフィールから再生成する。プロフィールを大きく更新した後に呼ぶ。",
+    inputSchema: { type: "object", properties: {} },
+    annotations: { readOnlyHint: false, destructiveHint: false },
+  },
+  {
+    name: "add_decision",
+    description:
+      "Decisions DB に構造化された意思決定レコードを追加する（日付・理由・結果・ステータス付き）。",
+    inputSchema: {
+      type: "object",
+      properties: {
+        decision: { type: "string", description: "決定内容（タイトル）" },
+        date: { type: "string", description: "YYYY-MM-DD（任意）" },
+        reason: { type: "string", description: "理由（任意）" },
+        result: { type: "string", description: "結果（任意）" },
+        status: {
+          type: "string",
+          description: "進行中 / 実行済み / 評価中 / 見送り（任意）",
+        },
+      },
+      required: ["decision"],
+    },
+    annotations: { readOnlyHint: false, destructiveHint: false },
+  },
+  {
+    name: "add_project",
+    description: "Projects DB に構造化されたプロジェクトレコードを追加する。",
+    inputSchema: {
+      type: "object",
+      properties: {
+        project: { type: "string", description: "プロジェクト名" },
+        category: {
+          type: "string",
+          description: "個人開発 / 学習 / 旅行 / 仕事（任意）",
+        },
+        stack: { type: "string", description: "技術スタック（任意）" },
+        status: {
+          type: "string",
+          description: "進行中 / 反復改善中 / 完了 / 構想（任意）",
+        },
+        notes: { type: "string", description: "メモ（任意）" },
+      },
+      required: ["project"],
+    },
+    annotations: { readOnlyHint: false, destructiveHint: false },
+  },
+  {
+    name: "backup_now",
+    description:
+      "プロフィール全体のスナップショットを Val Town ストレージに保存する（直近14世代を保持）。",
+    inputSchema: { type: "object", properties: {} },
+    annotations: { readOnlyHint: false, destructiveHint: false },
+  },
+  {
+    name: "list_backups",
+    description: "保存済みバックアップの一覧を返す。",
+    inputSchema: { type: "object", properties: {} },
+    annotations: { readOnlyHint: true },
+  },
 ];
 
 async function callTool(name: string, args: any): Promise<string> {
@@ -345,6 +642,31 @@ async function callTool(name: string, args: any): Promise<string> {
   if (name === "update_section") {
     return await toolUpdate(args?.section ?? "", args?.find ?? "", args?.replace ?? "");
   }
+  if (name === "remember") {
+    return await toolRemember(args?.fact ?? "", args?.section);
+  }
+  if (name === "get_digest") return await toolGetDigest();
+  if (name === "rebuild_digest") return await toolRebuildDigest();
+  if (name === "add_decision") {
+    return await toolAddDecision(
+      args?.decision ?? "",
+      args?.date,
+      args?.reason,
+      args?.result,
+      args?.status,
+    );
+  }
+  if (name === "add_project") {
+    return await toolAddProject(
+      args?.project ?? "",
+      args?.category,
+      args?.stack,
+      args?.status,
+      args?.notes,
+    );
+  }
+  if (name === "backup_now") return await toolBackupNow();
+  if (name === "list_backups") return await toolListBackups();
   throw new Error(`Unknown tool: ${name}`);
 }
 

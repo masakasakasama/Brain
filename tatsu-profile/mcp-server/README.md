@@ -16,6 +16,21 @@ Tatsu Profile（Notion）をライブ参照する **リモート MCP サーバ�
 | `get_tatsu_profile` | 12セクション一括 or 単一取得（Claude向け） |
 | `append_to_section` | 指定セクション末尾に追記（追加のみ・安全） |
 | `update_section` | セクション内テキストを find→replace で訂正 |
+| `remember` | 事実を適切なセクションへ自動振り分けして記録 |
+| `get_digest` | 全体を1ページ圧縮した Context Digest を取得（軽い・最初に呼ぶ用） |
+| `rebuild_digest` | Context Digest を最新内容で再生成 |
+| `add_decision` | Decisions DB に構造化レコード追加（日付/理由/結果/状態） |
+| `add_project` | Projects DB に構造化レコード追加 |
+| `backup_now` | プロフィール全体を Val Town ストレージにスナップショット（14世代） |
+| `list_backups` | バックアップ一覧 |
+
+### 設計メモ（堅牢性）
+- 実証済みの read/write 経路を最前段に固定。新機能は全て try/catch 隔離 ——
+  どれが失敗してもサーバーは落ちず、該当ツールがエラー文を返すだけ。
+- `Changelog` / `Context Digest` ページは profile 読み取りから除外（ノイズ防止）。
+  全書き込み（append/update/remember/add_*/backup）は `Changelog` に自動記録。
+- バックアップは Val Town blob ストレージ（外部トークン不要・自己完結）。
+- Decisions DB / Projects DB は **追加的**。読み取り経路には一切影響しない。
 
 ## 事前準備（一度だけ）
 
