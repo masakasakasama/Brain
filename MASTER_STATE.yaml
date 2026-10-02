@@ -126,14 +126,14 @@ projects:
   priority: null
   status: in_progress
   codex_thread: null
-  next: 'CODEX_STATE.md: Firebase Emulatorまたは隔離DBで、保存失敗→接続復帰→再送、同時編集3方向マージ、未保存データの再起動復元を検証する。'
-  last_checkpoint: '2026-10-02T10:53:14.680818+00:00'
+  next: 'CODEX_STATE.md: 端末保存容量超過時のpersistLocal失敗を利用者に表示し、ローカル保存失敗を保存済と誤表示しない経路を回帰検証する。'
+  last_checkpoint: '2026-10-02T18:01:59.473725+00:00'
   observed_pushed_at: '2026-09-17T00:46:58Z'
-  last_commit: e5f4e50e87bc1542bd3e3efed085eb47f656ec89
-  verification: 'node --test scripts/sync-recovery.test.mjs: 3/3 passed; 全inline script
-    node --check: passed; agent-browser隔離fixture: 表示/checkbox再読込保持/ドイツ語切替成功、修正後errors=[];
-    git diff --check: passed'
-  latest_verified_commit: e5f4e50e87bc1542bd3e3efed085eb47f656ec89
+  last_commit: 09b4d3c874880e8d1caa34e9d75003d27699d841
+  verification: 'npm test: 3/3 passed; npm run test:emulator: permission failure/retry,
+    concurrent offline merge/reload, unsaved restart recovery, pending status passed;
+    production requests=0; JS errors=[]; git diff --check passed'
+  latest_verified_commit: 09b4d3c874880e8d1caa34e9d75003d27699d841
   latest_verified_pushed_at: '2026-10-02T10:53:16Z'
 - repo: masakasakasama/Fitness
   default_branch: claude/gym-tracking-app-SVUkz
@@ -463,19 +463,19 @@ automation:
   quota_visibility: No tool exposes Codex remaining usage or reset time; runs must
     not claim exact recovery detection.
 controller_checkpoint:
-  updated_at: '2026-10-02T17:02:04.595221+00:00'
-  pass_status: five_repositories_updated_and_checkpointed
+  updated_at: '2026-10-02T18:02:55.382286+00:00'
+  pass_status: calendar_and_marriage_checkpointed
   active_repositories: 14
   excluded_stale_repositories: 22
   state_files_verified: 13
   automation_count_for_controller: 1
-  remaining_work: Four remaining repositories this cycle; physical/concurrency/credentials
-    blockers remain. All repositories are not complete.
+  remaining_work: Two remaining repositories this cycle; blocked repositories remain
+    unfinished.
   quota_reset_time: unavailable
-  next_repository: masakasakasama/Calender
+  next_repository: masakasakasama/Daily_check
 work_cycle:
   status: in_progress
-  updated_at: '2026-10-02T17:02:04.595221+00:00'
+  updated_at: '2026-10-02T18:02:55.382286+00:00'
   processed_repositories:
   - masakasakasama/Microsoft-FDE
   - masakasakasama/mf-dashboard
@@ -487,12 +487,12 @@ work_cycle:
   - masakasakasama/Fitness
   - masakasakasama/Home
   - masakasakasama/Alarm
-  remaining_repositories:
   - masakasakasama/Calender
   - masakasakasama/Marriage_procedure
+  remaining_repositories:
   - masakasakasama/Daily_check
   - masakasakasama/english-news-app
-  next_repository: masakasakasama/Calender
+  next_repository: masakasakasama/Daily_check
   note: Resume remaining recent registered repos in latest pushed_at order; own checkpoint
     pushes do not restart a partially completed cycle. Rebuild selection after this
     cycle. Deferred/blocked is not completed.
