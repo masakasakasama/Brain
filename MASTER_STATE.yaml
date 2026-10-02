@@ -7,7 +7,7 @@ policy:
   reset_behavior: resume_enabled_workers
   note: 司令塔用Scheduled Automation 1個だけで再開する。利用上限中は変更せず終了。最近pushされた登録repoのみ対象。
   recent_push_days: 30
-  selection_checked_at: '2026-10-02T17:02:04.595221+00:00'
+  selection_checked_at: '2026-10-02T18:17:47.896187+00:00'
   checkpoint_before_stop: true
   resume_cycle_before_revisit: true
 projects:
@@ -20,13 +20,14 @@ projects:
   codex_thread: null
   next: 'CODEX_STATE.md: OCI移行のbackup/restore・再起動・public snapshot確認を、利用可能な資格情報の範囲で進める。'
   last_checkpoint: '2026-10-02T16:42:15.180268+00:00'
-  observed_pushed_at: '2026-10-02T09:37:39Z'
+  observed_pushed_at: '2026-10-02T16:42:18Z'
   last_commit: 6956f17aca929d06e36d4a29c5f883a1a93c626b
   verification: 'npm run check: TypeScript build and 135/135 tests passed; secret
     scan: 163 files passed; Isolated Chrome fixture: 戦略保留・未評価 visible; all network
     calls mocked; JS errors=[]; git diff --check passed'
   latest_verified_commit: 6956f17aca929d06e36d4a29c5f883a1a93c626b
   latest_verified_pushed_at: '2026-10-02T16:42:18Z'
+  latest_observed_commit: 6956f17aca929d06e36d4a29c5f883a1a93c626b
 - repo: masakasakasama/AI-Assistant_handmade
   default_branch: main
   visibility: public
@@ -34,15 +35,17 @@ projects:
   priority: null
   status: in_progress
   codex_thread: null
-  next: 'CODEX_STATE.md: v0.4.29の並行更新を保持済み。最新状態と作業担当を確認し、同じrepoの並行編集を避けて再開する。'
+  next: 最新README/handoffとd2adaa6以降の担当範囲を再確認後、CODEX_STATE.mdのBackend認証/端末HTTP整合を続行。並行Android変更を上書きしない。
   last_checkpoint: '2026-10-02T14:57:26.087385+00:00'
-  observed_pushed_at: '2026-10-02T10:19:53Z'
+  observed_pushed_at: '2026-10-02T18:15:32Z'
   last_commit: 4c18c5f30167bf5a2f8f5645066b30765f48bdd8
   verification: Backend 55/55; benchmark dry-run; diff check passed
   latest_verified_commit: 4c18c5f30167bf5a2f8f5645066b30765f48bdd8
   latest_verified_pushed_at: '2026-10-02T14:57:25Z'
-  controller_edit_deferred_reason: Concurrent Android release work detected in previous
-    pass; no edits this pass.
+  controller_edit_deferred_reason: Final read detected external main update d2adaa6;
+    worker state remains at earlier checkpoint. Re-read current README/handoff and
+    establish non-overlapping ownership before editing.
+  latest_observed_commit: d2adaa6fb6f0e08d06befeaadaafdd1cbcec83a1
 - repo: masakasakasama/english-news-app
   default_branch: main
   visibility: private
@@ -50,14 +53,20 @@ projects:
   priority: null
   status: in_progress
   codex_thread: null
-  next: 既存lint修正、IELTS履歴fixtureと隔離browser QA (CODEX_STATE.md)
-  last_checkpoint: '2026-10-02T10:36:53.108677+00:00'
-  observed_pushed_at: '2026-10-02T00:37:14Z'
-  last_commit: 7992d840155fae9f73bb8bf1f08bdff785570d45
-  verification: build + history 4/4 + targeted lint passed; global lint pre-existing
-    16 errors
-  latest_verified_commit: 7992d840155fae9f73bb8bf1f08bdff785570d45
-  latest_verified_pushed_at: '2026-10-02T10:34:49Z'
+  next: 'CODEX_STATE.md: H09: 新規回答の推奨/手動教材採点→移動→再訪、容量超過のUI再保存/書き出し、ブラウザ再起動・復習期限到来をisolated
+    browser fixtureで検証する。'
+  last_checkpoint: '2026-10-02T18:15:21.034582+00:00'
+  observed_pushed_at: '2026-10-02T18:15:24Z'
+  last_commit: b60b7f5d436b6866e5656648f9d376c3115172ef
+  verification: 'npm run lint: 0 errors / 0 warnings; npm run test:history: 8/8 passed;
+    npm run build: IELTS gate + TS + 7116 static pages passed; Chrome 390x844: Saved
+    storage refresh; IELTS detailed/legacy history/reload retained; view AI calls=0;
+    major route smoke JS errors=[]; all sync/image requests mocked; Actual useArticlePlayer
+    isolated mock TTS: next/repeat/rate/stop/stale onEnd passed; git diff --check
+    passed'
+  latest_verified_commit: b60b7f5d436b6866e5656648f9d376c3115172ef
+  latest_verified_pushed_at: '2026-10-02T18:15:24Z'
+  latest_observed_commit: b60b7f5d436b6866e5656648f9d376c3115172ef
 - repo: masakasakasama/Daily_check
   default_branch: main
   visibility: public
@@ -67,7 +76,7 @@ projects:
   codex_thread: null
   next: 'CODEX_STATE.md: 過去4日の日別discoveredLate混入を監査証跡と照合し、収集担当と競合しない状態で日別・関連週次を修復する。'
   last_checkpoint: '2026-10-02T18:05:03.732596+00:00'
-  observed_pushed_at: '2026-10-01T23:07:35Z'
+  observed_pushed_at: '2026-10-02T18:05:06Z'
   last_commit: abb58d65fe5627a1f729b4c0d72cac4d0aa91a74
   verification: 'node --test scripts/*.test.mjs: 4/4 passed; DAILY_CHECK_DATE=2026-10-02
     node scripts/verify-daily-data.mjs: passed, 6/6 funnels and exact weekly union;
@@ -75,7 +84,8 @@ projects:
     evidence review; Automation read-only: confirmed 07:00 primary, no confirmed recovery;
     git diff --check passed'
   latest_verified_commit: abb58d65fe5627a1f729b4c0d72cac4d0aa91a74
-  latest_verified_pushed_at: '2026-10-02T10:36:32Z'
+  latest_verified_pushed_at: '2026-10-02T18:05:06Z'
+  latest_observed_commit: abb58d65fe5627a1f729b4c0d72cac4d0aa91a74
 - repo: masakasakasama/Home
   default_branch: main
   visibility: public
@@ -85,13 +95,14 @@ projects:
   codex_thread: null
   next: 'CODEX_STATE.md: GalaxyでREPSの直接起動、SEN Web遷移、HomeのAPK更新を確認。結果が得られるまで実機合格としない。'
   last_checkpoint: '2026-10-02T10:51:40.578855+00:00'
-  observed_pushed_at: '2026-09-28T22:45:06Z'
+  observed_pushed_at: '2026-10-02T10:55:04Z'
   last_commit: 783e587b8604df1a29db6fe6111c4d136c4f57cc
   verification: 'ANDROID_HOME=/workspace/android-sdk JAVA_HOME=/workspace/jdk17 ./gradlew
     :app:testDebugUnitTest :app:assembleDebug: passed; JUnit 2/2 passed、SDK/JDKのproxy
     CAを保持してビルド; Config DEFAULTS=20件、READMEアプリ表=20件、git diff --check passed'
   latest_verified_commit: 783e587b8604df1a29db6fe6111c4d136c4f57cc
   latest_verified_pushed_at: '2026-10-02T10:55:04Z'
+  latest_observed_commit: 783e587b8604df1a29db6fe6111c4d136c4f57cc
 - repo: masakasakasama/Alarm
   default_branch: main
   visibility: public
@@ -101,13 +112,14 @@ projects:
   codex_thread: null
   next: 'CODEX_STATE.md: READMEのGalaxy手動テストを実機で実施: 鳴動/停止/スヌーズ、Doze、再起動PIN前、権限失効/復帰、更新後の予約保持、同時刻複数件。'
   last_checkpoint: '2026-10-02T10:53:11.879090+00:00'
-  observed_pushed_at: '2026-09-22T08:16:57Z'
+  observed_pushed_at: '2026-10-02T10:53:14Z'
   last_commit: 90cb13665d6181c04ec961d51d616d04d17c6915
   verification: './gradlew testDebugUnitTest lintDebug assembleDebug (SDK36/JDK17):
     passed; JUnit 39/39 passed、lintDebug successful、debug APK生成; git diff --check:
     passed'
   latest_verified_commit: 90cb13665d6181c04ec961d51d616d04d17c6915
   latest_verified_pushed_at: '2026-10-02T10:53:14Z'
+  latest_observed_commit: 90cb13665d6181c04ec961d51d616d04d17c6915
 - repo: masakasakasama/Design_system
   default_branch: main
   visibility: public
@@ -117,12 +129,13 @@ projects:
   codex_thread: null
   next: 'CODEX_STATE.md: docs/ADOPTION.mdに従い対象consumerのrevision pinと最小範囲の導入を進め、UI差分とbuildを検証する。'
   last_checkpoint: '2026-10-02T16:53:27.282233+00:00'
-  observed_pushed_at: '2026-09-21T12:40:21Z'
+  observed_pushed_at: '2026-10-02T16:53:30Z'
   last_commit: 3c1f39b431286cac03710a8a9175a39a83244242
   verification: 'npm test: 5/5 passed; npm run validate and check:generated passed;
     generated artifacts unchanged; git diff --check passed'
   latest_verified_commit: 3c1f39b431286cac03710a8a9175a39a83244242
   latest_verified_pushed_at: '2026-10-02T16:53:30Z'
+  latest_observed_commit: 3c1f39b431286cac03710a8a9175a39a83244242
 - repo: masakasakasama/Marriage_procedure
   default_branch: main
   visibility: public
@@ -132,13 +145,14 @@ projects:
   codex_thread: null
   next: 'CODEX_STATE.md: 端末保存容量超過時のpersistLocal失敗を利用者に表示し、ローカル保存失敗を保存済と誤表示しない経路を回帰検証する。'
   last_checkpoint: '2026-10-02T18:01:59.473725+00:00'
-  observed_pushed_at: '2026-09-17T00:46:58Z'
+  observed_pushed_at: '2026-10-02T18:02:05Z'
   last_commit: 09b4d3c874880e8d1caa34e9d75003d27699d841
   verification: 'npm test: 3/3 passed; npm run test:emulator: permission failure/retry,
     concurrent offline merge/reload, unsaved restart recovery, pending status passed;
     production requests=0; JS errors=[]; git diff --check passed'
   latest_verified_commit: 09b4d3c874880e8d1caa34e9d75003d27699d841
-  latest_verified_pushed_at: '2026-10-02T10:53:16Z'
+  latest_verified_pushed_at: '2026-10-02T18:02:05Z'
+  latest_observed_commit: 09b4d3c874880e8d1caa34e9d75003d27699d841
 - repo: masakasakasama/Fitness
   default_branch: claude/gym-tracking-app-SVUkz
   visibility: public
@@ -148,12 +162,13 @@ projects:
   codex_thread: null
   next: 'CODEX_STATE.md: Galaxyでv0.5.4 APKのローカル保存/復元、休憩アラーム、アプリ中断/復帰、旧データ移行を検証する。'
   last_checkpoint: '2026-10-02T10:56:05.348637+00:00'
-  observed_pushed_at: '2026-09-13T13:41:45Z'
+  observed_pushed_at: '2026-10-02T10:56:07Z'
   last_commit: 6bcc2238a42f952421a3ec40e2a33849f10bbf39
   verification: '全root *.js node --check: passed; agent-browser local Web: 主要タブ/日付/機材導線表示、errors=[];
     既存e9c82ce Android CI: success (今回の新APK検証とは区別); git diff --check: passed'
   latest_verified_commit: 6bcc2238a42f952421a3ec40e2a33849f10bbf39
   latest_verified_pushed_at: '2026-10-02T10:56:07Z'
+  latest_observed_commit: 6bcc2238a42f952421a3ec40e2a33849f10bbf39
 - repo: masakasakasama/Trip_Plan
   default_branch: main
   visibility: public
@@ -163,7 +178,7 @@ projects:
   codex_thread: null
   next: 'CODEX_STATE.md: isolated Worker fixtureでIf-Match競合・pending/recovery再起動復元のE2Eを検証。本番旅行予定へテストを書かない。'
   last_checkpoint: '2026-10-02T17:00:43.568796+00:00'
-  observed_pushed_at: '2026-09-13T11:06:21Z'
+  observed_pushed_at: '2026-10-02T17:00:46Z'
   last_commit: e001f51ec06eedbcd8edc1a8fe21241d083cc7ab
   verification: 'Astra production build and data tests 5/5; root sync-merge test 1/1
     passed; Playwright full mobile 412x915 / desktop 1440x1000: passed; observed replay
@@ -172,6 +187,7 @@ projects:
     focus-detail.js / tools/verify.mjs; git diff --check passed'
   latest_verified_commit: e001f51ec06eedbcd8edc1a8fe21241d083cc7ab
   latest_verified_pushed_at: '2026-10-02T17:00:46Z'
+  latest_observed_commit: e001f51ec06eedbcd8edc1a8fe21241d083cc7ab
 - repo: masakasakasama/Microsoft-FDE
   default_branch: main
   visibility: public
@@ -181,7 +197,7 @@ projects:
   codex_thread: null
   next: 'CODEX_STATE.md: AB-100の10/14改訂の変更logと現行各module/questionを照合し、根拠付きで教材を更新する。'
   last_checkpoint: '2026-10-02T16:42:09.194217+00:00'
-  observed_pushed_at: '2026-09-08T12:19:08Z'
+  observed_pushed_at: '2026-10-02T16:42:11Z'
   last_commit: 379cfa1cb937af4503d44a974b09faf96ad04c05
   verification: '3 official study guide article bodies fetched and effective dates/domain
     weights compared; node --check app.js / content.js; parser tests 3/3 passed; Chrome
@@ -189,6 +205,7 @@ projects:
     passed'
   latest_verified_commit: 379cfa1cb937af4503d44a974b09faf96ad04c05
   latest_verified_pushed_at: '2026-10-02T16:42:11Z'
+  latest_observed_commit: 379cfa1cb937af4503d44a974b09faf96ad04c05
 - repo: masakasakasama/Calender
   default_branch: main
   visibility: public
@@ -199,7 +216,7 @@ projects:
   next: 'CODEX_STATE.md: 段階4: CalendarEvent factoryのallDay/timezone/emoji/syncErrorを統一。既存doc
     IDを変える移行はせず自動削除を入れない。'
   last_checkpoint: '2026-10-02T17:51:04.608640+00:00'
-  observed_pushed_at: '2026-09-06T23:06:18Z'
+  observed_pushed_at: '2026-10-02T17:51:33Z'
   last_commit: c13cdc2f4299f03803944afd7da6da2a7cf100d2
   verification: 'npm test: 6/6 passed (existing hook 2 + shared rules 4); npm run
     build: TS/Vite/PWA passed; functions npm ci + npm run build passed; legacy ID
@@ -207,7 +224,8 @@ projects:
     events ineligible and documents unchanged; git diff --check passed; existing bundle-size
     warning'
   latest_verified_commit: c13cdc2f4299f03803944afd7da6da2a7cf100d2
-  latest_verified_pushed_at: '2026-10-02T10:55:26Z'
+  latest_verified_pushed_at: '2026-10-02T17:51:33Z'
+  latest_observed_commit: c13cdc2f4299f03803944afd7da6da2a7cf100d2
 - repo: masakasakasama/mf-dashboard
   default_branch: main
   visibility: public
@@ -217,7 +235,7 @@ projects:
   codex_thread: null
   next: 'CODEX_STATE.md: 繰り返しルールのid欠落・重複入力の扱いを検証し、曖昧なforecastRuleId紐付けを防ぐ。'
   last_checkpoint: '2026-10-02T16:42:11.977416+00:00'
-  observed_pushed_at: '2026-09-03T10:59:01Z'
+  observed_pushed_at: '2026-10-02T16:42:14Z'
   last_commit: d53563721ca8cada71bc40724d5212c5bf0bc579
   verification: npm test 8/8 passed; production build passed (existing chunk-size
     warning); cashflow/subscriptions JSON validation and canonical model arithmetic/Tokyo
@@ -225,6 +243,7 @@ projects:
     passed
   latest_verified_commit: d53563721ca8cada71bc40724d5212c5bf0bc579
   latest_verified_pushed_at: '2026-10-02T16:42:14Z'
+  latest_observed_commit: d53563721ca8cada71bc40724d5212c5bf0bc579
 - repo: masakasakasama/sen-android-updates
   default_branch: main
   visibility: public
@@ -434,11 +453,12 @@ projects:
   codex_thread: null
   next: 最新pushと他作業の担当範囲を確認。既存状態ファイル・開発Goalがないため、並行編集を避けて最新状態の参照から再開する。
   last_checkpoint: '2026-10-02T15:18:19.800171+00:00'
-  observed_pushed_at: '2026-05-06T09:47:20Z'
+  observed_pushed_at: '2026-10-02T14:59:45Z'
   latest_verified_pushed_at: '2026-10-02T14:59:45Z'
   blockers:
   - 直近の別作業によるcustom domain更新を検出。担当の重なりを避け、今回は参照のみ。
   latest_verified_commit: b6baaabd760bbad7e9b97a573889f4fd7c62c276
+  latest_observed_commit: b6baaabd760bbad7e9b97a573889f4fd7c62c276
 - repo: masakasakasama/Business_English
   default_branch: main
   visibility: public
@@ -467,20 +487,40 @@ automation:
   quota_visibility: No tool exposes Codex remaining usage or reset time; runs must
     not claim exact recovery detection.
 controller_checkpoint:
-  updated_at: '2026-10-02T18:02:55.382286+00:00'
-  pass_status: calendar_and_marriage_checkpointed
+  updated_at: '2026-10-02T18:17:47.896187+00:00'
+  pass_status: full_cycle_checkpointed_with_unfinished_work
   active_repositories: 14
   excluded_stale_repositories: 22
   state_files_verified: 13
   automation_count_for_controller: 1
-  remaining_work: English remaining in current cycle; historical publication, physical-device
-    and concurrency blockers remain.
+  remaining_work: All 14 eligible repos processed or blocker-reviewed this cycle;
+    next cycle queued. Unfinished tasks and blockers remain; no repo promoted to completed.
   quota_reset_time: unavailable
-  next_repository: masakasakasama/english-news-app
+  next_repository: masakasakasama/AI-Assistant_handmade
 work_cycle:
-  status: in_progress
-  updated_at: '2026-10-02T18:11:02.121633+00:00'
-  processed_repositories:
+  status: ready_for_next_cycle
+  updated_at: '2026-10-02T18:17:47.896187+00:00'
+  processed_repositories: []
+  remaining_repositories:
+  - masakasakasama/AI-Assistant_handmade
+  - masakasakasama/english-news-app
+  - masakasakasama/Daily_check
+  - masakasakasama/Marriage_procedure
+  - masakasakasama/Calender
+  - masakasakasama/Trip_Plan
+  - masakasakasama/Design_system
+  - masakasakasama/1000yen-agent
+  - masakasakasama/mf-dashboard
+  - masakasakasama/Microsoft-FDE
+  - masakasakasama/masakasakasama.github.io
+  - masakasakasama/Fitness
+  - masakasakasama/Home
+  - masakasakasama/Alarm
+  next_repository: masakasakasama/AI-Assistant_handmade
+  note: Resume remaining recent registered repos in latest pushed_at order; own checkpoint
+    pushes do not restart a partially completed cycle. Rebuild selection after this
+    cycle. Deferred/blocked is not completed.
+  previous_cycle_processed_repositories:
   - masakasakasama/Microsoft-FDE
   - masakasakasama/mf-dashboard
   - masakasakasama/1000yen-agent
@@ -494,9 +534,5 @@ work_cycle:
   - masakasakasama/Calender
   - masakasakasama/Marriage_procedure
   - masakasakasama/Daily_check
-  remaining_repositories:
   - masakasakasama/english-news-app
-  next_repository: masakasakasama/english-news-app
-  note: Resume remaining recent registered repos in latest pushed_at order; own checkpoint
-    pushes do not restart a partially completed cycle. Rebuild selection after this
-    cycle. Deferred/blocked is not completed.
+  previous_cycle_checkpointed_at: '2026-10-02T18:17:47.896187+00:00'
