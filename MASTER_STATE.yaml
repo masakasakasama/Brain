@@ -7,6 +7,15 @@ policy:
   reset_behavior: resume_enabled_workers
   note: "Codexスレッド自体のScheduled taskは各スレッド側で設定する"
 projects:
+  - repo: masakasakasama/1000yen-agent
+    default_branch: main
+    visibility: private
+    enabled: false
+    priority: null
+    status: registered
+    codex_thread: null
+    next: null
+    last_checkpoint: null
   - repo: masakasakasama/AI-Assistant_handmade
     default_branch: main
     visibility: public
@@ -115,18 +124,18 @@ projects:
     codex_thread: null
     next: null
     last_checkpoint: null
-  - repo: masakasakasama/1000yen-agent
+  - repo: masakasakasama/sen-android-updates
     default_branch: main
-    visibility: private
+    visibility: public
     enabled: false
     priority: null
     status: registered
     codex_thread: null
     next: null
     last_checkpoint: null
-  - repo: masakasakasama/sen-android-updates
+  - repo: masakasakasama/Money_management
     default_branch: main
-    visibility: public
+    visibility: private
     enabled: false
     priority: null
     status: registered
@@ -170,15 +179,6 @@ projects:
     next: null
     last_checkpoint: null
   - repo: masakasakasama/CPRE-data
-    default_branch: main
-    visibility: private
-    enabled: false
-    priority: null
-    status: registered
-    codex_thread: null
-    next: null
-    last_checkpoint: null
-  - repo: masakasakasama/Money_management
     default_branch: main
     visibility: private
     enabled: false
@@ -304,6 +304,15 @@ projects:
     codex_thread: null
     next: null
     last_checkpoint: null
+  - repo: masakasakasama/masakasakasama.github.io
+    default_branch: main
+    visibility: public
+    enabled: false
+    priority: null
+    status: registered
+    codex_thread: null
+    next: null
+    last_checkpoint: null
   - repo: masakasakasama/Business_English
     default_branch: main
     visibility: public
@@ -314,15 +323,6 @@ projects:
     next: null
     last_checkpoint: null
   - repo: masakasakasama/portfolio-plan
-    default_branch: main
-    visibility: public
-    enabled: false
-    priority: null
-    status: registered
-    codex_thread: null
-    next: null
-    last_checkpoint: null
-  - repo: masakasakasama/masakasakasama.github.io
     default_branch: main
     visibility: public
     enabled: false
