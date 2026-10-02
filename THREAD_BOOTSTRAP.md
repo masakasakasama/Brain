@@ -18,6 +18,7 @@
 - 完了したら CODEX_STATE.md を completed にして停止する
 
 Scheduled task:
-- このスレッドに戻るScheduled taskを設定する
-- Codex利用枠が復帰する時刻の数分後に実行する
+- 司令塔用Scheduled Automation 1個だけで再開する。repo別taskを追加しない
+- 毎時実行で再開を試みる。利用上限中と判明した場合は変更せず終了する
+- 利用枠の残量・回復時刻を取得できない場合は回復を断言しない
 - 実行時は上記手順でGitHubから状態を復元して続行する

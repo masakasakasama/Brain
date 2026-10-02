@@ -7,7 +7,7 @@
 1. `MASTER_STATE.yaml` で動かしたいrepoを `enabled: true` にする
 2. 対象repoに `CODEX_STATE.md` を置く
 3. Codex threadの最初に `THREAD_BOOTSTRAP.md` の内容を渡す
-4. 各threadにScheduled taskを設定する
+4. この司令塔チャットのScheduled Automation 1個だけを使用する
 5. threadは再開時にBrainと対象repoのstateを読み、続きから作業する
 
 ## ファイル
