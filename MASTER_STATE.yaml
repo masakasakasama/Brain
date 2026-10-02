@@ -18,10 +18,12 @@ projects:
   status: in_progress
   codex_thread: null
   next: 'CODEX_STATE.md Next: strategy hold説明整合とOCI read-only疎通検証。'
-  last_checkpoint: '2026-10-02T10:30:55.761337+00:00'
+  last_checkpoint: '2026-10-02T14:56:31.351403+00:00'
   observed_pushed_at: '2026-10-02T09:37:39Z'
-  last_commit: 6a3e83dd925fd83520915f7a41deefce678f5869
+  last_commit: f568e8f0651421acdb2c1d619e7246ec882f9cf2
   verification: TypeScript build; 133/133 tests; secret scan passed
+  latest_verified_commit: f568e8f0651421acdb2c1d619e7246ec882f9cf2
+  latest_verified_pushed_at: '2026-10-02T14:56:39Z'
 - repo: masakasakasama/AI-Assistant_handmade
   default_branch: main
   visibility: public
@@ -29,11 +31,13 @@ projects:
   priority: null
   status: in_progress
   codex_thread: null
-  next: 'CODEX_STATE.md Next: Backend認証・失効をAndroidと整合させて実装。実機試験はblocker。'
-  last_checkpoint: '2026-10-02T10:29:15.968949+00:00'
+  next: 'CODEX_STATE.md: v0.4.29の並行更新を保持済み。最新状態と作業担当を確認し、同じrepoの並行編集を避けて再開する。'
+  last_checkpoint: '2026-10-02T14:57:26.087385+00:00'
   observed_pushed_at: '2026-10-02T10:19:53Z'
-  last_commit: c1601472a4b0d1200bf8c70e19e56aab77ef4f96
+  last_commit: 4c18c5f30167bf5a2f8f5645066b30765f48bdd8
   verification: Backend 55/55; benchmark dry-run; diff check passed
+  latest_verified_commit: 4c18c5f30167bf5a2f8f5645066b30765f48bdd8
+  latest_verified_pushed_at: '2026-10-02T14:57:25Z'
 - repo: masakasakasama/english-news-app
   default_branch: main
   visibility: private
@@ -47,6 +51,8 @@ projects:
   last_commit: 7992d840155fae9f73bb8bf1f08bdff785570d45
   verification: build + history 4/4 + targeted lint passed; global lint pre-existing
     16 errors
+  latest_verified_commit: 7992d840155fae9f73bb8bf1f08bdff785570d45
+  latest_verified_pushed_at: '2026-10-02T10:34:49Z'
 - repo: masakasakasama/Daily_check
   default_branch: main
   visibility: public
@@ -59,96 +65,151 @@ projects:
   observed_pushed_at: '2026-10-01T23:07:35Z'
   last_commit: 6c7f1e6c058007ab38e7be79681168af70ee2e8e
   verification: audit tests 2/2 and daily validator passed
+  latest_verified_commit: 6c7f1e6c058007ab38e7be79681168af70ee2e8e
+  latest_verified_pushed_at: '2026-10-02T10:36:32Z'
 - repo: masakasakasama/Home
   default_branch: main
   visibility: public
   enabled: true
   priority: null
-  status: queued
+  status: blocked
   codex_thread: null
-  next: 最新のAGENTS/README/handoff/CODEX_STATEを読みNextから継続。状態ファイルがない場合は未完了事項を調査して作成。
-  last_checkpoint: null
+  next: 'CODEX_STATE.md: GalaxyでREPSの直接起動、SEN Web遷移、HomeのAPK更新を確認。結果が得られるまで実機合格としない。'
+  last_checkpoint: '2026-10-02T10:51:40.578855+00:00'
   observed_pushed_at: '2026-09-28T22:45:06Z'
+  last_commit: 783e587b8604df1a29db6fe6111c4d136c4f57cc
+  verification: 'ANDROID_HOME=/workspace/android-sdk JAVA_HOME=/workspace/jdk17 ./gradlew
+    :app:testDebugUnitTest :app:assembleDebug: passed; JUnit 2/2 passed、SDK/JDKのproxy
+    CAを保持してビルド; Config DEFAULTS=20件、READMEアプリ表=20件、git diff --check passed'
+  latest_verified_commit: 783e587b8604df1a29db6fe6111c4d136c4f57cc
+  latest_verified_pushed_at: '2026-10-02T10:55:04Z'
 - repo: masakasakasama/Alarm
   default_branch: main
   visibility: public
   enabled: true
   priority: null
-  status: queued
+  status: blocked
   codex_thread: null
-  next: 最新のAGENTS/README/handoff/CODEX_STATEを読みNextから継続。状態ファイルがない場合は未完了事項を調査して作成。
-  last_checkpoint: null
+  next: 'CODEX_STATE.md: READMEのGalaxy手動テストを実機で実施: 鳴動/停止/スヌーズ、Doze、再起動PIN前、権限失効/復帰、更新後の予約保持、同時刻複数件。'
+  last_checkpoint: '2026-10-02T10:53:11.879090+00:00'
   observed_pushed_at: '2026-09-22T08:16:57Z'
+  last_commit: 90cb13665d6181c04ec961d51d616d04d17c6915
+  verification: './gradlew testDebugUnitTest lintDebug assembleDebug (SDK36/JDK17):
+    passed; JUnit 39/39 passed、lintDebug successful、debug APK生成; git diff --check:
+    passed'
+  latest_verified_commit: 90cb13665d6181c04ec961d51d616d04d17c6915
+  latest_verified_pushed_at: '2026-10-02T10:53:14Z'
 - repo: masakasakasama/Design_system
   default_branch: main
   visibility: public
   enabled: true
   priority: null
-  status: queued
+  status: in_progress
   codex_thread: null
-  next: 最新のAGENTS/README/handoff/CODEX_STATEを読みNextから継続。状態ファイルがない場合は未完了事項を調査して作成。
-  last_checkpoint: null
+  next: 'CODEX_STATE.md: docs/ADOPTION.mdに従い、対象consumerでrevisionをpinし最小範囲から導入する。UI差分を確認してから配信する。'
+  last_checkpoint: '2026-10-02T10:52:11.599919+00:00'
   observed_pushed_at: '2026-09-21T12:40:21Z'
+  last_commit: 89e41913682ff7a0a6d4c3fdf147d3cf2ded9f30
+  verification: 'npm test: 2/2 passed; npm run validate / npm run check:generated:
+    passed、生成物差分なし; JDK17 + SDK34 + Gradle8.9 :android:tatsu-design-system:assembleRelease:
+    passed; git diff --check: passed'
+  latest_verified_commit: 89e41913682ff7a0a6d4c3fdf147d3cf2ded9f30
+  latest_verified_pushed_at: '2026-10-02T10:52:14Z'
 - repo: masakasakasama/Marriage_procedure
   default_branch: main
   visibility: public
   enabled: true
   priority: null
-  status: queued
+  status: in_progress
   codex_thread: null
-  next: 最新のAGENTS/README/handoff/CODEX_STATEを読みNextから継続。状態ファイルがない場合は未完了事項を調査して作成。
-  last_checkpoint: null
+  next: 'CODEX_STATE.md: Firebase Emulatorまたは隔離DBで、保存失敗→接続復帰→再送、同時編集3方向マージ、未保存データの再起動復元を検証する。'
+  last_checkpoint: '2026-10-02T10:53:14.680818+00:00'
   observed_pushed_at: '2026-09-17T00:46:58Z'
+  last_commit: e5f4e50e87bc1542bd3e3efed085eb47f656ec89
+  verification: 'node --test scripts/sync-recovery.test.mjs: 3/3 passed; 全inline script
+    node --check: passed; agent-browser隔離fixture: 表示/checkbox再読込保持/ドイツ語切替成功、修正後errors=[];
+    git diff --check: passed'
+  latest_verified_commit: e5f4e50e87bc1542bd3e3efed085eb47f656ec89
+  latest_verified_pushed_at: '2026-10-02T10:53:16Z'
 - repo: masakasakasama/Fitness
   default_branch: claude/gym-tracking-app-SVUkz
   visibility: public
   enabled: true
   priority: null
-  status: queued
+  status: blocked
   codex_thread: null
-  next: 最新のAGENTS/README/handoff/CODEX_STATEを読みNextから継続。状態ファイルがない場合は未完了事項を調査して作成。
-  last_checkpoint: null
+  next: 'CODEX_STATE.md: Galaxyでv0.5.4 APKのローカル保存/復元、休憩アラーム、アプリ中断/復帰、旧データ移行を検証する。'
+  last_checkpoint: '2026-10-02T10:56:05.348637+00:00'
   observed_pushed_at: '2026-09-13T13:41:45Z'
+  last_commit: 6bcc2238a42f952421a3ec40e2a33849f10bbf39
+  verification: '全root *.js node --check: passed; agent-browser local Web: 主要タブ/日付/機材導線表示、errors=[];
+    既存e9c82ce Android CI: success (今回の新APK検証とは区別); git diff --check: passed'
+  latest_verified_commit: 6bcc2238a42f952421a3ec40e2a33849f10bbf39
+  latest_verified_pushed_at: '2026-10-02T10:56:07Z'
 - repo: masakasakasama/Trip_Plan
   default_branch: main
   visibility: public
   enabled: true
   priority: null
-  status: queued
+  status: in_progress
   codex_thread: null
-  next: 最新のAGENTS/README/handoff/CODEX_STATEを読みNextから継続。状態ファイルがない場合は未完了事項を調査して作成。
-  last_checkpoint: null
+  next: 'CODEX_STATE.md: visto-astra/tools/verify.mjsのdesktop/mobile/rotation/pinch/replay/地域表示を隔離ブラウザで実行し回帰を確認する。'
+  last_checkpoint: '2026-10-02T10:56:08.356040+00:00'
   observed_pushed_at: '2026-09-13T11:06:21Z'
+  last_commit: fb4a86f1e6e522cc316ab7b159961fe9ccc3ded2
+  verification: 'node --test sync-merge.test.js: passed; visto-astra npm ci --ignore-scripts
+    / npm test: 5/5 / npm run build: passed; node --check app.js worker.js: passed;
+    agent-browser Astra: controls/canvas/content表示、errors=[]; git diff --check: passed'
+  latest_verified_commit: fb4a86f1e6e522cc316ab7b159961fe9ccc3ded2
+  latest_verified_pushed_at: '2026-10-02T10:56:10Z'
 - repo: masakasakasama/Microsoft-FDE
   default_branch: main
   visibility: public
   enabled: true
   priority: null
-  status: queued
+  status: in_progress
   codex_thread: null
-  next: 最新のAGENTS/README/handoff/CODEX_STATEを読みNextから継続。状態ファイルがない場合は未完了事項を調査して作成。
-  last_checkpoint: null
+  next: 'CODEX_STATE.md: 保存容量エラーとimport失敗時に既存履歴が保持されるブラウザ回帰検証を追加する。'
+  last_checkpoint: '2026-10-02T14:55:42.714575+00:00'
   observed_pushed_at: '2026-09-08T12:19:08Z'
+  last_commit: e580a96cc4fb38b68f579d0d8ca4c37271b6cb06
+  verification: 'node --test scripts/progress-validation.test.mjs: 3/3 passed; node
+    --check app.js / progress-validation.js; git diff --check passed; ローカルChromeで表示・parser読込を確認、JavaScript
+    errors=[]'
+  latest_verified_commit: e580a96cc4fb38b68f579d0d8ca4c37271b6cb06
+  latest_verified_pushed_at: '2026-10-02T14:55:45Z'
 - repo: masakasakasama/Calender
   default_branch: main
   visibility: public
   enabled: true
   priority: null
-  status: queued
+  status: in_progress
   codex_thread: null
-  next: 最新のAGENTS/README/handoff/CODEX_STATEを読みNextから継続。状態ファイルがない場合は未完了事項を調査して作成。
-  last_checkpoint: null
+  next: 'CODEX_STATE.md: 段階3: googleKey/syncWindow/isRealGoogleSharedEvent/stableGoogleImportIdをserver/clientで共有または同等化し、fixtureで一貫性を検証。'
+  last_checkpoint: '2026-10-02T10:55:00.710873+00:00'
   observed_pushed_at: '2026-09-06T23:06:18Z'
+  last_commit: 18dfd7670110821fd0d6ee28757c00016dfa362b
+  verification: 'node --test scripts/google-sync.test.mjs: 2/2 passed; npm run build:
+    TypeScript/Vite/PWA passed、既存bundle-size warningあり; 既存sourceのimport routesとID
+    hashを照合、git diff --check passed'
+  latest_verified_commit: 18dfd7670110821fd0d6ee28757c00016dfa362b
+  latest_verified_pushed_at: '2026-10-02T10:55:26Z'
 - repo: masakasakasama/mf-dashboard
   default_branch: main
   visibility: public
   enabled: true
   priority: null
-  status: queued
+  status: in_progress
   codex_thread: null
-  next: 最新のAGENTS/README/handoff/CODEX_STATEを読みNextから継続。状態ファイルがない場合は未完了事項を調査して作成。
-  last_checkpoint: null
+  next: 'CODEX_STATE.md: monthly-dayの月末境界の既存仕様を整理し、短い月とmonth-endの回帰fixtureを追加する。'
+  last_checkpoint: '2026-10-02T14:55:45.570583+00:00'
   observed_pushed_at: '2026-09-03T10:59:01Z'
+  last_commit: e102b9c61e6fec60ce6f86d2fb29e5b73746efab
+  verification: 'npm test: 3/3 passed; npm run build passed (existing large-chunk
+    warning); cashflow.json / subscriptions.json: python -m json.tool passed; 実データの基準残高から各event/forecast一回加算、future
+    > Tokyo today、future minimumの算術一致を確認（金融金額はログ出力しない）; git diff --check passed'
+  latest_verified_commit: e102b9c61e6fec60ce6f86d2fb29e5b73746efab
+  latest_verified_pushed_at: '2026-10-02T14:55:48Z'
 - repo: masakasakasama/sen-android-updates
   default_branch: main
   visibility: public
@@ -386,3 +447,12 @@ automation:
   status: enabled
   quota_visibility: No tool exposes Codex remaining usage or reset time; runs must
     not claim exact recovery detection.
+controller_checkpoint:
+  updated_at: '2026-10-02T14:57:52.639112+00:00'
+  pass_status: checkpointed_with_remaining_work
+  active_repositories: 13
+  excluded_stale_repositories: 23
+  state_files_verified: 13
+  automation_count_for_controller: 1
+  remaining_work: See per-repo Next and Blockers; not all repositories complete
+  quota_reset_time: unavailable
