@@ -1,6 +1,6 @@
 # Controller checkpoint
 
-Updated at: 2026-10-02T17:02:04.595221+00:00
+Updated at: 2026-10-02T18:17:47.896187+00:00
 
 ## Done
 - Microsoft-FDE: 公式3ガイドを確認。AB-100の10/14適用改訂と7/22教材基準を区別。Chrome表示とparser 3/3検証。
@@ -9,45 +9,53 @@ Updated at: 2026-10-02T17:02:04.595221+00:00
 - Trip_Plan: 詳細地図の閉じ忘れ・遅延再表示・未初期化flyToを修正。両viewportの回転/pinch/国・都市/Trip選択/16件replay/layout/night/errors検証 passed。build + data5/5 + sync1/1。
 - Design_system: nonexistent / mixed-validityパスをexit2で拒否し、CI誤記の成功扱いを防止。5/5 tests + validate + unchanged-generated検証 passed。
 
+- Calender: Functions/browser共通のGoogle shared syncルールを抽出。既存doc ID/private区分を維持し、Tokyo期間を共通化。6/6 tests + app/Functions build。作業branchとmainを同じc13cdc2へfast-forward。
+- Marriage_procedure: 欠落していた同期表示を復旧しACK前を同期中へ修正。実SDK + localhost Firebase Emulatorで保存拒否→再送、二端末merge、未保存変更の再起動復元を検証。
+- Daily_check: 日別late/再掲載/重複と週次完全和集合のvalidator・回帰を追加。4/4 tests + 当日検証成功。過去19日中4日のlate混入を検出し未修復として保持。
+- english-news-app: 全体lint 16 errors / 3 warningsを解消。IELTS旧端末mergeのsnapshot欠落を修正。履歴8/8・build・390px UI・実hook/mock TTS検証 passed。
+
 ## Current
-- 5件の実装とworker stateをGitHubへ保存。13件の最新worker state必須項目をGitHubから再取得・照合。
-- 最近30日の対象14件、長期未更新22件は変更なし。
-- 自身checkpointで同じrepoへ戻り続けないよう未処理cycle queueを保存。
+- このcycleは14対象すべてを処理またはblocker確認。今回は残り4repoを実装・検証・GitHubへ保存した。
+- 全14件の最新GitHub headとstateを再取得。13件が状態ファイル必須項目を満たす。個人サイトは状態ファイル・Goal不足を維持。
+- 最近30日の対象14件、長期未更新22件に対象repo変更なし。
+- 次cycleは最新pushed_at順のqueueを保存。自身のcheckpointで未処理対象が永久に後回しにならない。
 
 ## Next
-- masakasakasama/Calender の最新Nextから再開。
-- masakasakasama/Marriage_procedure の最新Nextから再開。
-- masakasakasama/Daily_check の最新Nextから再開。
-- masakasakasama/english-news-app の最新Nextから再開。
+- 最新pushのAI-Assistant_handmadeから開始。現在のREADME/handoff・担当範囲を読み、別作業と編集が重ならない範囲でworker Nextを続行。
+- 以後はMASTER_STATE.yamlのwork_cycle.remaining_repositoriesを最新pushed_at順で処理する。
+- workerのNext・Blockersを最新GitHubから読み直す。blockedはcompletedに数えない。
 
 ## Blockers
-- Galaxy/USB実機なし: Fitness / Home / Alarmの実機検証は未完了。
-- 個人サイトとAI-Assistantの別作業との編集重複を避けて今回参照のみ。
-- 本番資格情報不足と既存lintエラー等は各repo state参照。blockedをcompletedにしていない。
-- Codex残量/回復時刻は取得不可。回復済みとは断言しない。司令塔Automationは1個、有効。
+- Galaxy/USB実機なし: Fitness / Home / Alarmは未完了。
+- AI-Assistant mainの別作業d2adaa6を最終確認。Android変更を上書きせず、このpassでは編集しない。
+- 個人サイトは別作業によるdomain更新と開発Goal/worker state不足。参照のみ。
+- Daily_checkの9/25・9/26・9/27・10/01のlate混入は未修復。収集証跡なしにニュースデータを推測で変更しない。07:30 recovery taskは確認できない。
+- 本番資格情報・Google同期/Functions配信・認証/ユーザー分離・残るbrowser QAは各worker stateに保存。全repo完了ではない。
+- Codex残量/回復時刻は取得不可。回復済みとは断言しない。司令塔Automationは1個、有効。hourly再確認であり正確な利用枠回復通知ではない。
 
 ## Verification
-- Tripの詳細レポート: [browser report](https://github.com/masakasakasama/Trip_Plan/blob/main/visto-astra/docs/VERIFICATION.md)。cloud GPUは6/4FPSで、Galaxy性能合格ではない。
-- 出版は明示した変更ファイルのみ。最新remote親SHAが一致する場合だけ非強制ref更新。
-- 本番旅行予定・金融実データ・事業状態へテスト書込みは行っていない。
+- 最終remote head/state再取得13/14 state fields passed、個人サイト欠落はblockerとして保持。
+- 今回4repo: tests/build/lint/browser/Emulator結果はそれぞれCODEX_STATE.md参照。英語QA詳細はdocs/controller-verification-2026-10-02.md。
+- 本番ユーザーのチェックリスト・学習履歴や旅行予定・金融実データへテストを書いていない。
+- 出版は明示ファイルのみ、remote親SHA一致を確認して非強制ref更新。並行更新は停止して再照合する。
 
 ## Confirmed repository heads
+- [masakasakasama/AI-Assistant_handmade](https://github.com/masakasakasama/AI-Assistant_handmade/commit/d2adaa6fb6f0e08d06befeaadaafdd1cbcec83a1): in_progress (external update; tests not rerun)
+- [masakasakasama/english-news-app](https://github.com/masakasakasama/english-news-app/commit/b60b7f5d436b6866e5656648f9d376c3115172ef): in_progress
+- [masakasakasama/Daily_check](https://github.com/masakasakasama/Daily_check/commit/abb58d65fe5627a1f729b4c0d72cac4d0aa91a74): in_progress
+- [masakasakasama/Marriage_procedure](https://github.com/masakasakasama/Marriage_procedure/commit/09b4d3c874880e8d1caa34e9d75003d27699d841): in_progress
+- [masakasakasama/Calender](https://github.com/masakasakasama/Calender/commit/c13cdc2f4299f03803944afd7da6da2a7cf100d2): in_progress
 - [masakasakasama/Trip_Plan](https://github.com/masakasakasama/Trip_Plan/commit/e001f51ec06eedbcd8edc1a8fe21241d083cc7ab): in_progress
 - [masakasakasama/Design_system](https://github.com/masakasakasama/Design_system/commit/3c1f39b431286cac03710a8a9175a39a83244242): in_progress
 - [masakasakasama/1000yen-agent](https://github.com/masakasakasama/1000yen-agent/commit/6956f17aca929d06e36d4a29c5f883a1a93c626b): in_progress
 - [masakasakasama/mf-dashboard](https://github.com/masakasakasama/mf-dashboard/commit/d53563721ca8cada71bc40724d5212c5bf0bc579): in_progress
 - [masakasakasama/Microsoft-FDE](https://github.com/masakasakasama/Microsoft-FDE/commit/379cfa1cb937af4503d44a974b09faf96ad04c05): in_progress
 - [masakasakasama/masakasakasama.github.io](https://github.com/masakasakasama/masakasakasama.github.io/commit/b6baaabd760bbad7e9b97a573889f4fd7c62c276): blocked
-- [masakasakasama/AI-Assistant_handmade](https://github.com/masakasakasama/AI-Assistant_handmade/commit/4c18c5f30167bf5a2f8f5645066b30765f48bdd8): in_progress
 - [masakasakasama/Fitness](https://github.com/masakasakasama/Fitness/commit/6bcc2238a42f952421a3ec40e2a33849f10bbf39): blocked
-- [masakasakasama/Calender](https://github.com/masakasakasama/Calender/commit/18dfd7670110821fd0d6ee28757c00016dfa362b): in_progress
 - [masakasakasama/Home](https://github.com/masakasakasama/Home/commit/783e587b8604df1a29db6fe6111c4d136c4f57cc): blocked
-- [masakasakasama/Marriage_procedure](https://github.com/masakasakasama/Marriage_procedure/commit/e5f4e50e87bc1542bd3e3efed085eb47f656ec89): in_progress
 - [masakasakasama/Alarm](https://github.com/masakasakasama/Alarm/commit/90cb13665d6181c04ec961d51d616d04d17c6915): blocked
-- [masakasakasama/Daily_check](https://github.com/masakasakasama/Daily_check/commit/6c7f1e6c058007ab38e7be79681168af70ee2e8e): in_progress
-- [masakasakasama/english-news-app](https://github.com/masakasakasama/english-news-app/commit/7992d840155fae9f73bb8bf1f08bdff785570d45): in_progress
 
 ## Resume safeguards
-- 最新Brain/worker stateとpolicyの期間条件を毎回確認。未処理queue内の最新pushed_at順で進め、一巡後に選別し直す。
-- 同一repoの並行編集は避ける。隔離checkoutから作業し、mixed resetで古いtreeを出版しない。
-- 全対象completedの場合のみAutomationを停止。blockerと未検証を完了に数えない。
+- Brain/worker stateとpolicyを毎回再取得。未処理queueを終えてからcycleを再選別する。
+- 同一repoの並行編集を避け、remoteが変わればpublishしない。mixed resetで古いtreeを出版しない。
+- 全対象completedの場合のみAutomationを停止。blockerと未検証は未完了。
