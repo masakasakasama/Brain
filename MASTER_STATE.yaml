@@ -137,18 +137,20 @@ projects:
   visibility: public
   enabled: true
   priority: null
-  status: in_progress
+  status: blocked
   codex_thread: null
-  next: 'CODEX_STATE.md: 端末保存容量超過時のpersistLocal失敗を利用者に表示し、ローカル保存失敗を保存済と誤表示しない経路を回帰検証する。'
-  last_checkpoint: '2026-10-02T18:01:59.473725+00:00'
+  next: 'CODEX_STATE.md: 実利用者の二端末で同期・保存容量復帰・画面中断/再起動を確認する。isolated emulatorの合格を実端末合格に置き換えない。'
+  last_checkpoint: '2026-10-02T19:33:10.616417+00:00'
   observed_pushed_at: '2026-10-02T18:02:05Z'
-  last_commit: 09b4d3c874880e8d1caa34e9d75003d27699d841
-  verification: 'npm test: 3/3 passed; npm run test:emulator: permission failure/retry,
-    concurrent offline merge/reload, unsaved restart recovery, pending status passed;
-    production requests=0; JS errors=[]; git diff --check passed'
-  latest_verified_commit: 09b4d3c874880e8d1caa34e9d75003d27699d841
+  last_commit: 5f3e3d58ff621b079e993a9d95284e4ff54d3b20
+  verification: 'npm test: 5/5 passed; npm run test:emulator: full sync/restart/quota/offline/export/retry
+    passed; JS errors=[]; production requests=0; all inline scripts node --check passed;
+    git diff --check passed'
+  latest_verified_commit: 5f3e3d58ff621b079e993a9d95284e4ff54d3b20
   latest_verified_pushed_at: '2026-10-02T18:02:05Z'
   latest_observed_commit: 09b4d3c874880e8d1caa34e9d75003d27699d841
+  blockers:
+  - 実利用者の二端末受入結果がない。Emulatorは成功、本番データに試験書込みをしていない。
 - repo: masakasakasama/Fitness
   default_branch: claude/gym-tracking-app-SVUkz
   visibility: public
@@ -483,25 +485,25 @@ automation:
   quota_visibility: No tool exposes Codex remaining usage or reset time; runs must
     not claim exact recovery detection.
 controller_checkpoint:
-  updated_at: '2026-10-02T18:43:07.295883+00:00'
-  pass_status: two_repositories_checkpointed_external_worker_deferred
+  updated_at: '2026-10-02T19:33:38.476903+00:00'
+  pass_status: marriage_storage_and_conflicts_checkpointed
   active_repositories: 14
   excluded_stale_repositories: 22
   state_files_verified: 13
   automation_count_for_controller: 1
-  remaining_work: 11 unprocessed repos remain in current cycle; incomplete physical/credentials/authentication
-    tasks preserved.
+  remaining_work: 10 unprocessed repositories in current cycle; device and production
+    blockers preserved.
   quota_reset_time: unavailable
-  next_repository: masakasakasama/Marriage_procedure
+  next_repository: masakasakasama/Calender
 work_cycle:
   status: in_progress
-  updated_at: '2026-10-02T18:43:07.295883+00:00'
+  updated_at: '2026-10-02T19:33:38.476903+00:00'
   processed_repositories:
   - masakasakasama/AI-Assistant_handmade
   - masakasakasama/english-news-app
   - masakasakasama/Daily_check
-  remaining_repositories:
   - masakasakasama/Marriage_procedure
+  remaining_repositories:
   - masakasakasama/Calender
   - masakasakasama/Trip_Plan
   - masakasakasama/Design_system
@@ -512,7 +514,7 @@ work_cycle:
   - masakasakasama/Fitness
   - masakasakasama/Home
   - masakasakasama/Alarm
-  next_repository: masakasakasama/Marriage_procedure
+  next_repository: masakasakasama/Calender
   note: Resume remaining recent registered repos in latest pushed_at order; own checkpoint
     pushes do not restart a partially completed cycle. Rebuild selection after this
     cycle. Deferred/blocked is not completed.
