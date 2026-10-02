@@ -4,28 +4,26 @@ policy:
   recent_window_days: 7
   ignore_controller_push_for_activity: true
   read_master_state_on_each_run: false
-
-next_repository: masakasakasama/1000yen-agent
-
+next_repository: masakasakasama/AI-Assistant_handmade
 repositories:
-  - repo: masakasakasama/1000yen-agent
-    status: in_progress
-    next: OCI移行の未完了項目をCODEX_STATE.mdから継続
-  - repo: masakasakasama/AI-Assistant_handmade
-    status: in_progress
-    next: CODEX_STATE.mdから未完了作業を継続
-  - repo: masakasakasama/english-news-app
-    status: in_progress
-    next: CODEX_STATE.mdからH09を継続
-  - repo: masakasakasama/Daily_check
-    status: in_progress
-    next: CODEX_STATE.mdからvalidator作業を継続
-  - repo: masakasakasama/Home
-    status: blocked
-    next: Galaxy実機確認待ち
-
+- repo: masakasakasama/1000yen-agent
+  status: in_progress
+  next: WAITING_PROVIDER / WAITING_CAPACITY復帰fixtureを検証。OCI restore/restartは資格情報待ち。
+  last_checkpoint: '2026-10-02T22:45:44.652106+00:00'
+- repo: masakasakasama/AI-Assistant_handmade
+  status: in_progress
+  next: CODEX_STATE.mdから未完了作業を継続
+- repo: masakasakasama/english-news-app
+  status: in_progress
+  next: CODEX_STATE.mdからH09を継続
+- repo: masakasakasama/Daily_check
+  status: in_progress
+  next: CODEX_STATE.mdからvalidator作業を継続
+- repo: masakasakasama/Home
+  status: blocked
+  next: Galaxy実機確認待ち
 rules:
-  - 1 scheduled run = 1 repository
-  - blocked repoはスキップして次へ
-  - 完了したrepoはqueueから外す
-  - 新しいrepoは明示的に追加する
+- 1 scheduled run = 1 repository
+- blocked repoはスキップして次へ
+- 完了したrepoはqueueから外す
+- 新しいrepoは明示的に追加する
