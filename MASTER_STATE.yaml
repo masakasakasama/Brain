@@ -7,7 +7,7 @@ policy:
   reset_behavior: resume_enabled_workers
   note: 司令塔用Scheduled Automation 1個だけで再開する。利用上限中は変更せず終了。最近pushされた登録repoのみ対象。
   recent_push_days: 30
-  selection_checked_at: '2026-10-02T10:27:35.217087+00:00'
+  selection_checked_at: '2026-10-02T15:18:19.800171+00:00'
   checkpoint_before_stop: true
 projects:
 - repo: masakasakasama/1000yen-agent
@@ -17,13 +17,15 @@ projects:
   priority: null
   status: in_progress
   codex_thread: null
-  next: 'CODEX_STATE.md Next: strategy hold説明整合とOCI read-only疎通検証。'
-  last_checkpoint: '2026-10-02T14:56:31.351403+00:00'
+  next: 'CODEX_STATE.md: Operator v41のSTRATEGY_HOLD/WAITING_DEEPSEEK表示と保留候補の選択・復帰を既存仕様と照合し、隔離fixtureで検証する。'
+  last_checkpoint: '2026-10-02T15:17:02.466253+00:00'
   observed_pushed_at: '2026-10-02T09:37:39Z'
-  last_commit: f568e8f0651421acdb2c1d619e7246ec882f9cf2
-  verification: TypeScript build; 133/133 tests; secret scan passed
-  latest_verified_commit: f568e8f0651421acdb2c1d619e7246ec882f9cf2
-  latest_verified_pushed_at: '2026-10-02T14:56:39Z'
+  last_commit: f642f35586125f5d7736e15c676c43b03995b6fc
+  verification: 'npm run check: TypeScript build + 133/133 tests passed; npm run secret-scan:
+    163 files passed; configured HTTPS /health: HTTP 200 / ok:true; no paid provider
+    calls; git diff --check passed'
+  latest_verified_commit: f642f35586125f5d7736e15c676c43b03995b6fc
+  latest_verified_pushed_at: '2026-10-02T15:17:05Z'
 - repo: masakasakasama/AI-Assistant_handmade
   default_branch: main
   visibility: public
@@ -38,6 +40,8 @@ projects:
   verification: Backend 55/55; benchmark dry-run; diff check passed
   latest_verified_commit: 4c18c5f30167bf5a2f8f5645066b30765f48bdd8
   latest_verified_pushed_at: '2026-10-02T14:57:25Z'
+  controller_edit_deferred_reason: Concurrent Android release work detected in previous
+    pass; no edits this pass.
 - repo: masakasakasama/english-news-app
   default_branch: main
   visibility: private
@@ -169,15 +173,15 @@ projects:
   priority: null
   status: in_progress
   codex_thread: null
-  next: 'CODEX_STATE.md: 保存容量エラーとimport失敗時に既存履歴が保持されるブラウザ回帰検証を追加する。'
-  last_checkpoint: '2026-10-02T14:55:42.714575+00:00'
+  next: 'CODEX_STATE.md: READMEの公式3試験Study Guideを取得し、掲載skillsと現行contentの差分・更新日を確認する。'
+  last_checkpoint: '2026-10-02T15:17:02.466253+00:00'
   observed_pushed_at: '2026-09-08T12:19:08Z'
-  last_commit: e580a96cc4fb38b68f579d0d8ca4c37271b6cb06
-  verification: 'node --test scripts/progress-validation.test.mjs: 3/3 passed; node
-    --check app.js / progress-validation.js; git diff --check passed; ローカルChromeで表示・parser読込を確認、JavaScript
-    errors=[]'
-  latest_verified_commit: e580a96cc4fb38b68f579d0d8ca4c37271b6cb06
-  latest_verified_pushed_at: '2026-10-02T14:55:45Z'
+  last_commit: 8734fa89f3496a47ec6c47a4c31b041813f7030b
+  verification: 'Browser regression: invalid JSON / invalid maps / quota failure /
+    cancelled selection / valid import passed; browser JS errors=[]; node --test scripts/progress-validation.test.mjs:
+    3/3 passed; git diff --check passed'
+  latest_verified_commit: 8734fa89f3496a47ec6c47a4c31b041813f7030b
+  latest_verified_pushed_at: '2026-10-02T15:17:11Z'
 - repo: masakasakasama/Calender
   default_branch: main
   visibility: public
@@ -201,15 +205,16 @@ projects:
   priority: null
   status: in_progress
   codex_thread: null
-  next: 'CODEX_STATE.md: monthly-dayの月末境界の既存仕様を整理し、短い月とmonth-endの回帰fixtureを追加する。'
-  last_checkpoint: '2026-10-02T14:55:45.570583+00:00'
+  next: 'CODEX_STATE.md: confirmedイベントとrecurring予測が同日・同ルールに重なる場合の既存入力方針を整理し、二重計上防止のfixtureを追加する。'
+  last_checkpoint: '2026-10-02T15:17:02.466253+00:00'
   observed_pushed_at: '2026-09-03T10:59:01Z'
-  last_commit: e102b9c61e6fec60ce6f86d2fb29e5b73746efab
-  verification: 'npm test: 3/3 passed; npm run build passed (existing large-chunk
-    warning); cashflow.json / subscriptions.json: python -m json.tool passed; 実データの基準残高から各event/forecast一回加算、future
-    > Tokyo today、future minimumの算術一致を確認（金融金額はログ出力しない）; git diff --check passed'
-  latest_verified_commit: e102b9c61e6fec60ce6f86d2fb29e5b73746efab
-  latest_verified_pushed_at: '2026-10-02T14:55:48Z'
+  last_commit: 19083b2f08c9bc2b09e606543951c47da3e411cd
+  verification: 'npm test: 6/6 passed; npm run build passed (existing large-chunk
+    warning); canonical JSON validation passed; actual model arithmetic / Tokyo future
+    boundary / future minimum verified without logging balances; git diff --check
+    passed'
+  latest_verified_commit: 19083b2f08c9bc2b09e606543951c47da3e411cd
+  latest_verified_pushed_at: '2026-10-02T15:17:08Z'
 - repo: masakasakasama/sen-android-updates
   default_branch: main
   visibility: public
@@ -413,13 +418,17 @@ projects:
 - repo: masakasakasama/masakasakasama.github.io
   default_branch: main
   visibility: public
-  enabled: false
+  enabled: true
   priority: null
-  status: inactive
+  status: blocked
   codex_thread: null
-  next: null
-  last_checkpoint: null
+  next: 最新pushと他作業の担当範囲を確認。既存状態ファイル・開発Goalがないため、並行編集を避けて最新状態の参照から再開する。
+  last_checkpoint: '2026-10-02T15:18:19.800171+00:00'
   observed_pushed_at: '2026-05-06T09:47:20Z'
+  latest_verified_pushed_at: '2026-10-02T14:59:45Z'
+  blockers:
+  - 直近の別作業によるcustom domain更新を検出。担当の重なりを避け、今回は参照のみ。
+  latest_verified_commit: b6baaabd760bbad7e9b97a573889f4fd7c62c276
 - repo: masakasakasama/Business_English
   default_branch: main
   visibility: public
@@ -448,11 +457,13 @@ automation:
   quota_visibility: No tool exposes Codex remaining usage or reset time; runs must
     not claim exact recovery detection.
 controller_checkpoint:
-  updated_at: '2026-10-02T14:57:52.639112+00:00'
-  pass_status: checkpointed_with_remaining_work
-  active_repositories: 13
-  excluded_stale_repositories: 23
+  updated_at: '2026-10-02T15:18:19.800171+00:00'
+  pass_status: three_repositories_updated_and_checkpointed
+  active_repositories: 14
+  excluded_stale_repositories: 22
   state_files_verified: 13
   automation_count_for_controller: 1
-  remaining_work: See per-repo Next and Blockers; not all repositories complete
+  remaining_work: Continue latest pushed_at order; other Next tasks remain. Personal
+    site and concurrent Android work deferred; not complete.
   quota_reset_time: unavailable
+  next_repository: masakasakasama/Trip_Plan
