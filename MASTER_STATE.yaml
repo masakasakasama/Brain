@@ -1,0 +1,333 @@
+version: 1
+controller: masakasakasama/Brain
+policy:
+  source_of_truth: MASTER_STATE.yaml
+  worker_state_file: CODEX_STATE.md
+  resume_order: priority_then_oldest_checkpoint
+  reset_behavior: resume_enabled_workers
+  note: "Codexスレッド自体のScheduled taskは各スレッド側で設定する"
+projects:
+  - repo: masakasakasama/1000yen-agent
+    default_branch: main
+    visibility: private
+    enabled: false
+    priority: null
+    status: registered
+    codex_thread: null
+    next: null
+    last_checkpoint: null
+  - repo: masakasakasama/AAOS_Codex
+    default_branch: main
+    visibility: public
+    enabled: false
+    priority: null
+    status: registered
+    codex_thread: null
+    next: null
+    last_checkpoint: null
+  - repo: masakasakasama/AAOS_study
+    default_branch: main
+    visibility: public
+    enabled: false
+    priority: null
+    status: registered
+    codex_thread: null
+    next: null
+    last_checkpoint: null
+  - repo: masakasakasama/AI-Assistant_handmade
+    default_branch: main
+    visibility: public
+    enabled: false
+    priority: null
+    status: registered
+    codex_thread: null
+    next: null
+    last_checkpoint: null
+  - repo: masakasakasama/Alarm
+    default_branch: main
+    visibility: public
+    enabled: false
+    priority: null
+    status: registered
+    codex_thread: null
+    next: null
+    last_checkpoint: null
+  - repo: masakasakasama/Business_English
+    default_branch: main
+    visibility: public
+    enabled: false
+    priority: null
+    status: registered
+    codex_thread: null
+    next: null
+    last_checkpoint: null
+  - repo: masakasakasama/Calender
+    default_branch: main
+    visibility: public
+    enabled: false
+    priority: null
+    status: registered
+    codex_thread: null
+    next: null
+    last_checkpoint: null
+  - repo: masakasakasama/CAPM_Baby
+    default_branch: main
+    visibility: public
+    enabled: false
+    priority: null
+    status: registered
+    codex_thread: null
+    next: null
+    last_checkpoint: null
+  - repo: masakasakasama/cinnamon-workout
+    default_branch: main
+    visibility: public
+    enabled: false
+    priority: null
+    status: registered
+    codex_thread: null
+    next: null
+    last_checkpoint: null
+  - repo: masakasakasama/Cooking
+    default_branch: main
+    visibility: public
+    enabled: false
+    priority: null
+    status: registered
+    codex_thread: null
+    next: null
+    last_checkpoint: null
+  - repo: masakasakasama/CPRE
+    default_branch: main
+    visibility: public
+    enabled: false
+    priority: null
+    status: registered
+    codex_thread: null
+    next: null
+    last_checkpoint: null
+  - repo: masakasakasama/CPRE-data
+    default_branch: main
+    visibility: private
+    enabled: false
+    priority: null
+    status: registered
+    codex_thread: null
+    next: null
+    last_checkpoint: null
+  - repo: masakasakasama/Daily_check
+    default_branch: main
+    visibility: public
+    enabled: false
+    priority: null
+    status: registered
+    codex_thread: null
+    next: null
+    last_checkpoint: null
+  - repo: masakasakasama/Design_system
+    default_branch: main
+    visibility: public
+    enabled: false
+    priority: null
+    status: registered
+    codex_thread: null
+    next: null
+    last_checkpoint: null
+  - repo: masakasakasama/english-news-app
+    default_branch: main
+    visibility: private
+    enabled: false
+    priority: null
+    status: registered
+    codex_thread: null
+    next: null
+    last_checkpoint: null
+  - repo: masakasakasama/Fitness
+    default_branch: claude/gym-tracking-app-SVUkz
+    visibility: public
+    enabled: false
+    priority: null
+    status: registered
+    codex_thread: null
+    next: null
+    last_checkpoint: null
+  - repo: masakasakasama/fitness_codex
+    default_branch: main
+    visibility: public
+    enabled: false
+    priority: null
+    status: registered
+    codex_thread: null
+    next: null
+    last_checkpoint: null
+  - repo: masakasakasama/Home
+    default_branch: main
+    visibility: public
+    enabled: false
+    priority: null
+    status: registered
+    codex_thread: null
+    next: null
+    last_checkpoint: null
+  - repo: masakasakasama/household_budget_management_forbaby
+    default_branch: main
+    visibility: public
+    enabled: false
+    priority: null
+    status: registered
+    codex_thread: null
+    next: null
+    last_checkpoint: null
+  - repo: masakasakasama/Keyboard
+    default_branch: main
+    visibility: public
+    enabled: false
+    priority: null
+    status: registered
+    codex_thread: null
+    next: null
+    last_checkpoint: null
+  - repo: masakasakasama/Language_learning
+    default_branch: claude/japanese-learning-app-g46QW
+    visibility: public
+    enabled: false
+    priority: null
+    status: registered
+    codex_thread: null
+    next: null
+    last_checkpoint: null
+  - repo: masakasakasama/Marriage-process-
+    default_branch: main
+    visibility: public
+    enabled: false
+    priority: null
+    status: registered
+    codex_thread: null
+    next: null
+    last_checkpoint: null
+  - repo: masakasakasama/Marriage_procedure
+    default_branch: main
+    visibility: public
+    enabled: false
+    priority: null
+    status: registered
+    codex_thread: null
+    next: null
+    last_checkpoint: null
+  - repo: masakasakasama/masakasakasama.github.io
+    default_branch: main
+    visibility: public
+    enabled: false
+    priority: null
+    status: registered
+    codex_thread: null
+    next: null
+    last_checkpoint: null
+  - repo: masakasakasama/mf-dashboard
+    default_branch: main
+    visibility: public
+    enabled: false
+    priority: null
+    status: registered
+    codex_thread: null
+    next: null
+    last_checkpoint: null
+  - repo: masakasakasama/Microsoft-FDE
+    default_branch: main
+    visibility: public
+    enabled: false
+    priority: null
+    status: registered
+    codex_thread: null
+    next: null
+    last_checkpoint: null
+  - repo: masakasakasama/Money_management
+    default_branch: main
+    visibility: private
+    enabled: false
+    priority: null
+    status: registered
+    codex_thread: null
+    next: null
+    last_checkpoint: null
+  - repo: masakasakasama/Notebook-voice-explain-
+    default_branch: main
+    visibility: public
+    enabled: false
+    priority: null
+    status: registered
+    codex_thread: null
+    next: null
+    last_checkpoint: null
+  - repo: masakasakasama/portfolio-plan
+    default_branch: main
+    visibility: public
+    enabled: false
+    priority: null
+    status: registered
+    codex_thread: null
+    next: null
+    last_checkpoint: null
+  - repo: masakasakasama/Select_to_search
+    default_branch: main
+    visibility: public
+    enabled: false
+    priority: null
+    status: registered
+    codex_thread: null
+    next: null
+    last_checkpoint: null
+  - repo: masakasakasama/sen-android-updates
+    default_branch: main
+    visibility: public
+    enabled: false
+    priority: null
+    status: registered
+    codex_thread: null
+    next: null
+    last_checkpoint: null
+  - repo: masakasakasama/Stock
+    default_branch: claude/add-stock-widget-hQSgH
+    visibility: public
+    enabled: false
+    priority: null
+    status: registered
+    codex_thread: null
+    next: null
+    last_checkpoint: null
+  - repo: masakasakasama/Task_management
+    default_branch: claude/task-management-app-96DmP
+    visibility: public
+    enabled: false
+    priority: null
+    status: registered
+    codex_thread: null
+    next: null
+    last_checkpoint: null
+  - repo: masakasakasama/Trip_Plan
+    default_branch: main
+    visibility: public
+    enabled: false
+    priority: null
+    status: registered
+    codex_thread: null
+    next: null
+    last_checkpoint: null
+  - repo: masakasakasama/warikan
+    default_branch: main
+    visibility: public
+    enabled: false
+    priority: null
+    status: registered
+    codex_thread: null
+    next: null
+    last_checkpoint: null
+  - repo: masakasakasama/Wheather
+    default_branch: main
+    visibility: public
+    enabled: false
+    priority: null
+    status: registered
+    codex_thread: null
+    next: null
+    last_checkpoint: null
