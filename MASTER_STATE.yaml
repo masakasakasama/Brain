@@ -7,7 +7,7 @@ policy:
   reset_behavior: resume_enabled_workers
   note: 司令塔用Scheduled Automation 1個だけで再開する。利用上限中は変更せず終了。最近pushされた登録repoのみ対象。
   recent_push_days: 30
-  selection_checked_at: '2026-10-02T18:17:47.896187+00:00'
+  selection_checked_at: '2026-10-02T18:43:07.295883+00:00'
   checkpoint_before_stop: true
   resume_cycle_before_revisit: true
 projects:
@@ -37,15 +37,15 @@ projects:
   codex_thread: null
   next: 最新README/handoffとd2adaa6以降の担当範囲を再確認後、CODEX_STATE.mdのBackend認証/端末HTTP整合を続行。並行Android変更を上書きしない。
   last_checkpoint: '2026-10-02T14:57:26.087385+00:00'
-  observed_pushed_at: '2026-10-02T18:15:32Z'
+  observed_pushed_at: '2026-10-02T18:38:42Z'
   last_commit: 4c18c5f30167bf5a2f8f5645066b30765f48bdd8
   verification: Backend 55/55; benchmark dry-run; diff check passed
   latest_verified_commit: 4c18c5f30167bf5a2f8f5645066b30765f48bdd8
   latest_verified_pushed_at: '2026-10-02T14:57:25Z'
-  controller_edit_deferred_reason: Final read detected external main update d2adaa6;
-    worker state remains at earlier checkpoint. Re-read current README/handoff and
-    establish non-overlapping ownership before editing.
-  latest_observed_commit: d2adaa6fb6f0e08d06befeaadaafdd1cbcec83a1
+  controller_edit_deferred_reason: Multiple external Android/CI commits continued
+    through 18:33 UTC; no same-repo edits this run.
+  latest_observed_commit: fa5a391bc6a2a037a539d3a69cac838ebaa5c9cc
+  last_controller_review: '2026-10-02T18:43:07.295883+00:00'
 - repo: masakasakasama/english-news-app
   default_branch: main
   visibility: private
@@ -53,20 +53,17 @@ projects:
   priority: null
   status: in_progress
   codex_thread: null
-  next: 'CODEX_STATE.md: H09: 新規回答の推奨/手動教材採点→移動→再訪、容量超過のUI再保存/書き出し、ブラウザ再起動・復習期限到来をisolated
-    browser fixtureで検証する。'
-  last_checkpoint: '2026-10-02T18:15:21.034582+00:00'
-  observed_pushed_at: '2026-10-02T18:15:24Z'
-  last_commit: b60b7f5d436b6866e5656648f9d376c3115172ef
-  verification: 'npm run lint: 0 errors / 0 warnings; npm run test:history: 8/8 passed;
-    npm run build: IELTS gate + TS + 7116 static pages passed; Chrome 390x844: Saved
-    storage refresh; IELTS detailed/legacy history/reload retained; view AI calls=0;
-    major route smoke JS errors=[]; all sync/image requests mocked; Actual useArticlePlayer
-    isolated mock TTS: next/repeat/rate/stop/stale onEnd passed; git diff --check
-    passed'
-  latest_verified_commit: b60b7f5d436b6866e5656648f9d376c3115172ef
-  latest_verified_pushed_at: '2026-10-02T18:15:24Z'
-  latest_observed_commit: b60b7f5d436b6866e5656648f9d376c3115172ef
+  next: 'CODEX_STATE.md: H09: ブラウザプロセス終了→再起動後の履歴保持とWriting/Speaking/模試の容量失敗・再保存を同じ隔離browser検証へ追加する。'
+  last_checkpoint: '2026-10-02T18:38:59.255280+00:00'
+  observed_pushed_at: '2026-10-02T18:39:02Z'
+  last_commit: 33cfa9fc162e8722837672da90971be706e5d45f
+  verification: 'npm run lint: passed (0 errors/warnings); npm run test:history: 8/8
+    passed; npm run build: IELTS quality gate/TypeScript/7116 static pages passed;
+    npm run test:ielts:browser: quota/export/retry/manual set/navigation/reload/review
+    expiry passed; JS errors=[]; all APIs mocked; git diff --check passed'
+  latest_verified_commit: 33cfa9fc162e8722837672da90971be706e5d45f
+  latest_verified_pushed_at: '2026-10-02T18:39:02Z'
+  latest_observed_commit: 33cfa9fc162e8722837672da90971be706e5d45f
 - repo: masakasakasama/Daily_check
   default_branch: main
   visibility: public
@@ -74,18 +71,17 @@ projects:
   priority: null
   status: in_progress
   codex_thread: null
-  next: 'CODEX_STATE.md: 過去4日の日別discoveredLate混入を監査証跡と照合し、収集担当と競合しない状態で日別・関連週次を修復する。'
-  last_checkpoint: '2026-10-02T18:05:03.732596+00:00'
-  observed_pushed_at: '2026-10-02T18:05:06Z'
-  last_commit: abb58d65fe5627a1f729b4c0d72cac4d0aa91a74
-  verification: 'node --test scripts/*.test.mjs: 4/4 passed; DAILY_CHECK_DATE=2026-10-02
-    node scripts/verify-daily-data.mjs: passed, 6/6 funnels and exact weekly union;
-    node scripts/verify-publication-history.mjs: expected failure; 4/19 days require
-    evidence review; Automation read-only: confirmed 07:00 primary, no confirmed recovery;
-    git diff --check passed'
-  latest_verified_commit: abb58d65fe5627a1f729b4c0d72cac4d0aa91a74
-  latest_verified_pushed_at: '2026-10-02T18:05:06Z'
-  latest_observed_commit: abb58d65fe5627a1f729b4c0d72cac4d0aa91a74
+  next: 'CODEX_STATE.md: collectionComplete/anomalyとDeep Scanの必須条件・追加12検索の実証跡を照合するvalidatorを追加する。'
+  last_checkpoint: '2026-10-02T18:42:03.662439+00:00'
+  observed_pushed_at: '2026-10-02T18:42:06Z'
+  last_commit: ae16cba0bb0aa33feca06f222b1665a6f944c913
+  verification: 'node --test scripts/*.test.mjs: 6/6 passed; repair CLI: 9 articles
+    / 4 days / 16 data files validated, original evidence preserved; publication history:
+    19 days / 0 failures; DAILY_CHECK_DATE=2026-10-02 daily validator passed; git
+    diff --check passed'
+  latest_verified_commit: ae16cba0bb0aa33feca06f222b1665a6f944c913
+  latest_verified_pushed_at: '2026-10-02T18:42:06Z'
+  latest_observed_commit: ae16cba0bb0aa33feca06f222b1665a6f944c913
 - repo: masakasakasama/Home
   default_branch: main
   visibility: public
@@ -487,24 +483,24 @@ automation:
   quota_visibility: No tool exposes Codex remaining usage or reset time; runs must
     not claim exact recovery detection.
 controller_checkpoint:
-  updated_at: '2026-10-02T18:17:47.896187+00:00'
-  pass_status: full_cycle_checkpointed_with_unfinished_work
+  updated_at: '2026-10-02T18:43:07.295883+00:00'
+  pass_status: two_repositories_checkpointed_external_worker_deferred
   active_repositories: 14
   excluded_stale_repositories: 22
   state_files_verified: 13
   automation_count_for_controller: 1
-  remaining_work: All 14 eligible repos processed or blocker-reviewed this cycle;
-    next cycle queued. Unfinished tasks and blockers remain; no repo promoted to completed.
+  remaining_work: 11 unprocessed repos remain in current cycle; incomplete physical/credentials/authentication
+    tasks preserved.
   quota_reset_time: unavailable
-  next_repository: masakasakasama/AI-Assistant_handmade
+  next_repository: masakasakasama/Marriage_procedure
 work_cycle:
-  status: ready_for_next_cycle
-  updated_at: '2026-10-02T18:17:47.896187+00:00'
-  processed_repositories: []
-  remaining_repositories:
+  status: in_progress
+  updated_at: '2026-10-02T18:43:07.295883+00:00'
+  processed_repositories:
   - masakasakasama/AI-Assistant_handmade
   - masakasakasama/english-news-app
   - masakasakasama/Daily_check
+  remaining_repositories:
   - masakasakasama/Marriage_procedure
   - masakasakasama/Calender
   - masakasakasama/Trip_Plan
@@ -516,7 +512,7 @@ work_cycle:
   - masakasakasama/Fitness
   - masakasakasama/Home
   - masakasakasama/Alarm
-  next_repository: masakasakasama/AI-Assistant_handmade
+  next_repository: masakasakasama/Marriage_procedure
   note: Resume remaining recent registered repos in latest pushed_at order; own checkpoint
     pushes do not restart a partially completed cycle. Rebuild selection after this
     cycle. Deferred/blocked is not completed.
