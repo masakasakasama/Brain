@@ -192,14 +192,17 @@ projects:
   priority: null
   status: in_progress
   codex_thread: null
-  next: 'CODEX_STATE.md: 段階3: googleKey/syncWindow/isRealGoogleSharedEvent/stableGoogleImportIdをserver/clientで共有または同等化し、fixtureで一貫性を検証。'
-  last_checkpoint: '2026-10-02T10:55:00.710873+00:00'
+  next: 'CODEX_STATE.md: 段階4: CalendarEvent factoryのallDay/timezone/emoji/syncErrorを統一。既存doc
+    IDを変える移行はせず自動削除を入れない。'
+  last_checkpoint: '2026-10-02T17:51:04.608640+00:00'
   observed_pushed_at: '2026-09-06T23:06:18Z'
-  last_commit: 18dfd7670110821fd0d6ee28757c00016dfa362b
-  verification: 'node --test scripts/google-sync.test.mjs: 2/2 passed; npm run build:
-    TypeScript/Vite/PWA passed、既存bundle-size warningあり; 既存sourceのimport routesとID
-    hashを照合、git diff --check passed'
-  latest_verified_commit: 18dfd7670110821fd0d6ee28757c00016dfa362b
+  last_commit: c13cdc2f4299f03803944afd7da6da2a7cf100d2
+  verification: 'npm test: 6/6 passed (existing hook 2 + shared rules 4); npm run
+    build: TS/Vite/PWA passed; functions npm ci + npm run build passed; legacy ID
+    golden fixture retained; Tokyo window consistent across three timezones; private
+    events ineligible and documents unchanged; git diff --check passed; existing bundle-size
+    warning'
+  latest_verified_commit: c13cdc2f4299f03803944afd7da6da2a7cf100d2
   latest_verified_pushed_at: '2026-10-02T10:55:26Z'
 - repo: masakasakasama/mf-dashboard
   default_branch: main
