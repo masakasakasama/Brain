@@ -1,47 +1,53 @@
 # Controller checkpoint
 
-Updated at: 2026-10-02T15:18:19.800171+00:00
+Updated at: 2026-10-02T17:02:04.595221+00:00
 
 ## Done
-- SEN: 戦略保留の画面・資料整合。build + 133/133 tests + secret scan passed。設定URLの/healthはHTTP 200 / ok:true。
-- MF Dashboard: monthly-dayの短い月から翌月への繰上がりを修正。6/6 tests + build + JSON / 実データモデル算術検証 passed。実金融データ変更なし。
-- Microsoft-FDE: 隔離Chromeでinvalid import / quota failure / cancel / valid importを検証。永続履歴・exportで取得したメモリ履歴の保持を確認。parser 3/3 passed。
+- Microsoft-FDE: 公式3ガイドを確認。AB-100の10/14適用改訂と7/22教材基準を区別。Chrome表示とparser 3/3検証。
+- MF Dashboard: 明示forecastRuleId+日付で確定取引が同日の予測を置換し、基準実残高以前の予測を再加算しない。8/8 tests + build + JSON/実データ算術検証。実金融データ変更なし。
+- SEN: 戦略保留を一覧へ戻し、focusには選ばず他候補探索を維持。build + 135/135 tests + secret scan + mocked Chrome表示確認。
+- Trip_Plan: 詳細地図の閉じ忘れ・遅延再表示・未初期化flyToを修正。両viewportの回転/pinch/国・都市/Trip選択/16件replay/layout/night/errors検証 passed。build + data5/5 + sync1/1。
+- Design_system: nonexistent / mixed-validityパスをexit2で拒否し、CI誤記の成功扱いを防止。5/5 tests + validate + unchanged-generated検証 passed。
 
 ## Current
-- 今回の3件を確定commitでcheckpoint。最近30日の登録repoは14件、長期未更新22件は変更していない。
-- 13件のworker stateをGitHubから再取得・必須項目検証。個人サイトはstate未作成、Brainにblocker保存。
+- 5件の実装とworker stateをGitHubへ保存。13件の最新worker state必須項目をGitHubから再取得・照合。
+- 最近30日の対象14件、長期未更新22件は変更なし。
+- 自身checkpointで同じrepoへ戻り続けないよう未処理cycle queueを保存。
 
 ## Next
-- 最新pushed_atを再取得し、各repoのNextから継続。今回まだ実装していない次の候補はTrip_Plan。
+- masakasakasama/Calender の最新Nextから再開。
+- masakasakasama/Marriage_procedure の最新Nextから再開。
+- masakasakasama/Daily_check の最新Nextから再開。
+- masakasakasama/english-news-app の最新Nextから再開。
 
 ## Blockers
-- 個人サイトは直近の別作業のpushを検出し、並行編集回避のため参照のみ。開発Goal / worker state未登録。
-- AI-Assistantは並行Android release作業を検出済みのため今回編集なし。
-- 実機・本番資格情報不足と既存lint失敗は各repoのstate参照。
-- Codex残量・回復時刻は取得不可。Automation毎時の再開試行は厳密な回復時刻トリガーではない。
+- Galaxy/USB実機なし: Fitness / Home / Alarmの実機検証は未完了。
+- 個人サイトとAI-Assistantの別作業との編集重複を避けて今回参照のみ。
+- 本番資格情報不足と既存lintエラー等は各repo state参照。blockedをcompletedにしていない。
+- Codex残量/回復時刻は取得不可。回復済みとは断言しない。司令塔Automationは1個、有効。
 
 ## Verification
-- 3件のbuild/test結果と確定commitを保存。個人サイトのblockerを完了扱いにしていない。
-- explicit file listと最新remote親SHA一致チェックで非強制出版。他の変更を巻き込まない。
+- Tripの詳細レポート: [browser report](https://github.com/masakasakasama/Trip_Plan/blob/main/visto-astra/docs/VERIFICATION.md)。cloud GPUは6/4FPSで、Galaxy性能合格ではない。
+- 出版は明示した変更ファイルのみ。最新remote親SHAが一致する場合だけ非強制ref更新。
+- 本番旅行予定・金融実データ・事業状態へテスト書込みは行っていない。
 
 ## Confirmed repository heads
-- [masakasakasama/Microsoft-FDE](https://github.com/masakasakasama/Microsoft-FDE/commit/8734fa89f3496a47ec6c47a4c31b041813f7030b): in_progress
-- [masakasakasama/mf-dashboard](https://github.com/masakasakasama/mf-dashboard/commit/19083b2f08c9bc2b09e606543951c47da3e411cd): in_progress
-- [masakasakasama/1000yen-agent](https://github.com/masakasakasama/1000yen-agent/commit/f642f35586125f5d7736e15c676c43b03995b6fc): in_progress
+- [masakasakasama/Trip_Plan](https://github.com/masakasakasama/Trip_Plan/commit/e001f51ec06eedbcd8edc1a8fe21241d083cc7ab): in_progress
+- [masakasakasama/Design_system](https://github.com/masakasakasama/Design_system/commit/3c1f39b431286cac03710a8a9175a39a83244242): in_progress
+- [masakasakasama/1000yen-agent](https://github.com/masakasakasama/1000yen-agent/commit/6956f17aca929d06e36d4a29c5f883a1a93c626b): in_progress
+- [masakasakasama/mf-dashboard](https://github.com/masakasakasama/mf-dashboard/commit/d53563721ca8cada71bc40724d5212c5bf0bc579): in_progress
+- [masakasakasama/Microsoft-FDE](https://github.com/masakasakasama/Microsoft-FDE/commit/379cfa1cb937af4503d44a974b09faf96ad04c05): in_progress
 - [masakasakasama/masakasakasama.github.io](https://github.com/masakasakasama/masakasakasama.github.io/commit/b6baaabd760bbad7e9b97a573889f4fd7c62c276): blocked
 - [masakasakasama/AI-Assistant_handmade](https://github.com/masakasakasama/AI-Assistant_handmade/commit/4c18c5f30167bf5a2f8f5645066b30765f48bdd8): in_progress
-- [masakasakasama/Trip_Plan](https://github.com/masakasakasama/Trip_Plan/commit/fb4a86f1e6e522cc316ab7b159961fe9ccc3ded2): in_progress
 - [masakasakasama/Fitness](https://github.com/masakasakasama/Fitness/commit/6bcc2238a42f952421a3ec40e2a33849f10bbf39): blocked
 - [masakasakasama/Calender](https://github.com/masakasakasama/Calender/commit/18dfd7670110821fd0d6ee28757c00016dfa362b): in_progress
 - [masakasakasama/Home](https://github.com/masakasakasama/Home/commit/783e587b8604df1a29db6fe6111c4d136c4f57cc): blocked
 - [masakasakasama/Marriage_procedure](https://github.com/masakasakasama/Marriage_procedure/commit/e5f4e50e87bc1542bd3e3efed085eb47f656ec89): in_progress
 - [masakasakasama/Alarm](https://github.com/masakasakasama/Alarm/commit/90cb13665d6181c04ec961d51d616d04d17c6915): blocked
-- [masakasakasama/Design_system](https://github.com/masakasakasama/Design_system/commit/89e41913682ff7a0a6d4c3fdf147d3cf2ded9f30): in_progress
 - [masakasakasama/Daily_check](https://github.com/masakasakasama/Daily_check/commit/6c7f1e6c058007ab38e7be79681168af70ee2e8e): in_progress
 - [masakasakasama/english-news-app](https://github.com/masakasakasama/english-news-app/commit/7992d840155fae9f73bb8bf1f08bdff785570d45): in_progress
 
-## Resume and publication safeguards
-- Brainとrepoの最新stateを毎回読む。pushed_atと保存policyで対象を選別する。
-- 同一repoの他作業を検出したら編集を見送る。最新commitから隔離checkoutを作り、担当範囲を明記する。
-- mixed resetだけで古いtreeを出版しない。変更ファイルを明示し、最新remoteを親に非強制更新。競合時は再取得・merge。
-- blockedを完了に数えず、全対象completedの場合のみ司令塔Automation 1個を停止する。
+## Resume safeguards
+- 最新Brain/worker stateとpolicyの期間条件を毎回確認。未処理queue内の最新pushed_at順で進め、一巡後に選別し直す。
+- 同一repoの並行編集は避ける。隔離checkoutから作業し、mixed resetで古いtreeを出版しない。
+- 全対象completedの場合のみAutomationを停止。blockerと未検証を完了に数えない。

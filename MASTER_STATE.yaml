@@ -7,8 +7,9 @@ policy:
   reset_behavior: resume_enabled_workers
   note: 司令塔用Scheduled Automation 1個だけで再開する。利用上限中は変更せず終了。最近pushされた登録repoのみ対象。
   recent_push_days: 30
-  selection_checked_at: '2026-10-02T15:18:19.800171+00:00'
+  selection_checked_at: '2026-10-02T17:02:04.595221+00:00'
   checkpoint_before_stop: true
+  resume_cycle_before_revisit: true
 projects:
 - repo: masakasakasama/1000yen-agent
   default_branch: main
@@ -25,7 +26,7 @@ projects:
     scan: 163 files passed; Isolated Chrome fixture: 戦略保留・未評価 visible; all network
     calls mocked; JS errors=[]; git diff --check passed'
   latest_verified_commit: 6956f17aca929d06e36d4a29c5f883a1a93c626b
-  latest_verified_pushed_at: '2026-10-02T15:17:05Z'
+  latest_verified_pushed_at: '2026-10-02T16:42:18Z'
 - repo: masakasakasama/AI-Assistant_handmade
   default_branch: main
   visibility: public
@@ -117,7 +118,7 @@ projects:
   verification: 'npm test: 5/5 passed; npm run validate and check:generated passed;
     generated artifacts unchanged; git diff --check passed'
   latest_verified_commit: 3c1f39b431286cac03710a8a9175a39a83244242
-  latest_verified_pushed_at: '2026-10-02T10:52:14Z'
+  latest_verified_pushed_at: '2026-10-02T16:53:30Z'
 - repo: masakasakasama/Marriage_procedure
   default_branch: main
   visibility: public
@@ -156,15 +157,17 @@ projects:
   priority: null
   status: in_progress
   codex_thread: null
-  next: 'CODEX_STATE.md: visto-astra/tools/verify.mjsのdesktop/mobile/rotation/pinch/replay/地域表示を隔離ブラウザで実行し回帰を確認する。'
-  last_checkpoint: '2026-10-02T10:56:08.356040+00:00'
+  next: 'CODEX_STATE.md: isolated Worker fixtureでIf-Match競合・pending/recovery再起動復元のE2Eを検証。本番旅行予定へテストを書かない。'
+  last_checkpoint: '2026-10-02T17:00:43.568796+00:00'
   observed_pushed_at: '2026-09-13T11:06:21Z'
-  last_commit: fb4a86f1e6e522cc316ab7b159961fe9ccc3ded2
-  verification: 'node --test sync-merge.test.js: passed; visto-astra npm ci --ignore-scripts
-    / npm test: 5/5 / npm run build: passed; node --check app.js worker.js: passed;
-    agent-browser Astra: controls/canvas/content表示、errors=[]; git diff --check: passed'
-  latest_verified_commit: fb4a86f1e6e522cc316ab7b159961fe9ccc3ded2
-  latest_verified_pushed_at: '2026-10-02T10:56:10Z'
+  last_commit: e001f51ec06eedbcd8edc1a8fe21241d083cc7ab
+  verification: 'Astra production build and data tests 5/5; root sync-merge test 1/1
+    passed; Playwright full mobile 412x915 / desktop 1440x1000: passed; observed replay
+    steps 17/17; JS/console errors=[] (favicon mocked); Chrome immediate focus-cancel
+    fixture: closed=true, stale map initializations=0, JS errors=[]; node --check
+    focus-detail.js / tools/verify.mjs; git diff --check passed'
+  latest_verified_commit: e001f51ec06eedbcd8edc1a8fe21241d083cc7ab
+  latest_verified_pushed_at: '2026-10-02T17:00:46Z'
 - repo: masakasakasama/Microsoft-FDE
   default_branch: main
   visibility: public
@@ -181,7 +184,7 @@ projects:
     AB-100 Study: published 2026-10-14 notice visible; JS errors=[]; git diff --check
     passed'
   latest_verified_commit: 379cfa1cb937af4503d44a974b09faf96ad04c05
-  latest_verified_pushed_at: '2026-10-02T15:17:11Z'
+  latest_verified_pushed_at: '2026-10-02T16:42:11Z'
 - repo: masakasakasama/Calender
   default_branch: main
   visibility: public
@@ -214,7 +217,7 @@ projects:
     boundary/future minimum passed without financial values in output; git diff --check
     passed
   latest_verified_commit: d53563721ca8cada71bc40724d5212c5bf0bc579
-  latest_verified_pushed_at: '2026-10-02T15:17:08Z'
+  latest_verified_pushed_at: '2026-10-02T16:42:14Z'
 - repo: masakasakasama/sen-android-updates
   default_branch: main
   visibility: public
@@ -457,13 +460,36 @@ automation:
   quota_visibility: No tool exposes Codex remaining usage or reset time; runs must
     not claim exact recovery detection.
 controller_checkpoint:
-  updated_at: '2026-10-02T15:18:19.800171+00:00'
-  pass_status: three_repositories_updated_and_checkpointed
+  updated_at: '2026-10-02T17:02:04.595221+00:00'
+  pass_status: five_repositories_updated_and_checkpointed
   active_repositories: 14
   excluded_stale_repositories: 22
   state_files_verified: 13
   automation_count_for_controller: 1
-  remaining_work: Continue latest pushed_at order; other Next tasks remain. Personal
-    site and concurrent Android work deferred; not complete.
+  remaining_work: Four remaining repositories this cycle; physical/concurrency/credentials
+    blockers remain. All repositories are not complete.
   quota_reset_time: unavailable
-  next_repository: masakasakasama/Trip_Plan
+  next_repository: masakasakasama/Calender
+work_cycle:
+  status: in_progress
+  updated_at: '2026-10-02T17:02:04.595221+00:00'
+  processed_repositories:
+  - masakasakasama/Microsoft-FDE
+  - masakasakasama/mf-dashboard
+  - masakasakasama/1000yen-agent
+  - masakasakasama/Trip_Plan
+  - masakasakasama/Design_system
+  - masakasakasama/masakasakasama.github.io
+  - masakasakasama/AI-Assistant_handmade
+  - masakasakasama/Fitness
+  - masakasakasama/Home
+  - masakasakasama/Alarm
+  remaining_repositories:
+  - masakasakasama/Calender
+  - masakasakasama/Marriage_procedure
+  - masakasakasama/Daily_check
+  - masakasakasama/english-news-app
+  next_repository: masakasakasama/Calender
+  note: Resume remaining recent registered repos in latest pushed_at order; own checkpoint
+    pushes do not restart a partially completed cycle. Rebuild selection after this
+    cycle. Deferred/blocked is not completed.

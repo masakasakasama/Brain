@@ -39,3 +39,9 @@ Codex利用枠が復帰してScheduled taskで再開された場合:
 - repository間依存がある場合はcommit SHA / PR / releaseなどGitHub上の確定状態だけを参照する
 - 同一repoを複数threadで同時編集する場合は担当範囲を `CODEX_STATE.md` に明記する
 - 同じファイルを複数threadが並列編集しない
+
+## Controller cycle
+- 司令塔は `MASTER_STATE.yaml` の `work_cycle.remaining_repositories` があれば、その未処理対象を最新GitHub `pushed_at` 降順で進める。対象の最近push条件は毎回policyで再評価する。
+- 自身のcheckpoint pushだけを理由に処理済みrepoへ戻り続けない。一巡中は処理済み・blocker確認済みを記録し、未処理repoへ進む。
+- 新たに最近push条件へ入った登録repoは未処理queueへ追加する。一巡後に対象を再取得し、最新pushed_at順の次cycleを開始する。
+- blocked・並行編集の見送りはcompletedにしない。次cycleでblockerを再確認する。
