@@ -1,47 +1,50 @@
 # Codex Orchestrator Rules
 
-このrepositoryは複数GitHub repository / 複数Codex Cloud threadの中央状態管理用
+このrepositoryは複数GitHub repositoryを低トークンで継続開発する司令塔
 
-## Source of truth
-- 全体状態: `MASTER_STATE.yaml`
-- 各workerの状態: 各対象repoの `CODEX_STATE.md`
-- 会話contextよりGitHub上の状態ファイルを優先する
+## 最重要: Token budget
+- 1回のScheduled runで処理するrepoは必ず1個だけ
+- 起動時に全repoを巡回しない
+- 全repoのREADME / AGENTS.md / handoff.md / CODEX_STATE.mdを一括で読まない
+- まず `ACTIVE_QUEUE.yaml` だけを読む
+- `next_repository` のrepoだけを開く
+- そのrepoでは `CODEX_STATE.md` または `handoff.md` のどちらか短い方を最初に読む
+- 必要になったファイルだけ追加で読む
+- 既に検証済みの長いtest logを再読しない
+- 同じ事実をBrainと各repoへ重複保存しない
 
-## Worker start
-1. `masakasakasama/Brain/Master_STATE.yaml` ではなく正確に `MASTER_STATE.yaml` を読む
-2. 自分のrepoエントリを特定する
-3. `enabled: true` の場合だけ継続する
-4. 対象repoの `AGENTS.md` があれば最優先で読む
-5. 対象repoの `CODEX_STATE.md` を読む
-6. `Next` から作業を継続する
+## Active selection
+- 自動巡回対象は直近7日以内にユーザー/既存開発で動いていたrepoを基本とする
+- 司令塔自身が作ったcheckpoint commit / state更新による pushed_at は活動判定に使わない
+- 古いrepoを自動で復活させない
+- 新しいrepoを対象にする必要が出た場合だけqueueへ追加する
 
-## Checkpoint
-利用上限、時間切れ、エラー、作業区切りの前に必ず対象repoの `CODEX_STATE.md` を更新する
+## Run
+1. `ACTIVE_QUEUE.yaml` を読む
+2. `next_repository` を1つ取得
+3. そのrepoだけ作業する
+4. 実装・必要なtestを行う
+5. repo側の `CODEX_STATE.md` または `handoff.md` を短く更新
+6. commit / push
+7. `ACTIVE_QUEUE.yaml` の当該repoを更新して次repoへポインタを進める
+8. そのrunは終了する
 
-最低限記録する内容:
-- Goal
-- Done
-- Current
-- Next
-- Blockers
-- Verification
-- Updated at
+## State
+Brainに保持するのは以下だけ
+- repo
+- status
+- next
+- last_checkpoint
+- next_repository
+
+詳細な検証ログ、変更ファイル一覧、長い履歴は各repo側へ置く
 
 ## Resume
-Codex利用枠が復帰してScheduled taskで再開された場合:
-1. このBrainの `MASTER_STATE.yaml` を読む
-2. 対象repoの `CODEX_STATE.md` を読む
-3. 未完了なら確認質問なしで `Next` から再開
-4. 完了済みなら不要な変更をせず終了
+利用枠回復後のScheduled runでも同じ
+- ACTIVE_QUEUE.yamlだけ読む
+- next_repository 1個だけ再開
+- 全repo再スキャン禁止
 
-## Parallel workers
-- 他repoの未commit変更を前提にしない
-- repository間依存がある場合はcommit SHA / PR / releaseなどGitHub上の確定状態だけを参照する
-- 同一repoを複数threadで同時編集する場合は担当範囲を `CODEX_STATE.md` に明記する
-- 同じファイルを複数threadが並列編集しない
-
-## Controller cycle
-- 司令塔は `MASTER_STATE.yaml` の `work_cycle.remaining_repositories` があれば、その未処理対象を最新GitHub `pushed_at` 降順で進める。対象の最近push条件は毎回policyで再評価する。
-- 自身のcheckpoint pushだけを理由に処理済みrepoへ戻り続けない。一巡中は処理済み・blocker確認済みを記録し、未処理repoへ進む。
-- 新たに最近push条件へ入った登録repoは未処理queueへ追加する。一巡後に対象を再取得し、最新pushed_at順の次cycleを開始する。
-- blocked・並行編集の見送りはcompletedにしない。次cycleでblockerを再確認する。
+## Completion
+repoが完了または人間待ちならqueueの次へ進む
+全queueが完了した場合だけAutomationを停止する
