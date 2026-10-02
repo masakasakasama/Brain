@@ -65,12 +65,16 @@ projects:
   priority: null
   status: in_progress
   codex_thread: null
-  next: 日別late leakage/再掲載/週次和集合の回帰検証 (CODEX_STATE.md)
-  last_checkpoint: '2026-10-02T10:36:53.108695+00:00'
+  next: 'CODEX_STATE.md: 過去4日の日別discoveredLate混入を監査証跡と照合し、収集担当と競合しない状態で日別・関連週次を修復する。'
+  last_checkpoint: '2026-10-02T18:05:03.732596+00:00'
   observed_pushed_at: '2026-10-01T23:07:35Z'
-  last_commit: 6c7f1e6c058007ab38e7be79681168af70ee2e8e
-  verification: audit tests 2/2 and daily validator passed
-  latest_verified_commit: 6c7f1e6c058007ab38e7be79681168af70ee2e8e
+  last_commit: abb58d65fe5627a1f729b4c0d72cac4d0aa91a74
+  verification: 'node --test scripts/*.test.mjs: 4/4 passed; DAILY_CHECK_DATE=2026-10-02
+    node scripts/verify-daily-data.mjs: passed, 6/6 funnels and exact weekly union;
+    node scripts/verify-publication-history.mjs: expected failure; 4/19 days require
+    evidence review; Automation read-only: confirmed 07:00 primary, no confirmed recovery;
+    git diff --check passed'
+  latest_verified_commit: abb58d65fe5627a1f729b4c0d72cac4d0aa91a74
   latest_verified_pushed_at: '2026-10-02T10:36:32Z'
 - repo: masakasakasama/Home
   default_branch: main
@@ -469,13 +473,13 @@ controller_checkpoint:
   excluded_stale_repositories: 22
   state_files_verified: 13
   automation_count_for_controller: 1
-  remaining_work: Two remaining repositories this cycle; blocked repositories remain
-    unfinished.
+  remaining_work: English remaining in current cycle; historical publication, physical-device
+    and concurrency blockers remain.
   quota_reset_time: unavailable
-  next_repository: masakasakasama/Daily_check
+  next_repository: masakasakasama/english-news-app
 work_cycle:
   status: in_progress
-  updated_at: '2026-10-02T18:02:55.382286+00:00'
+  updated_at: '2026-10-02T18:11:02.121633+00:00'
   processed_repositories:
   - masakasakasama/Microsoft-FDE
   - masakasakasama/mf-dashboard
@@ -489,10 +493,10 @@ work_cycle:
   - masakasakasama/Alarm
   - masakasakasama/Calender
   - masakasakasama/Marriage_procedure
-  remaining_repositories:
   - masakasakasama/Daily_check
+  remaining_repositories:
   - masakasakasama/english-news-app
-  next_repository: masakasakasama/Daily_check
+  next_repository: masakasakasama/english-news-app
   note: Resume remaining recent registered repos in latest pushed_at order; own checkpoint
     pushes do not restart a partially completed cycle. Rebuild selection after this
     cycle. Deferred/blocked is not completed.
