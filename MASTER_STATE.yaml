@@ -7,7 +7,7 @@ policy:
   reset_behavior: resume_enabled_workers
   note: 司令塔用Scheduled Automation 1個だけで再開する。利用上限中は変更せず終了。最近pushされた登録repoのみ対象。
   recent_push_days: 30
-  selection_checked_at: '2026-10-02T18:43:07.295883+00:00'
+  selection_checked_at: '2026-10-02T20:54:02.046538+00:00'
   checkpoint_before_stop: true
   resume_cycle_before_revisit: true
 projects:
@@ -141,7 +141,7 @@ projects:
   codex_thread: null
   next: 'CODEX_STATE.md: 実利用者の二端末で同期・保存容量復帰・画面中断/再起動を確認する。isolated emulatorの合格を実端末合格に置き換えない。'
   last_checkpoint: '2026-10-02T19:33:10.616417+00:00'
-  observed_pushed_at: '2026-10-02T18:02:05Z'
+  observed_pushed_at: '2026-10-02T19:33:13Z'
   last_commit: 5f3e3d58ff621b079e993a9d95284e4ff54d3b20
   verification: 'npm test: 5/5 passed; npm run test:emulator: full sync/restart/quota/offline/export/retry
     passed; JS errors=[]; production requests=0; all inline scripts node --check passed;
@@ -211,17 +211,14 @@ projects:
   priority: null
   status: in_progress
   codex_thread: null
-  next: 'CODEX_STATE.md: 段階4: CalendarEvent factoryのallDay/timezone/emoji/syncErrorを統一。既存doc
-    IDを変える移行はせず自動削除を入れない。'
-  last_checkpoint: '2026-10-02T17:51:04.608640+00:00'
+  next: 'CODEX_STATE.md: isolated Firebase Emulatorでserver故障・復元済み予定・private calendar除外を検証した後、資格情報の範囲でFunctions反映を確認する。'
+  last_checkpoint: '2026-10-02T20:53:02.988626+00:00'
   observed_pushed_at: '2026-10-02T17:51:33Z'
-  last_commit: c13cdc2f4299f03803944afd7da6da2a7cf100d2
-  verification: 'npm test: 6/6 passed (existing hook 2 + shared rules 4); npm run
-    build: TS/Vite/PWA passed; functions npm ci + npm run build passed; legacy ID
-    golden fixture retained; Tokyo window consistent across three timezones; private
-    events ineligible and documents unchanged; git diff --check passed; existing bundle-size
-    warning'
-  latest_verified_commit: c13cdc2f4299f03803944afd7da6da2a7cf100d2
+  last_commit: 587754e54ae1191f8efc17e8c1b0d4f5165d86c0
+  verification: 'npm test: 10/10 passed; npm run build: TS/Vite/PWA passed; functions
+    npm run build passed; UTC/Tokyo/Los Angeles date-only同一、timed offsetと明示emoji/null・error・private・既存ID・tombstone保持を確認;
+    git diff --check passed; existing bundle-size warning'
+  latest_verified_commit: 587754e54ae1191f8efc17e8c1b0d4f5165d86c0
   latest_verified_pushed_at: '2026-10-02T17:51:33Z'
   latest_observed_commit: c13cdc2f4299f03803944afd7da6da2a7cf100d2
 - repo: masakasakasama/mf-dashboard
@@ -485,26 +482,25 @@ automation:
   quota_visibility: No tool exposes Codex remaining usage or reset time; runs must
     not claim exact recovery detection.
 controller_checkpoint:
-  updated_at: '2026-10-02T19:33:38.476903+00:00'
-  pass_status: marriage_storage_and_conflicts_checkpointed
+  updated_at: '2026-10-02T20:54:02.046538+00:00'
+  pass_status: calendar_factory_checkpointed
   active_repositories: 14
   excluded_stale_repositories: 22
   state_files_verified: 13
   automation_count_for_controller: 1
-  remaining_work: 10 unprocessed repositories in current cycle; device and production
-    blockers preserved.
+  remaining_work: 9 unprocessed; device and production blockers preserved
   quota_reset_time: unavailable
-  next_repository: masakasakasama/Calender
+  next_repository: masakasakasama/Trip_Plan
 work_cycle:
   status: in_progress
-  updated_at: '2026-10-02T19:33:38.476903+00:00'
+  updated_at: '2026-10-02T20:54:02.046538+00:00'
   processed_repositories:
   - masakasakasama/AI-Assistant_handmade
   - masakasakasama/english-news-app
   - masakasakasama/Daily_check
   - masakasakasama/Marriage_procedure
-  remaining_repositories:
   - masakasakasama/Calender
+  remaining_repositories:
   - masakasakasama/Trip_Plan
   - masakasakasama/Design_system
   - masakasakasama/1000yen-agent
@@ -514,7 +510,7 @@ work_cycle:
   - masakasakasama/Fitness
   - masakasakasama/Home
   - masakasakasama/Alarm
-  next_repository: masakasakasama/Calender
+  next_repository: masakasakasama/Trip_Plan
   note: Resume remaining recent registered repos in latest pushed_at order; own checkpoint
     pushes do not restart a partially completed cycle. Rebuild selection after this
     cycle. Deferred/blocked is not completed.
