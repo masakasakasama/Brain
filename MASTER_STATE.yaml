@@ -203,15 +203,13 @@ projects:
   priority: null
   status: in_progress
   codex_thread: null
-  next: 'CODEX_STATE.md: AI-103の生成画像/video、音声、視覚prompt injectionの学習範囲を公式sourceで補う。'
-  last_checkpoint: '2026-10-02T21:03:49.285911+00:00'
+  next: 'CODEX_STATE.md: 公式試験ページから提供言語・試験時間を照合し、未確認metadataを根拠付きで整合する。料金は地域/予約時点依存を明記する。'
+  last_checkpoint: '2026-10-02T21:48:38.671279+00:00'
   observed_pushed_at: '2026-10-02T21:03:51Z'
-  last_commit: bab6cd01677b23d60094e6b564a71d1e849c46b6
-  verification: Official AB-100 article effective October14 and 3 Minor change groups
-    verified; node --check app.js/content.js; progress parser 3/3 passed; Chrome preview
-    visible; existing 6 modules and stored progress unchanged; JS errors=[]; git diff
-    --check passed
-  latest_verified_commit: bab6cd01677b23d60094e6b564a71d1e849c46b6
+  last_commit: 1cc3f970b0892a3de351ff46917c1a38ac5d1cb3
+  verification: 'See CODEX_STATE.md: parser 3/3, preserved question/module identities,
+    Chrome progress compatibility passed'
+  latest_verified_commit: 1cc3f970b0892a3de351ff46917c1a38ac5d1cb3
   latest_verified_pushed_at: '2026-10-02T21:03:51Z'
   latest_observed_commit: bab6cd01677b23d60094e6b564a71d1e849c46b6
 - repo: masakasakasama/Calender
@@ -495,8 +493,8 @@ automation:
   quota_visibility: No tool exposes Codex remaining usage or reset time; runs must
     not claim exact recovery detection.
 controller_checkpoint:
-  updated_at: '2026-10-02T21:05:26.134518+00:00'
-  pass_status: cycle_checkpointed_next_cycle_selected
+  updated_at: '2026-10-02T21:51:43.452841+00:00'
+  pass_status: microsoft_checkpointed_policy_changed_during_run
   active_repositories: 14
   excluded_stale_repositories: 22
   state_files_verified: 13
@@ -504,7 +502,7 @@ controller_checkpoint:
   remaining_work: 14 unfinished repositories selected for next cycle; blockers and
     deferred ownership are not completed
   quota_reset_time: unavailable
-  next_repository: masakasakasama/Microsoft-FDE
+  next_repository: masakasakasama/1000yen-agent
 work_cycle:
   status: in_progress
   updated_at: '2026-10-02T21:05:26.134518+00:00'
