@@ -17,14 +17,14 @@ projects:
   priority: null
   status: in_progress
   codex_thread: null
-  next: 'CODEX_STATE.md: Operator v41のSTRATEGY_HOLD/WAITING_DEEPSEEK表示と保留候補の選択・復帰を既存仕様と照合し、隔離fixtureで検証する。'
-  last_checkpoint: '2026-10-02T15:17:02.466253+00:00'
+  next: 'CODEX_STATE.md: OCI移行のbackup/restore・再起動・public snapshot確認を、利用可能な資格情報の範囲で進める。'
+  last_checkpoint: '2026-10-02T16:42:15.180268+00:00'
   observed_pushed_at: '2026-10-02T09:37:39Z'
-  last_commit: f642f35586125f5d7736e15c676c43b03995b6fc
-  verification: 'npm run check: TypeScript build + 133/133 tests passed; npm run secret-scan:
-    163 files passed; configured HTTPS /health: HTTP 200 / ok:true; no paid provider
-    calls; git diff --check passed'
-  latest_verified_commit: f642f35586125f5d7736e15c676c43b03995b6fc
+  last_commit: 6956f17aca929d06e36d4a29c5f883a1a93c626b
+  verification: 'npm run check: TypeScript build and 135/135 tests passed; secret
+    scan: 163 files passed; Isolated Chrome fixture: 戦略保留・未評価 visible; all network
+    calls mocked; JS errors=[]; git diff --check passed'
+  latest_verified_commit: 6956f17aca929d06e36d4a29c5f883a1a93c626b
   latest_verified_pushed_at: '2026-10-02T15:17:05Z'
 - repo: masakasakasama/AI-Assistant_handmade
   default_branch: main
@@ -173,14 +173,15 @@ projects:
   priority: null
   status: in_progress
   codex_thread: null
-  next: 'CODEX_STATE.md: READMEの公式3試験Study Guideを取得し、掲載skillsと現行contentの差分・更新日を確認する。'
-  last_checkpoint: '2026-10-02T15:17:02.466253+00:00'
+  next: 'CODEX_STATE.md: AB-100の10/14改訂の変更logと現行各module/questionを照合し、根拠付きで教材を更新する。'
+  last_checkpoint: '2026-10-02T16:42:09.194217+00:00'
   observed_pushed_at: '2026-09-08T12:19:08Z'
-  last_commit: 8734fa89f3496a47ec6c47a4c31b041813f7030b
-  verification: 'Browser regression: invalid JSON / invalid maps / quota failure /
-    cancelled selection / valid import passed; browser JS errors=[]; node --test scripts/progress-validation.test.mjs:
-    3/3 passed; git diff --check passed'
-  latest_verified_commit: 8734fa89f3496a47ec6c47a4c31b041813f7030b
+  last_commit: 379cfa1cb937af4503d44a974b09faf96ad04c05
+  verification: '3 official study guide article bodies fetched and effective dates/domain
+    weights compared; node --check app.js / content.js; parser tests 3/3 passed; Chrome
+    AB-100 Study: published 2026-10-14 notice visible; JS errors=[]; git diff --check
+    passed'
+  latest_verified_commit: 379cfa1cb937af4503d44a974b09faf96ad04c05
   latest_verified_pushed_at: '2026-10-02T15:17:11Z'
 - repo: masakasakasama/Calender
   default_branch: main
@@ -205,15 +206,15 @@ projects:
   priority: null
   status: in_progress
   codex_thread: null
-  next: 'CODEX_STATE.md: confirmedイベントとrecurring予測が同日・同ルールに重なる場合の既存入力方針を整理し、二重計上防止のfixtureを追加する。'
-  last_checkpoint: '2026-10-02T15:17:02.466253+00:00'
+  next: 'CODEX_STATE.md: 繰り返しルールのid欠落・重複入力の扱いを検証し、曖昧なforecastRuleId紐付けを防ぐ。'
+  last_checkpoint: '2026-10-02T16:42:11.977416+00:00'
   observed_pushed_at: '2026-09-03T10:59:01Z'
-  last_commit: 19083b2f08c9bc2b09e606543951c47da3e411cd
-  verification: 'npm test: 6/6 passed; npm run build passed (existing large-chunk
-    warning); canonical JSON validation passed; actual model arithmetic / Tokyo future
-    boundary / future minimum verified without logging balances; git diff --check
-    passed'
-  latest_verified_commit: 19083b2f08c9bc2b09e606543951c47da3e411cd
+  last_commit: d53563721ca8cada71bc40724d5212c5bf0bc579
+  verification: npm test 8/8 passed; production build passed (existing chunk-size
+    warning); cashflow/subscriptions JSON validation and canonical model arithmetic/Tokyo
+    boundary/future minimum passed without financial values in output; git diff --check
+    passed
+  latest_verified_commit: d53563721ca8cada71bc40724d5212c5bf0bc579
   latest_verified_pushed_at: '2026-10-02T15:17:08Z'
 - repo: masakasakasama/sen-android-updates
   default_branch: main
