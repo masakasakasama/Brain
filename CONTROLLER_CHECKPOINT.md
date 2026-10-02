@@ -1,8 +1,10 @@
 # Controller checkpoint
 
-Updated at: 2026-10-02T18:17:47.896187+00:00
+Updated at: 2026-10-02T18:43:07.295883+00:00
 
 ## Done
+- 最新再開: english-news-appで容量失敗時の虚偽の保存済み表示を修正。推奨/手動採点・export・再保存・再訪/reload・61日後の履歴保持browser回帰、lint/build/history8件 passed。
+- 最新再開: Daily_checkの4日9件をverified late監査候補と照合し掲載修復。元記事/元check/元採用判断は保持、関連8週再生成。tests6件・全19日/当日/週次validator passed。
 - Microsoft-FDE: 公式3ガイドを確認。AB-100の10/14適用改訂と7/22教材基準を区別。Chrome表示とparser 3/3検証。
 - MF Dashboard: 明示forecastRuleId+日付で確定取引が同日の予測を置換し、基準実残高以前の予測を再加算しない。8/8 tests + build + JSON/実データ算術検証。実金融データ変更なし。
 - SEN: 戦略保留を一覧へ戻し、focusには選ばず他候補探索を維持。build + 135/135 tests + secret scan + mocked Chrome表示確認。
@@ -15,21 +17,19 @@ Updated at: 2026-10-02T18:17:47.896187+00:00
 - english-news-app: 全体lint 16 errors / 3 warningsを解消。IELTS旧端末mergeのsnapshot欠落を修正。履歴8/8・build・390px UI・実hook/mock TTS検証 passed。
 
 ## Current
-- このcycleは14対象すべてを処理またはblocker確認。今回は残り4repoを実装・検証・GitHubへ保存した。
-- 全14件の最新GitHub headとstateを再取得。13件が状態ファイル必須項目を満たす。個人サイトは状態ファイル・Goal不足を維持。
-- 最近30日の対象14件、長期未更新22件に対象repo変更なし。
-- 次cycleは最新pushed_at順のqueueを保存。自身のcheckpointで未処理対象が永久に後回しにならない。
+- 最新再開はAI-Assistantの並行編集を見送り、English/Dailyを実装・検証・GitHubへ保存。
+- 最近30日: 14 repo、長期未更新22 repoへ対象repo変更なし。Automationは1個だけ有効。
+- このcycleの未処理11件を最新pushed_at順で保存。全repo完了ではない。
 
 ## Next
-- 最新pushのAI-Assistant_handmadeから開始。現在のREADME/handoff・担当範囲を読み、別作業と編集が重ならない範囲でworker Nextを続行。
-- 以後はMASTER_STATE.yamlのwork_cycle.remaining_repositoriesを最新pushed_at順で処理する。
-- workerのNext・Blockersを最新GitHubから読み直す。blockedはcompletedに数えない。
+- masakasakasama/Marriage_procedure の最新AGENTS/README/state/Nextを読み直して続行。
+- queue残りを処理し、既存workerの並行更新を避ける。
 
 ## Blockers
 - Galaxy/USB実機なし: Fitness / Home / Alarmは未完了。
 - AI-Assistant mainの別作業d2adaa6を最終確認。Android変更を上書きせず、このpassでは編集しない。
 - 個人サイトは別作業によるdomain更新と開発Goal/worker state不足。参照のみ。
-- Daily_checkの9/25・9/26・9/27・10/01のlate混入は未修復。収集証跡なしにニュースデータを推測で変更しない。07:30 recovery taskは確認できない。
+- Daily_checkのlate掲載混入は修復済み。Deep Scan必須条件のvalidatorと07:30 recovery task確認は未完了。
 - 本番資格情報・Google同期/Functions配信・認証/ユーザー分離・残るbrowser QAは各worker stateに保存。全repo完了ではない。
 - Codex残量/回復時刻は取得不可。回復済みとは断言しない。司令塔Automationは1個、有効。hourly再確認であり正確な利用枠回復通知ではない。
 
@@ -40,9 +40,9 @@ Updated at: 2026-10-02T18:17:47.896187+00:00
 - 出版は明示ファイルのみ、remote親SHA一致を確認して非強制ref更新。並行更新は停止して再照合する。
 
 ## Confirmed repository heads
-- [masakasakasama/AI-Assistant_handmade](https://github.com/masakasakasama/AI-Assistant_handmade/commit/d2adaa6fb6f0e08d06befeaadaafdd1cbcec83a1): in_progress (external update; tests not rerun)
-- [masakasakasama/english-news-app](https://github.com/masakasakasama/english-news-app/commit/b60b7f5d436b6866e5656648f9d376c3115172ef): in_progress
-- [masakasakasama/Daily_check](https://github.com/masakasakasama/Daily_check/commit/abb58d65fe5627a1f729b4c0d72cac4d0aa91a74): in_progress
+- [masakasakasama/AI-Assistant_handmade](https://github.com/masakasakasama/AI-Assistant_handmade/commit/fa5a391bc6a2a037a539d3a69cac838ebaa5c9cc): in_progress (external update; tests not rerun)
+- [masakasakasama/english-news-app](https://github.com/masakasakasama/english-news-app/commit/33cfa9fc162e8722837672da90971be706e5d45f): in_progress
+- [masakasakasama/Daily_check](https://github.com/masakasakasama/Daily_check/commit/ae16cba0bb0aa33feca06f222b1665a6f944c913): in_progress
 - [masakasakasama/Marriage_procedure](https://github.com/masakasakasama/Marriage_procedure/commit/09b4d3c874880e8d1caa34e9d75003d27699d841): in_progress
 - [masakasakasama/Calender](https://github.com/masakasakasama/Calender/commit/c13cdc2f4299f03803944afd7da6da2a7cf100d2): in_progress
 - [masakasakasama/Trip_Plan](https://github.com/masakasakasama/Trip_Plan/commit/e001f51ec06eedbcd8edc1a8fe21241d083cc7ab): in_progress
