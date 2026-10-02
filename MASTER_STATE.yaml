@@ -7,124 +7,7 @@ policy:
   reset_behavior: resume_enabled_workers
   note: "Codexスレッド自体のScheduled taskは各スレッド側で設定する"
 projects:
-  - repo: masakasakasama/1000yen-agent
-    default_branch: main
-    visibility: private
-    enabled: false
-    priority: null
-    status: registered
-    codex_thread: null
-    next: null
-    last_checkpoint: null
-  - repo: masakasakasama/AAOS_Codex
-    default_branch: main
-    visibility: public
-    enabled: false
-    priority: null
-    status: registered
-    codex_thread: null
-    next: null
-    last_checkpoint: null
-  - repo: masakasakasama/AAOS_study
-    default_branch: main
-    visibility: public
-    enabled: false
-    priority: null
-    status: registered
-    codex_thread: null
-    next: null
-    last_checkpoint: null
   - repo: masakasakasama/AI-Assistant_handmade
-    default_branch: main
-    visibility: public
-    enabled: false
-    priority: null
-    status: registered
-    codex_thread: null
-    next: null
-    last_checkpoint: null
-  - repo: masakasakasama/Alarm
-    default_branch: main
-    visibility: public
-    enabled: false
-    priority: null
-    status: registered
-    codex_thread: null
-    next: null
-    last_checkpoint: null
-  - repo: masakasakasama/Business_English
-    default_branch: main
-    visibility: public
-    enabled: false
-    priority: null
-    status: registered
-    codex_thread: null
-    next: null
-    last_checkpoint: null
-  - repo: masakasakasama/Calender
-    default_branch: main
-    visibility: public
-    enabled: false
-    priority: null
-    status: registered
-    codex_thread: null
-    next: null
-    last_checkpoint: null
-  - repo: masakasakasama/CAPM_Baby
-    default_branch: main
-    visibility: public
-    enabled: false
-    priority: null
-    status: registered
-    codex_thread: null
-    next: null
-    last_checkpoint: null
-  - repo: masakasakasama/cinnamon-workout
-    default_branch: main
-    visibility: public
-    enabled: false
-    priority: null
-    status: registered
-    codex_thread: null
-    next: null
-    last_checkpoint: null
-  - repo: masakasakasama/Cooking
-    default_branch: main
-    visibility: public
-    enabled: false
-    priority: null
-    status: registered
-    codex_thread: null
-    next: null
-    last_checkpoint: null
-  - repo: masakasakasama/CPRE
-    default_branch: main
-    visibility: public
-    enabled: false
-    priority: null
-    status: registered
-    codex_thread: null
-    next: null
-    last_checkpoint: null
-  - repo: masakasakasama/CPRE-data
-    default_branch: main
-    visibility: private
-    enabled: false
-    priority: null
-    status: registered
-    codex_thread: null
-    next: null
-    last_checkpoint: null
-  - repo: masakasakasama/Daily_check
-    default_branch: main
-    visibility: public
-    enabled: false
-    priority: null
-    status: registered
-    codex_thread: null
-    next: null
-    last_checkpoint: null
-  - repo: masakasakasama/Design_system
     default_branch: main
     visibility: public
     enabled: false
@@ -142,16 +25,7 @@ projects:
     codex_thread: null
     next: null
     last_checkpoint: null
-  - repo: masakasakasama/Fitness
-    default_branch: claude/gym-tracking-app-SVUkz
-    visibility: public
-    enabled: false
-    priority: null
-    status: registered
-    codex_thread: null
-    next: null
-    last_checkpoint: null
-  - repo: masakasakasama/fitness_codex
+  - repo: masakasakasama/Daily_check
     default_branch: main
     visibility: public
     enabled: false
@@ -169,7 +43,7 @@ projects:
     codex_thread: null
     next: null
     last_checkpoint: null
-  - repo: masakasakasama/household_budget_management_forbaby
+  - repo: masakasakasama/Alarm
     default_branch: main
     visibility: public
     enabled: false
@@ -178,25 +52,7 @@ projects:
     codex_thread: null
     next: null
     last_checkpoint: null
-  - repo: masakasakasama/Keyboard
-    default_branch: main
-    visibility: public
-    enabled: false
-    priority: null
-    status: registered
-    codex_thread: null
-    next: null
-    last_checkpoint: null
-  - repo: masakasakasama/Language_learning
-    default_branch: claude/japanese-learning-app-g46QW
-    visibility: public
-    enabled: false
-    priority: null
-    status: registered
-    codex_thread: null
-    next: null
-    last_checkpoint: null
-  - repo: masakasakasama/Marriage-process-
+  - repo: masakasakasama/Design_system
     default_branch: main
     visibility: public
     enabled: false
@@ -214,8 +70,8 @@ projects:
     codex_thread: null
     next: null
     last_checkpoint: null
-  - repo: masakasakasama/masakasakasama.github.io
-    default_branch: main
+  - repo: masakasakasama/Fitness
+    default_branch: claude/gym-tracking-app-SVUkz
     visibility: public
     enabled: false
     priority: null
@@ -223,7 +79,7 @@ projects:
     codex_thread: null
     next: null
     last_checkpoint: null
-  - repo: masakasakasama/mf-dashboard
+  - repo: masakasakasama/Trip_Plan
     default_branch: main
     visibility: public
     enabled: false
@@ -241,9 +97,63 @@ projects:
     codex_thread: null
     next: null
     last_checkpoint: null
-  - repo: masakasakasama/Money_management
+  - repo: masakasakasama/Calender
+    default_branch: main
+    visibility: public
+    enabled: false
+    priority: null
+    status: registered
+    codex_thread: null
+    next: null
+    last_checkpoint: null
+  - repo: masakasakasama/mf-dashboard
+    default_branch: main
+    visibility: public
+    enabled: false
+    priority: null
+    status: registered
+    codex_thread: null
+    next: null
+    last_checkpoint: null
+  - repo: masakasakasama/1000yen-agent
     default_branch: main
     visibility: private
+    enabled: false
+    priority: null
+    status: registered
+    codex_thread: null
+    next: null
+    last_checkpoint: null
+  - repo: masakasakasama/sen-android-updates
+    default_branch: main
+    visibility: public
+    enabled: false
+    priority: null
+    status: registered
+    codex_thread: null
+    next: null
+    last_checkpoint: null
+  - repo: masakasakasama/Wheather
+    default_branch: main
+    visibility: public
+    enabled: false
+    priority: null
+    status: registered
+    codex_thread: null
+    next: null
+    last_checkpoint: null
+  - repo: masakasakasama/CPRE
+    default_branch: main
+    visibility: public
+    enabled: false
+    priority: null
+    status: registered
+    codex_thread: null
+    next: null
+    last_checkpoint: null
+  - repo: masakasakasama/CAPM_Baby
+    default_branch: main
+    visibility: public
     enabled: false
     priority: null
     status: registered
@@ -259,7 +169,25 @@ projects:
     codex_thread: null
     next: null
     last_checkpoint: null
-  - repo: masakasakasama/portfolio-plan
+  - repo: masakasakasama/CPRE-data
+    default_branch: main
+    visibility: private
+    enabled: false
+    priority: null
+    status: registered
+    codex_thread: null
+    next: null
+    last_checkpoint: null
+  - repo: masakasakasama/Money_management
+    default_branch: main
+    visibility: private
+    enabled: false
+    priority: null
+    status: registered
+    codex_thread: null
+    next: null
+    last_checkpoint: null
+  - repo: masakasakasama/household_budget_management_forbaby
     default_branch: main
     visibility: public
     enabled: false
@@ -277,7 +205,16 @@ projects:
     codex_thread: null
     next: null
     last_checkpoint: null
-  - repo: masakasakasama/sen-android-updates
+  - repo: masakasakasama/Language_learning
+    default_branch: claude/japanese-learning-app-g46QW
+    visibility: public
+    enabled: false
+    priority: null
+    status: registered
+    codex_thread: null
+    next: null
+    last_checkpoint: null
+  - repo: masakasakasama/Cooking
     default_branch: main
     visibility: public
     enabled: false
@@ -286,8 +223,35 @@ projects:
     codex_thread: null
     next: null
     last_checkpoint: null
-  - repo: masakasakasama/Stock
-    default_branch: claude/add-stock-widget-hQSgH
+  - repo: masakasakasama/AAOS_study
+    default_branch: main
+    visibility: public
+    enabled: false
+    priority: null
+    status: registered
+    codex_thread: null
+    next: null
+    last_checkpoint: null
+  - repo: masakasakasama/AAOS_Codex
+    default_branch: main
+    visibility: public
+    enabled: false
+    priority: null
+    status: registered
+    codex_thread: null
+    next: null
+    last_checkpoint: null
+  - repo: masakasakasama/Marriage-process-
+    default_branch: main
+    visibility: public
+    enabled: false
+    priority: null
+    status: registered
+    codex_thread: null
+    next: null
+    last_checkpoint: null
+  - repo: masakasakasama/Keyboard
+    default_branch: main
     visibility: public
     enabled: false
     priority: null
@@ -304,7 +268,7 @@ projects:
     codex_thread: null
     next: null
     last_checkpoint: null
-  - repo: masakasakasama/Trip_Plan
+  - repo: masakasakasama/cinnamon-workout
     default_branch: main
     visibility: public
     enabled: false
@@ -322,7 +286,43 @@ projects:
     codex_thread: null
     next: null
     last_checkpoint: null
-  - repo: masakasakasama/Wheather
+  - repo: masakasakasama/Stock
+    default_branch: claude/add-stock-widget-hQSgH
+    visibility: public
+    enabled: false
+    priority: null
+    status: registered
+    codex_thread: null
+    next: null
+    last_checkpoint: null
+  - repo: masakasakasama/fitness_codex
+    default_branch: main
+    visibility: public
+    enabled: false
+    priority: null
+    status: registered
+    codex_thread: null
+    next: null
+    last_checkpoint: null
+  - repo: masakasakasama/Business_English
+    default_branch: main
+    visibility: public
+    enabled: false
+    priority: null
+    status: registered
+    codex_thread: null
+    next: null
+    last_checkpoint: null
+  - repo: masakasakasama/portfolio-plan
+    default_branch: main
+    visibility: public
+    enabled: false
+    priority: null
+    status: registered
+    codex_thread: null
+    next: null
+    last_checkpoint: null
+  - repo: masakasakasama/masakasakasama.github.io
     default_branch: main
     visibility: public
     enabled: false
