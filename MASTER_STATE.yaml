@@ -110,14 +110,13 @@ projects:
   priority: null
   status: in_progress
   codex_thread: null
-  next: 'CODEX_STATE.md: docs/ADOPTION.mdに従い、対象consumerでrevisionをpinし最小範囲から導入する。UI差分を確認してから配信する。'
-  last_checkpoint: '2026-10-02T10:52:11.599919+00:00'
+  next: 'CODEX_STATE.md: docs/ADOPTION.mdに従い対象consumerのrevision pinと最小範囲の導入を進め、UI差分とbuildを検証する。'
+  last_checkpoint: '2026-10-02T16:53:27.282233+00:00'
   observed_pushed_at: '2026-09-21T12:40:21Z'
-  last_commit: 89e41913682ff7a0a6d4c3fdf147d3cf2ded9f30
-  verification: 'npm test: 2/2 passed; npm run validate / npm run check:generated:
-    passed、生成物差分なし; JDK17 + SDK34 + Gradle8.9 :android:tatsu-design-system:assembleRelease:
-    passed; git diff --check: passed'
-  latest_verified_commit: 89e41913682ff7a0a6d4c3fdf147d3cf2ded9f30
+  last_commit: 3c1f39b431286cac03710a8a9175a39a83244242
+  verification: 'npm test: 5/5 passed; npm run validate and check:generated passed;
+    generated artifacts unchanged; git diff --check passed'
+  latest_verified_commit: 3c1f39b431286cac03710a8a9175a39a83244242
   latest_verified_pushed_at: '2026-10-02T10:52:14Z'
 - repo: masakasakasama/Marriage_procedure
   default_branch: main
