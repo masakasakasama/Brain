@@ -22,10 +22,17 @@ registered workers. Repeated runs therefore missed actual newer worker commits.
 
 ## Verification
 
-11 selector tests passed, including changed blocked head, pushed order,
+14 selector tests passed, including changed blocked head, pushed order,
 retry fairness/cooldown, controller-only stale activity, registry filtering,
 unknown/completion, usage limit, lease expiry, file CAS and stale queue rejection.
 Offline real metadata diagnosed Daily_check at a275469 as changed, without sending
 messages or changing any worker. Live lease/probe/publication results follow in
 CONTROLLER_CHECKPOINT.md. Credentials/device probes remain separate from selector
 unit tests; this change does not manufacture missing production/device evidence.
+
+Live checks: GitHub metadata selected Daily_check; a live CAS lease was saved
+at Brain commit 4cb2ce4. A duplicate stale claim returned unknown/queue changed
+and wrote nothing. Daily_check repair was published as 67c9baf3849fc88730987f9a440121def4936b70.
+The next live read-only selection is AI-Assistant_handmade at d43e30ef.
+All eligible workers being inactive is not treated as a completion certificate.
+New external heads on stale or omitted registrations require activity review first.

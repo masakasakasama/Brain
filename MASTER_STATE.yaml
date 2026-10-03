@@ -75,16 +75,14 @@ projects:
   priority: null
   status: blocked
   codex_thread: null
-  next: 'CODEX_STATE.md: 収集担当が実際の追加検索URL・観測hit・検索単位取得statusを保存し、9/26・9/27の未完了を解決したらcollection
-    validatorを再実行する。既存旧証跡のadapterは契約を確認してから実装し、欠如した観測を推測しない。'
-  last_checkpoint: '2026-10-03T05:40:27.998101+00:00'
-  observed_pushed_at: '2026-10-03T05:39:36Z'
-  last_commit: e181530557c0b371bec345a72bb94d3eeca19a32
-  verification: CODEX_STATE.md / docs/collection-evidence-review-2026-10-03.md参照。14
-    tests/当日/publication20日成功。18確定counter修復、残る5監査は未認証。
-  latest_verified_commit: e181530557c0b371bec345a72bb94d3eeca19a32
-  latest_verified_pushed_at: '2026-10-03T05:39:36Z'
-  latest_observed_commit: e181530557c0b371bec345a72bb94d3eeca19a32
+  next: 10/4監査・週次は修復/検証済み。残る過去5監査の実証跡待ち。新headまたは再確認期限で再評価。
+  last_checkpoint: '2026-10-03T23:01:32.443230+00:00'
+  observed_pushed_at: '2026-10-03T23:00:39Z'
+  last_commit: 67c9baf3849fc88730987f9a440121def4936b70
+  verification: 16/16 tests、10/4 daily、publication21日成功。collection history過去5証跡不足は未完了。docs/controller-recheck-2026-10-04.md参照。
+  latest_verified_commit: 67c9baf3849fc88730987f9a440121def4936b70
+  latest_verified_pushed_at: '2026-10-03T23:00:39Z'
+  latest_observed_commit: 67c9baf3849fc88730987f9a440121def4936b70
 - repo: masakasakasama/Home
   default_branch: main
   visibility: public
@@ -492,19 +490,22 @@ automation:
   status: enabled
   quota_visibility: No tool exposes Codex remaining usage or reset time; runs must
     not claim exact recovery detection.
+  recovery_policy: GitHub metadata change detection; six-hour blocked recheck; GitHub
+    CAS lease; suppress unchanged notifications
+  prompt_updated_at: '2026-10-03T23:01:32.443230+00:00'
 controller_checkpoint:
-  updated_at: '2026-10-03T05:40:27.998101+00:00'
-  pass_status: controller_recovery_in_progress
+  updated_at: '2026-10-03T23:01:32.443230+00:00'
+  pass_status: recovery_enabled_worker_progress_checkpointed
   active_repositories: 13
-  excluded_stale_repositories: 22
+  excluded_stale_repositories: 23
   state_files_verified: 13
   automation_count_for_controller: 1
-  remaining_work: 固定blocked停止を廃止。13対象を復元し変更されたDaily_checkから再検証。mf-dashboardは非司令塔活動30日超で対象外。
+  remaining_work: 変更検知と定期blocked再確認を有効化。Daily_check最新修復完了・過去証跡待ち。次は更新済みAI-Assistantの最新state/probe。
   quota_reset_time: unavailable
-  next_repository: masakasakasama/Daily_check
+  next_repository: masakasakasama/AI-Assistant_handmade
 work_cycle:
   status: review_pending
-  updated_at: '2026-10-03T05:40:27.998101+00:00'
+  updated_at: '2026-10-03T23:01:32.443230+00:00'
   processed_repositories: []
   remaining_repositories:
   - masakasakasama/Daily_check
@@ -520,7 +521,7 @@ work_cycle:
   - masakasakasama/Fitness
   - masakasakasama/Home
   - masakasakasama/Alarm
-  next_repository: masakasakasama/Daily_check
+  next_repository: masakasakasama/AI-Assistant_handmade
   note: Use live metadata and select_work.py; next_repository is a hint, never a reason
     to skip blocked rechecks.
   previous_cycle_processed_repositories:
