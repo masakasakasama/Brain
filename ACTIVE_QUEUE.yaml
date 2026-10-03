@@ -4,16 +4,16 @@ policy:
   recent_window_days: 7
   ignore_controller_push_for_activity: true
   read_master_state_on_each_run: false
-next_repository: masakasakasama/AI-Assistant_handmade
+next_repository: masakasakasama/english-news-app
 repositories:
 - repo: masakasakasama/1000yen-agent
   status: blocked
   next: 隔離wait復帰fixtureは完了。OCI資格情報・Galaxy接続後の本番restore/restart/実機受入待ち。
   last_checkpoint: '2026-10-03T02:42:47.878223+00:00'
 - repo: masakasakasama/AI-Assistant_handmade
-  status: in_progress
-  next: CODEX_STATE.mdから利用上限・rate limit・秘匿ログを継続。実端末受入は未完了。
-  last_checkpoint: '2026-10-02T23:21:58.608023+00:00'
+  status: blocked
+  next: Backend上限/rate limit/秘匿ログの隔離検証は完了。実Redis/Deployment設定とGalaxy受入待ち。
+  last_checkpoint: '2026-10-03T03:51:23.959415+00:00'
 - repo: masakasakasama/english-news-app
   status: in_progress
   next: CODEX_STATE.mdからH09 preview/デプロイcommit一致確認を継続。認証・利用者別保存分離は未完了。
