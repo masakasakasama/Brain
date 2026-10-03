@@ -43,7 +43,24 @@ class Selection(unittest.TestCase):
     def test_controller_push_does_not_revive_stale_activity(self):
         for row in self.queue["repositories"]: row["qualifying_activity_at"] = "2026-08-01T00:00:00Z"
         for obs in self.obs.values(): obs["head"] = "new-checkpoint"
-        self.assertIsNone(self.plan()["repository"])
+        self.assertEqual(self.plan()["action"], "activity_review")
+        self.assertNotEqual(self.plan()["action"], "work")
+
+    def test_stale_unchanged_activity_remains_inactive(self):
+        for row in self.queue["repositories"]: row["qualifying_activity_at"] = "2026-08-01T00:00:00Z"
+        self.assertEqual(self.plan()["action"], "inactive")
+
+    def test_new_external_head_on_omitted_registered_worker_is_not_invisible(self):
+        self.queue["repositories"] = self.queue["repositories"][1:]
+        self.master["projects"][0]["latest_observed_commit"] = "old"
+        self.obs["o/a"]["head"] = "new"
+        result = self.plan()
+        self.assertEqual(result["repository"], "o/a")
+        self.assertEqual(result["action"], "activity_review")
+
+    def test_no_eligible_workers_is_not_a_completion_certificate(self):
+        self.master["projects"] = []
+        self.assertEqual(self.plan()["action"], "inactive")
 
     def test_only_registered_enabled_workers(self):
         self.master["projects"][0]["enabled"] = False

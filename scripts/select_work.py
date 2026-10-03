@@ -51,14 +51,22 @@ def plan(master, queue, observations, now, quota_exhausted=False):
     cutoff = now - timedelta(days=days)
     registered = {p["repo"] for p in master["projects"] if p.get("enabled")}
     candidates, unknown, incomplete, busy = [], [], [], []
-    for row in queue["repositories"]:
+    eligible = 0
+    rows = list(queue["repositories"])
+    queued = {r["repo"] for r in rows}
+    # Registration omissions are observable without reading every worker state.
+    for project in master["projects"]:
+        if project.get("enabled") and project["repo"] not in queued:
+            rows.append(dict(repo=project["repo"], status="activity_unverified",
+                             qualifying_activity_at="1970-01-01T00:00:00Z",
+                             last_reviewed_head=project.get("latest_observed_commit")))
+    for row in rows:
         repo = row["repo"]
         if repo not in registered:
             continue
         try:
             # This date is verified non-controller activity, never checkpoint time.
-            if timestamp(row["qualifying_activity_at"]) < cutoff:
-                continue
+            stale_activity = timestamp(row["qualifying_activity_at"]) < cutoff
         except (KeyError, ValueError, TypeError):
             unknown.append(repo)
             continue
@@ -74,6 +82,14 @@ def plan(master, queue, observations, now, quota_exhausted=False):
         if pushed < cutoff:
             continue
         changed = obs["head"] != row.get("last_reviewed_head")
+        if stale_activity:
+            if changed:
+                # Inspect the changed commit's provenance first; do not edit or
+                # revive based on a controller checkpoint or an unknown push.
+                candidates.append((0, -pushed.timestamp(), repo, "activity_review",
+                                   "new_head_activity_requires_verification", obs["head"]))
+            continue
+        eligible += 1
         # Completed at an older head must be reviewed too.
         if row.get("status") == "completed" and not changed:
             continue
@@ -107,7 +123,7 @@ def plan(master, queue, observations, now, quota_exhausted=False):
         _, _, repo, action, reason, head = min(candidates)
         return dict(action=action, repository=repo, reason=reason, observed_head=head,
                     unknown_repositories=unknown, busy_repositories=busy)
-    return dict(action="unknown" if unknown else "waiting" if incomplete else "completed",
+    return dict(action="unknown" if unknown else "waiting" if incomplete else "completed" if eligible else "inactive",
                 repository=None, unknown_repositories=unknown, busy_repositories=busy)
 
 
@@ -154,9 +170,9 @@ def main():
         observations = {r["repo"]: r for r in values} if isinstance(values, list) else values
     else:
         registered = {p["repo"] for p in master["projects"] if p.get("enabled")}
-        rows = [r for r in queue["repositories"] if r["repo"] in registered
-                and timestamp(r["qualifying_activity_at"]) >= now - timedelta(
-                    days=master["policy"]["recent_push_days"])]
+        # Even a currently inactive worker may have a new external push. Fetch
+        # metadata only; plan() requires activity evidence before worker editing.
+        rows = [{"repo": repo} for repo in sorted(registered)]
         with ThreadPoolExecutor(max_workers=4) as pool:
             observations = dict(pool.map(observe, rows))
     result = plan(master, queue, observations, now)
