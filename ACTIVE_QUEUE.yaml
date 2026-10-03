@@ -4,7 +4,7 @@ policy:
   recent_window_days: 7
   ignore_controller_push_for_activity: true
   read_master_state_on_each_run: false
-next_repository: masakasakasama/Daily_check
+next_repository: null
 repositories:
 - repo: masakasakasama/1000yen-agent
   status: blocked
@@ -19,9 +19,9 @@ repositories:
   next: Vercel接続から対象project/deploymentが見えずH09公開一致/preview確認待ち。CODEX_STATE.md参照。
   last_checkpoint: '2026-10-03T04:40:04.166900+00:00'
 - repo: masakasakasama/Daily_check
-  status: in_progress
-  next: CODEX_STATE.mdから過去collection監査5日の分類・確定件数修復を継続。実証跡不足/収集未完了は完了扱いにしない。
-  last_checkpoint: '2026-10-03T01:29:06.623554+00:00'
+  status: blocked
+  next: 過去監査の確定件数修復・分類は完了。欠如した実検索証跡/9/26・9/27未完了/07:30 recovery確認は収集担当待ち。
+  last_checkpoint: '2026-10-03T05:40:27.998101+00:00'
 - repo: masakasakasama/Home
   status: blocked
   next: Galaxy実機確認待ち
@@ -30,3 +30,5 @@ rules:
 - blocked repoはスキップして次へ
 - 完了したrepoはqueueから外す
 - 新しいrepoは明示的に追加する
+- next_repository=nullかつ全repo blockedなら変更せず終了。未完了として保持し、状態ファイルでblocker解消/対象再開が確定したらpointerを設定する。
+status: blocked
