@@ -7,7 +7,7 @@ policy:
   blocked_review_hours: 6
   lease_minutes: 60
   metadata_refresh: true
-next_repository: masakasakasama/english-news-app
+next_repository: masakasakasama/AI-Assistant_handmade
 repositories:
 - repo: masakasakasama/Daily_check
   status: blocked
@@ -27,13 +27,11 @@ repositories:
 - repo: masakasakasama/english-news-app
   status: blocked
   next: Vercel接続から対象project/deploymentが見えずH09公開一致/preview確認待ち。CODEX_STATE.md参照。
-  last_checkpoint: '2026-10-03T04:40:04.166900+00:00'
-  qualifying_activity_at: '2026-10-03T00:18:44Z'
-  last_reviewed_head: a58ca0b87af6c777fe2c7fc952e79c8158c80fc2
-  review_after: '2026-10-03T22:00:00Z'
-  lease:
-    owner: controller-review-20261004-english
-    expires_at: '2026-10-04T00:45:39.516765+00:00'
+  last_checkpoint: '2026-10-03T23:47:25.742005+00:00'
+  qualifying_activity_at: '2026-10-03T23:39:43Z'
+  last_reviewed_head: d5e5bb779708b99b22f5e3372fb692e483da2cc3
+  review_after: '2026-10-04T05:47:25.742005+00:00'
+  last_review_at: '2026-10-03T23:47:25.742005+00:00'
 - repo: masakasakasama/1000yen-agent
   status: blocked
   next: 隔離wait復帰fixtureは完了。OCI資格情報・Galaxy接続後の本番restore/restart/実機受入待ち。

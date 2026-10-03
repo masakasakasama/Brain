@@ -60,14 +60,13 @@ projects:
   codex_thread: null
   next: 'CODEX_STATE.md: 接続Vercelでenglish-news-appのproject/deploymentを閲覧できるようになったらREADY
     deploymentのgit SHAとproduction aliasを照合し、同期/有料APIを遮断した隔離previewで旧履歴fixtureと390px端末操作を検証する。'
-  last_checkpoint: '2026-10-03T04:39:29.206286+00:00'
-  observed_pushed_at: '2026-10-03T04:39:31Z'
-  last_commit: a58ca0b87af6c777fe2c7fc952e79c8158c80fc2
-  verification: CODEX_STATE.md / docs/controller-deployment-check-2026-10-03.md参照。read-only
-    status success/HTTP200、Vercel project空/404・GitHub deployments403。公開一致は未認証。
-  latest_verified_commit: a58ca0b87af6c777fe2c7fc952e79c8158c80fc2
-  latest_verified_pushed_at: '2026-10-03T04:39:31Z'
-  latest_observed_commit: a58ca0b87af6c777fe2c7fc952e79c8158c80fc2
+  last_checkpoint: '2026-10-03T23:47:25.742005+00:00'
+  observed_pushed_at: '2026-10-03T23:46:47Z'
+  last_commit: d5e5bb779708b99b22f5e3372fb692e483da2cc3
+  verification: CODEX_STATE.md参照。最新a4a95aeはdata-only、Vercel status success。project0/deployment404/deployments403継続。コード変更・再buildなし。
+  latest_verified_commit: d5e5bb779708b99b22f5e3372fb692e483da2cc3
+  latest_verified_pushed_at: '2026-10-03T23:46:47Z'
+  latest_observed_commit: d5e5bb779708b99b22f5e3372fb692e483da2cc3
 - repo: masakasakasama/Daily_check
   default_branch: main
   visibility: public
@@ -494,18 +493,18 @@ automation:
     CAS lease; suppress unchanged notifications
   prompt_updated_at: '2026-10-03T23:01:32.443230+00:00'
 controller_checkpoint:
-  updated_at: '2026-10-03T23:01:32.443230+00:00'
-  pass_status: recovery_enabled_worker_progress_checkpointed
+  updated_at: '2026-10-03T23:47:25.742005+00:00'
+  pass_status: changed_head_review_checkpointed
   active_repositories: 13
   excluded_stale_repositories: 23
   state_files_verified: 13
   automation_count_for_controller: 1
-  remaining_work: 変更検知と定期blocked再確認を有効化。Daily_check最新修復完了・過去証跡待ち。次は更新済みAI-Assistantの最新state/probe。
+  remaining_work: english-news-appの新data-only headを確認、Nextの接続条件は未成立。6時間後または新headで再評価。次はAI-Assistant_handmade。
   quota_reset_time: unavailable
   next_repository: masakasakasama/AI-Assistant_handmade
 work_cycle:
   status: review_pending
-  updated_at: '2026-10-03T23:01:32.443230+00:00'
+  updated_at: '2026-10-03T23:47:25.742005+00:00'
   processed_repositories: []
   remaining_repositories:
   - masakasakasama/Daily_check
