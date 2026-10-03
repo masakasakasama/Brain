@@ -71,16 +71,18 @@ projects:
   visibility: public
   enabled: true
   priority: null
-  status: in_progress
+  status: blocked
   codex_thread: null
-  next: 'CODEX_STATE.md: collection履歴の5日(9/25〜9/29)を分類し、保存rawCandidatesから確定できる件数だけ修復する。検索hit等の実証跡欠如・collection未完了は収集担当待ちとして記録する。'
-  last_checkpoint: '2026-10-03T01:28:34.478137+00:00'
-  observed_pushed_at: '2026-10-03T01:28:36Z'
-  last_commit: f52534218916dee0027e792c15d5f484d1ae9d23
-  verification: CODEX_STATE.md参照。12 testsと10/3日次成功、publication20日成功。collection履歴9日中5日の不足/不一致を検出、未完了。
-  latest_verified_commit: f52534218916dee0027e792c15d5f484d1ae9d23
-  latest_verified_pushed_at: '2026-10-03T01:28:36Z'
-  latest_observed_commit: f52534218916dee0027e792c15d5f484d1ae9d23
+  next: 'CODEX_STATE.md: 収集担当が実際の追加検索URL・観測hit・検索単位取得statusを保存し、9/26・9/27の未完了を解決したらcollection
+    validatorを再実行する。既存旧証跡のadapterは契約を確認してから実装し、欠如した観測を推測しない。'
+  last_checkpoint: '2026-10-03T05:40:27.998101+00:00'
+  observed_pushed_at: '2026-10-03T05:39:36Z'
+  last_commit: e181530557c0b371bec345a72bb94d3eeca19a32
+  verification: CODEX_STATE.md / docs/collection-evidence-review-2026-10-03.md参照。14
+    tests/当日/publication20日成功。18確定counter修復、残る5監査は未認証。
+  latest_verified_commit: e181530557c0b371bec345a72bb94d3eeca19a32
+  latest_verified_pushed_at: '2026-10-03T05:39:36Z'
+  latest_observed_commit: e181530557c0b371bec345a72bb94d3eeca19a32
 - repo: masakasakasama/Home
   default_branch: main
   visibility: public
@@ -489,18 +491,18 @@ automation:
   quota_visibility: No tool exposes Codex remaining usage or reset time; runs must
     not claim exact recovery detection.
 controller_checkpoint:
-  updated_at: '2026-10-03T04:40:04.166900+00:00'
-  pass_status: english_h09_deployment_visibility_blocked
+  updated_at: '2026-10-03T05:40:27.998101+00:00'
+  pass_status: active_queue_all_blocked_not_completed
   active_repositories: 5
   excluded_stale_repositories: 22
   state_files_verified: 13
   automation_count_for_controller: 1
-  remaining_work: ACTIVE_QUEUE.yamlの未完了作業を1実行1repoで継続。blockedは完了扱いにしない。
+  remaining_work: ACTIVE_QUEUE.yamlの5repoは全てblocked。完了ではなく依存/実証跡/権限/実機待ち。Automationは停止条件に該当せず1個を保持。
   quota_reset_time: unavailable
-  next_repository: masakasakasama/Daily_check
+  next_repository: null
 work_cycle:
-  status: in_progress
-  updated_at: '2026-10-02T21:05:26.134518+00:00'
+  status: blocked
+  updated_at: '2026-10-03T05:40:27.998101+00:00'
   processed_repositories: []
   remaining_repositories:
   - masakasakasama/Microsoft-FDE
@@ -517,10 +519,10 @@ work_cycle:
   - masakasakasama/Fitness
   - masakasakasama/Home
   - masakasakasama/Alarm
-  next_repository: masakasakasama/Microsoft-FDE
-  note: Resume remaining recent registered repos in latest pushed_at order; own checkpoint
-    pushes do not restart a partially completed cycle. Rebuild selection after this
-    cycle. Deferred/blocked is not completed.
+  next_repository: null
+  note: Current active selection and blockers are authoritative in ACTIVE_QUEUE.yaml.
+    Historical cycle lists are not targets to restart while all active repositories
+    are blocked.
   previous_cycle_processed_repositories:
   - masakasakasama/AI-Assistant_handmade
   - masakasakasama/english-news-app
