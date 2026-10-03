@@ -4,7 +4,7 @@ policy:
   recent_window_days: 7
   ignore_controller_push_for_activity: true
   read_master_state_on_each_run: false
-next_repository: masakasakasama/english-news-app
+next_repository: masakasakasama/Daily_check
 repositories:
 - repo: masakasakasama/1000yen-agent
   status: blocked
@@ -15,9 +15,9 @@ repositories:
   next: Backend上限/rate limit/秘匿ログの隔離検証は完了。実Redis/Deployment設定とGalaxy受入待ち。
   last_checkpoint: '2026-10-03T03:51:23.959415+00:00'
 - repo: masakasakasama/english-news-app
-  status: in_progress
-  next: CODEX_STATE.mdからH09 preview/デプロイcommit一致確認を継続。認証・利用者別保存分離は未完了。
-  last_checkpoint: '2026-10-03T00:20:36.181019+00:00'
+  status: blocked
+  next: Vercel接続から対象project/deploymentが見えずH09公開一致/preview確認待ち。CODEX_STATE.md参照。
+  last_checkpoint: '2026-10-03T04:40:04.166900+00:00'
 - repo: masakasakasama/Daily_check
   status: in_progress
   next: CODEX_STATE.mdから過去collection監査5日の分類・確定件数修復を継続。実証跡不足/収集未完了は完了扱いにしない。
