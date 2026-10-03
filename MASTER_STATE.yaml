@@ -69,17 +69,14 @@ projects:
   priority: null
   status: in_progress
   codex_thread: null
-  next: 'CODEX_STATE.md: collectionComplete/anomalyとDeep Scanの必須条件・追加12検索の実証跡を照合するvalidatorを追加する。'
-  last_checkpoint: '2026-10-02T18:42:03.662439+00:00'
-  observed_pushed_at: '2026-10-02T18:42:06Z'
-  last_commit: ae16cba0bb0aa33feca06f222b1665a6f944c913
-  verification: 'node --test scripts/*.test.mjs: 6/6 passed; repair CLI: 9 articles
-    / 4 days / 16 data files validated, original evidence preserved; publication history:
-    19 days / 0 failures; DAILY_CHECK_DATE=2026-10-02 daily validator passed; git
-    diff --check passed'
-  latest_verified_commit: ae16cba0bb0aa33feca06f222b1665a6f944c913
-  latest_verified_pushed_at: '2026-10-02T18:42:06Z'
-  latest_observed_commit: ae16cba0bb0aa33feca06f222b1665a6f944c913
+  next: 'CODEX_STATE.md: collection履歴の5日(9/25〜9/29)を分類し、保存rawCandidatesから確定できる件数だけ修復する。検索hit等の実証跡欠如・collection未完了は収集担当待ちとして記録する。'
+  last_checkpoint: '2026-10-03T01:28:34.478137+00:00'
+  observed_pushed_at: '2026-10-03T01:28:36Z'
+  last_commit: f52534218916dee0027e792c15d5f484d1ae9d23
+  verification: CODEX_STATE.md参照。12 testsと10/3日次成功、publication20日成功。collection履歴9日中5日の不足/不一致を検出、未完了。
+  latest_verified_commit: f52534218916dee0027e792c15d5f484d1ae9d23
+  latest_verified_pushed_at: '2026-10-03T01:28:36Z'
+  latest_observed_commit: f52534218916dee0027e792c15d5f484d1ae9d23
 - repo: masakasakasama/Home
   default_branch: main
   visibility: public
@@ -488,15 +485,15 @@ automation:
   quota_visibility: No tool exposes Codex remaining usage or reset time; runs must
     not claim exact recovery detection.
 controller_checkpoint:
-  updated_at: '2026-10-03T00:20:36.181019+00:00'
-  pass_status: english_h09_browser_recovery_checkpointed
+  updated_at: '2026-10-03T01:29:06.623554+00:00'
+  pass_status: daily_collection_validator_checkpointed
   active_repositories: 5
   excluded_stale_repositories: 22
   state_files_verified: 13
   automation_count_for_controller: 1
   remaining_work: ACTIVE_QUEUE.yamlの未完了作業を1実行1repoで継続。blockedは完了扱いにしない。
   quota_reset_time: unavailable
-  next_repository: masakasakasama/Daily_check
+  next_repository: masakasakasama/1000yen-agent
 work_cycle:
   status: in_progress
   updated_at: '2026-10-02T21:05:26.134518+00:00'

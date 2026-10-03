@@ -4,7 +4,7 @@ policy:
   recent_window_days: 7
   ignore_controller_push_for_activity: true
   read_master_state_on_each_run: false
-next_repository: masakasakasama/Daily_check
+next_repository: masakasakasama/1000yen-agent
 repositories:
 - repo: masakasakasama/1000yen-agent
   status: in_progress
@@ -20,7 +20,8 @@ repositories:
   last_checkpoint: '2026-10-03T00:20:36.181019+00:00'
 - repo: masakasakasama/Daily_check
   status: in_progress
-  next: CODEX_STATE.mdからvalidator作業を継続
+  next: CODEX_STATE.mdから過去collection監査5日の分類・確定件数修復を継続。実証跡不足/収集未完了は完了扱いにしない。
+  last_checkpoint: '2026-10-03T01:29:06.623554+00:00'
 - repo: masakasakasama/Home
   status: blocked
   next: Galaxy実機確認待ち
