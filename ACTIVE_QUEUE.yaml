@@ -1,34 +1,112 @@
-version: 1
+version: 2
 policy:
   one_repository_per_run: true
-  recent_window_days: 7
+  recent_window_days: 30
   ignore_controller_push_for_activity: true
-  read_master_state_on_each_run: false
-next_repository: null
+  read_master_state_on_each_run: true
+  blocked_review_hours: 6
+  lease_minutes: 60
+  metadata_refresh: true
+next_repository: masakasakasama/Daily_check
 repositories:
-- repo: masakasakasama/1000yen-agent
-  status: blocked
-  next: 隔離wait復帰fixtureは完了。OCI資格情報・Galaxy接続後の本番restore/restart/実機受入待ち。
-  last_checkpoint: '2026-10-03T02:42:47.878223+00:00'
-- repo: masakasakasama/AI-Assistant_handmade
-  status: blocked
-  next: Backend上限/rate limit/秘匿ログの隔離検証は完了。実Redis/Deployment設定とGalaxy受入待ち。
-  last_checkpoint: '2026-10-03T03:51:23.959415+00:00'
-- repo: masakasakasama/english-news-app
-  status: blocked
-  next: Vercel接続から対象project/deploymentが見えずH09公開一致/preview確認待ち。CODEX_STATE.md参照。
-  last_checkpoint: '2026-10-03T04:40:04.166900+00:00'
 - repo: masakasakasama/Daily_check
   status: blocked
   next: 過去監査の確定件数修復・分類は完了。欠如した実検索証跡/9/26・9/27未完了/07:30 recovery確認は収集担当待ち。
   last_checkpoint: '2026-10-03T05:40:27.998101+00:00'
+  qualifying_activity_at: '2026-10-03T22:48:53Z'
+  last_reviewed_head: e181530557c0b371bec345a72bb94d3eeca19a32
+  review_after: '2026-10-03T22:00:00Z'
+- repo: masakasakasama/AI-Assistant_handmade
+  status: blocked
+  next: Backend上限/rate limit/秘匿ログの隔離検証は完了。実Redis/Deployment設定とGalaxy受入待ち。
+  last_checkpoint: '2026-10-03T03:51:23.959415+00:00'
+  qualifying_activity_at: '2026-10-03T10:55:27Z'
+  last_reviewed_head: ca62f5feeb9a97763f115aade6a2a8ff5d652d93
+  review_after: '2026-10-03T22:00:00Z'
+- repo: masakasakasama/english-news-app
+  status: blocked
+  next: Vercel接続から対象project/deploymentが見えずH09公開一致/preview確認待ち。CODEX_STATE.md参照。
+  last_checkpoint: '2026-10-03T04:40:04.166900+00:00'
+  qualifying_activity_at: '2026-10-03T00:18:44Z'
+  last_reviewed_head: a58ca0b87af6c777fe2c7fc952e79c8158c80fc2
+  review_after: '2026-10-03T22:00:00Z'
+- repo: masakasakasama/1000yen-agent
+  status: blocked
+  next: 隔離wait復帰fixtureは完了。OCI資格情報・Galaxy接続後の本番restore/restart/実機受入待ち。
+  last_checkpoint: '2026-10-03T02:42:47.878223+00:00'
+  qualifying_activity_at: '2026-10-03T03:30:43Z'
+  last_reviewed_head: c85aec6caa715b03e28419f0314d0e3f1818ed2b
+  review_after: '2026-10-03T22:00:00Z'
+- repo: masakasakasama/Microsoft-FDE
+  status: in_progress
+  next: 'CODEX_STATE.md: 公式試験ページから提供言語・試験時間を照合し、未確認metadataを根拠付きで整合する。料金は地域/予約時点依存を明記する。'
+  last_checkpoint: '2026-10-02T21:48:38.671279+00:00'
+  qualifying_activity_at: '2026-09-08T11:49:44Z'
+  last_reviewed_head: 1cc3f970b0892a3de351ff46917c1a38ac5d1cb3
+  review_after: '2026-10-03T22:00:00Z'
+- repo: masakasakasama/Design_system
+  status: in_progress
+  next: 'CODEX_STATE.md: Trip_Planの次の小さなsurfaceまたは別の最近更新consumerを選び、同じrevision pin方式で導入・UI比較・buildを行う。'
+  last_checkpoint: '2026-10-02T20:59:23.423662+00:00'
+  qualifying_activity_at: '2026-09-21T12:40:19Z'
+  last_reviewed_head: a955c5f7dbf7301674f3b1b769e2ea0a53fa4a70
+  review_after: '2026-10-03T22:00:00Z'
+- repo: masakasakasama/Trip_Plan
+  status: in_progress
+  next: 'CODEX_STATE.md: 実GalaxyでGPU/fps/発熱を測定し、利用可能なCloudflare資格情報で本番同期の受入を確認する。'
+  last_checkpoint: '2026-10-02T20:58:41.868005+00:00'
+  qualifying_activity_at: '2026-09-13T11:06:21Z'
+  last_reviewed_head: c84b9e1e21dc86b0f7cf54e9d70d43904455c096
+  review_after: '2026-10-03T22:00:00Z'
+- repo: masakasakasama/Calender
+  status: in_progress
+  next: 'CODEX_STATE.md: isolated Firebase Emulatorでserver故障・復元済み予定・private calendar除外を検証した後、資格情報の範囲でFunctions反映を確認する。'
+  last_checkpoint: '2026-10-02T20:53:02.988626+00:00'
+  qualifying_activity_at: '2026-09-06T23:06:18Z'
+  last_reviewed_head: 587754e54ae1191f8efc17e8c1b0d4f5165d86c0
+  review_after: '2026-10-03T22:00:00Z'
+- repo: masakasakasama/Marriage_procedure
+  status: blocked
+  next: 'CODEX_STATE.md: 実利用者の二端末で同期・保存容量復帰・画面中断/再起動を確認する。isolated emulatorの合格を実端末合格に置き換えない。'
+  last_checkpoint: '2026-10-02T19:33:10.616417+00:00'
+  qualifying_activity_at: '2026-09-17T00:46:57Z'
+  last_reviewed_head: 5f3e3d58ff621b079e993a9d95284e4ff54d3b20
+  review_after: '2026-10-03T22:00:00Z'
+- repo: masakasakasama/masakasakasama.github.io
+  status: blocked
+  next: 最新pushと他作業の担当範囲を確認。既存状態ファイル・開発Goalがないため、並行編集を避けて最新状態の参照から再開する。
+  last_checkpoint: '2026-10-02T15:18:19.800171+00:00'
+  qualifying_activity_at: '2026-10-02T14:59:45Z'
+  last_reviewed_head: b6baaabd760bbad7e9b97a573889f4fd7c62c276
+  review_after: '2026-10-03T22:00:00Z'
+- repo: masakasakasama/Fitness
+  status: blocked
+  next: 'CODEX_STATE.md: Galaxyでv0.5.4 APKのローカル保存/復元、休憩アラーム、アプリ中断/復帰、旧データ移行を検証する。'
+  last_checkpoint: '2026-10-02T10:56:05.348637+00:00'
+  qualifying_activity_at: '2026-09-13T13:41:44Z'
+  last_reviewed_head: 6bcc2238a42f952421a3ec40e2a33849f10bbf39
+  review_after: '2026-10-03T22:00:00Z'
 - repo: masakasakasama/Home
   status: blocked
   next: Galaxy実機確認待ち
+  qualifying_activity_at: '2026-09-28T22:41:02Z'
+  last_reviewed_head: 783e587b8604df1a29db6fe6111c4d136c4f57cc
+  review_after: '2026-10-03T22:00:00Z'
+- repo: masakasakasama/Alarm
+  status: blocked
+  next: 'CODEX_STATE.md: READMEのGalaxy手動テストを実機で実施: 鳴動/停止/スヌーズ、Doze、再起動PIN前、権限失効/復帰、更新後の予約保持、同時刻複数件。'
+  last_checkpoint: '2026-10-02T10:53:11.879090+00:00'
+  qualifying_activity_at: '2026-09-22T08:10:09Z'
+  last_reviewed_head: 90cb13665d6181c04ec961d51d616d04d17c6915
+  review_after: '2026-10-03T22:00:00Z'
 rules:
-- 1 scheduled run = 1 repository
-- blocked repoはスキップして次へ
-- 完了したrepoはqueueから外す
-- 新しいrepoは明示的に追加する
-- next_repository=nullかつ全repo blockedなら変更せず終了。未完了として保持し、状態ファイルでblocker解消/対象再開が確定したらpointerを設定する。
-status: blocked
+- 1 scheduled run = 1 worker repository; metadata checks may cover registered eligible
+  repos
+- blocked is unfinished; changed head triggers review, not automatic completion
+- unchanged blocked repositories are reviewed at most every 6 hours; rotate by oldest
+  review
+- acquire a GitHub CAS lease before editing; recheck the worker head before publication
+- unchanged waiting results do not generate repeated notifications
+- all eligible work completed with no unknown/inaccessible repository is the only
+  stop condition
+status: review_pending

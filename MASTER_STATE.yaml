@@ -5,11 +5,13 @@ policy:
   worker_state_file: CODEX_STATE.md
   resume_order: github_pushed_at_desc
   reset_behavior: resume_enabled_workers
-  note: 司令塔用Scheduled Automation 1個だけで再開する。利用上限中は変更せず終了。最近pushされた登録repoのみ対象。
+  note: MASTER登録・非司令塔活動30日以内。metadata変更検知/blocked定期再確認とGitHub CAS lease。全blockedで固定終了しない。
   recent_push_days: 30
-  selection_checked_at: '2026-10-02T21:05:26.134518+00:00'
+  selection_checked_at: '2026-10-03T22:53:23.031371+00:00'
   checkpoint_before_stop: true
   resume_cycle_before_revisit: true
+  blocked_review_hours: 6
+  activity_evidence_field: ACTIVE_QUEUE.repositories.qualifying_activity_at
 projects:
 - repo: masakasakasama/1000yen-agent
   default_branch: main
@@ -492,37 +494,35 @@ automation:
     not claim exact recovery detection.
 controller_checkpoint:
   updated_at: '2026-10-03T05:40:27.998101+00:00'
-  pass_status: active_queue_all_blocked_not_completed
-  active_repositories: 5
+  pass_status: controller_recovery_in_progress
+  active_repositories: 13
   excluded_stale_repositories: 22
   state_files_verified: 13
   automation_count_for_controller: 1
-  remaining_work: ACTIVE_QUEUE.yamlの5repoは全てblocked。完了ではなく依存/実証跡/権限/実機待ち。Automationは停止条件に該当せず1個を保持。
+  remaining_work: 固定blocked停止を廃止。13対象を復元し変更されたDaily_checkから再検証。mf-dashboardは非司令塔活動30日超で対象外。
   quota_reset_time: unavailable
-  next_repository: null
+  next_repository: masakasakasama/Daily_check
 work_cycle:
-  status: blocked
+  status: review_pending
   updated_at: '2026-10-03T05:40:27.998101+00:00'
   processed_repositories: []
   remaining_repositories:
+  - masakasakasama/Daily_check
+  - masakasakasama/AI-Assistant_handmade
+  - masakasakasama/english-news-app
+  - masakasakasama/1000yen-agent
   - masakasakasama/Microsoft-FDE
-  - masakasakasama/mf-dashboard
   - masakasakasama/Design_system
   - masakasakasama/Trip_Plan
   - masakasakasama/Calender
   - masakasakasama/Marriage_procedure
-  - masakasakasama/Daily_check
-  - masakasakasama/english-news-app
-  - masakasakasama/AI-Assistant_handmade
-  - masakasakasama/1000yen-agent
   - masakasakasama/masakasakasama.github.io
   - masakasakasama/Fitness
   - masakasakasama/Home
   - masakasakasama/Alarm
-  next_repository: null
-  note: Current active selection and blockers are authoritative in ACTIVE_QUEUE.yaml.
-    Historical cycle lists are not targets to restart while all active repositories
-    are blocked.
+  next_repository: masakasakasama/Daily_check
+  note: Use live metadata and select_work.py; next_repository is a hint, never a reason
+    to skip blocked rechecks.
   previous_cycle_processed_repositories:
   - masakasakasama/AI-Assistant_handmade
   - masakasakasama/english-news-app
