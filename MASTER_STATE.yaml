@@ -54,17 +54,18 @@ projects:
   visibility: private
   enabled: true
   priority: null
-  status: in_progress
+  status: blocked
   codex_thread: null
-  next: 'CODEX_STATE.md: H09: Vercelの最新mainデプロイをcommit単位で照合し、previewで旧履歴fixtureと390px端末操作を確認する。資格情報不足ならblockerを記録する。'
-  last_checkpoint: '2026-10-03T00:20:36.181019+00:00'
-  observed_pushed_at: '2026-10-03T00:20:08Z'
-  last_commit: 858bdc420a7de98b558ab08c3999ba1e9612eb33
-  verification: 詳細はCODEX_STATE.md / docs/controller-verification-2026-10-03.md。lint/history8/build7162/browser
-    recovery passed。公開確認は未完了。
-  latest_verified_commit: 858bdc420a7de98b558ab08c3999ba1e9612eb33
-  latest_verified_pushed_at: '2026-10-03T00:20:08Z'
-  latest_observed_commit: 858bdc420a7de98b558ab08c3999ba1e9612eb33
+  next: 'CODEX_STATE.md: 接続Vercelでenglish-news-appのproject/deploymentを閲覧できるようになったらREADY
+    deploymentのgit SHAとproduction aliasを照合し、同期/有料APIを遮断した隔離previewで旧履歴fixtureと390px端末操作を検証する。'
+  last_checkpoint: '2026-10-03T04:39:29.206286+00:00'
+  observed_pushed_at: '2026-10-03T04:39:31Z'
+  last_commit: a58ca0b87af6c777fe2c7fc952e79c8158c80fc2
+  verification: CODEX_STATE.md / docs/controller-deployment-check-2026-10-03.md参照。read-only
+    status success/HTTP200、Vercel project空/404・GitHub deployments403。公開一致は未認証。
+  latest_verified_commit: a58ca0b87af6c777fe2c7fc952e79c8158c80fc2
+  latest_verified_pushed_at: '2026-10-03T04:39:31Z'
+  latest_observed_commit: a58ca0b87af6c777fe2c7fc952e79c8158c80fc2
 - repo: masakasakasama/Daily_check
   default_branch: main
   visibility: public
@@ -488,15 +489,15 @@ automation:
   quota_visibility: No tool exposes Codex remaining usage or reset time; runs must
     not claim exact recovery detection.
 controller_checkpoint:
-  updated_at: '2026-10-03T03:51:23.959415+00:00'
-  pass_status: backend_limits_redaction_checkpointed_acceptance_blocked
+  updated_at: '2026-10-03T04:40:04.166900+00:00'
+  pass_status: english_h09_deployment_visibility_blocked
   active_repositories: 5
   excluded_stale_repositories: 22
   state_files_verified: 13
   automation_count_for_controller: 1
   remaining_work: ACTIVE_QUEUE.yamlの未完了作業を1実行1repoで継続。blockedは完了扱いにしない。
   quota_reset_time: unavailable
-  next_repository: masakasakasama/english-news-app
+  next_repository: masakasakasama/Daily_check
 work_cycle:
   status: in_progress
   updated_at: '2026-10-02T21:05:26.134518+00:00'
