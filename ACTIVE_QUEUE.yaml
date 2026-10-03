@@ -16,6 +16,9 @@ repositories:
   qualifying_activity_at: '2026-10-03T22:48:53Z'
   last_reviewed_head: e181530557c0b371bec345a72bb94d3eeca19a32
   review_after: '2026-10-03T22:00:00Z'
+  lease:
+    owner: controller-recovery-20261003
+    expires_at: '2026-10-03T23:57:49.429882+00:00'
 - repo: masakasakasama/AI-Assistant_handmade
   status: blocked
   next: Backend上限/rate limit/秘匿ログの隔離検証は完了。実Redis/Deployment設定とGalaxy受入待ち。
