@@ -7,7 +7,7 @@ policy:
   blocked_review_hours: 6
   lease_minutes: 60
   metadata_refresh: true
-next_repository: masakasakasama/Microsoft-FDE
+next_repository: masakasakasama/masakasakasama.github.io
 repositories:
 - repo: masakasakasama/Daily_check
   status: blocked
@@ -86,6 +86,9 @@ repositories:
   qualifying_activity_at: '2026-10-02T14:59:45Z'
   last_reviewed_head: b6baaabd760bbad7e9b97a573889f4fd7c62c276
   review_after: '2026-10-03T22:00:00Z'
+  lease:
+    owner: resume-20261004-worker-review-12
+    expires_at: '2026-10-04T16:05:05.637456+00:00'
 - repo: masakasakasama/Fitness
   status: blocked
   next: 'CODEX_STATE.md: Galaxyでv0.5.4 APKのローカル保存/復元、休憩アラーム、アプリ中断/復帰、旧データ移行を検証する。'
