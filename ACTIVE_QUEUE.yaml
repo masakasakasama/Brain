@@ -7,7 +7,7 @@ policy:
   blocked_review_hours: 6
   lease_minutes: 60
   metadata_refresh: true
-next_repository: masakasakasama/Design_system
+next_repository: masakasakasama/AI-Assistant_handmade
 repositories:
 - repo: masakasakasama/Daily_check
   status: blocked
@@ -25,6 +25,9 @@ repositories:
   last_reviewed_head: b0737c784eb2a9eab9af334145c50d6f046db188
   review_after: '2026-10-04T15:31:05.834076+00:00'
   last_review_at: '2026-10-04T09:31:05.834076+00:00'
+  lease:
+    owner: resume-20261004-worker-review-8
+    expires_at: '2026-10-04T12:06:29.468804+00:00'
 - repo: masakasakasama/english-news-app
   status: blocked
   next: Vercel接続から対象project/deploymentが見えずH09公開一致/preview確認待ち。CODEX_STATE.md参照。
