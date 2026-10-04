@@ -57,6 +57,9 @@ repositories:
   last_reviewed_head: 131abafb91876263018c3f911ccd8db0343e085e
   review_after: '2026-10-04T22:50:04.226390+00:00'
   last_review_at: '2026-10-04T16:50:04.226390+00:00'
+  lease:
+    owner: resume-20261004-worker-review-15
+    expires_at: '2026-10-04T19:22:19.468312+00:00'
 - repo: masakasakasama/Trip_Plan
   status: blocked
   next: Astra About本文色導入/UI比較/data5件/buildは完了。既存Galaxy性能と本番書込み/競合/復旧の接続条件待ち。最新CODEX_STATE参照。
