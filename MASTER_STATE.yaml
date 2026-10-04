@@ -40,14 +40,14 @@ projects:
   priority: null
   status: blocked
   codex_thread: null
-  next: 'CODEX_STATE.md: 共有Redis RESTと日/分受付上限をDeployment環境へ設定/redeployできる接続が利用可能になったら、実EVAL・複数Function/process・期限境界・store障害のfail-closedを検証する。'
-  last_checkpoint: '2026-10-03T03:49:57.747124+00:00'
-  observed_pushed_at: '2026-10-03T03:50:39Z'
-  last_commit: ca62f5feeb9a97763f115aade6a2a8ff5d652d93
-  verification: CODEX_STATE.md参照。Backend67/67、benchmark plan成功。実Redis EVAL/共有・実デプロイ・Galaxy受入は未検証。
-  latest_verified_commit: ca62f5feeb9a97763f115aade6a2a8ff5d652d93
-  latest_verified_pushed_at: '2026-10-03T03:50:39Z'
-  latest_observed_commit: ca62f5feeb9a97763f115aade6a2a8ff5d652d93
+  next: Neon対応・公開health/未認証401を確認。実DB境界/store障害・Galaxy受入は接続待ち。最新CODEX_STATE参照。
+  last_checkpoint: '2026-10-04T01:24:21.962353+00:00'
+  observed_pushed_at: '2026-10-04T01:23:52Z'
+  last_commit: ede0f4090e520e2d03c121aa3d0291448e2a2ec5
+  verification: CODEX_STATE.md参照。新Neon対応の関連6/6テスト成功。公開health200/未認証dispatch401。実DB資格情報/端末なし、境界/障害受入未確認。コード変更なし。
+  latest_verified_commit: ede0f4090e520e2d03c121aa3d0291448e2a2ec5
+  latest_verified_pushed_at: '2026-10-04T01:23:52Z'
+  latest_observed_commit: ede0f4090e520e2d03c121aa3d0291448e2a2ec5
   last_controller_review: '2026-10-02T23:23:02.844048+00:00'
   controller_review_result: blocked; real shared Redis/deployment configuration and
     Galaxy acceptance pending
@@ -493,18 +493,18 @@ automation:
     CAS lease; suppress unchanged notifications
   prompt_updated_at: '2026-10-03T23:01:32.443230+00:00'
 controller_checkpoint:
-  updated_at: '2026-10-04T00:08:45.941673+00:00'
+  updated_at: '2026-10-04T01:24:21.962353+00:00'
   pass_status: changed_head_review_checkpointed
   active_repositories: 13
   excluded_stale_repositories: 23
   state_files_verified: 13
   automation_count_for_controller: 1
-  remaining_work: Daily_checkの新表示修正dc12d8aを構文確認。監査証跡の追加なし。6時間後または新headで再評価。次はAI-Assistant_handmade。
+  remaining_work: AI-Assistantの最新Neon実装・公開認証設定を確認し古いblocked根拠を更新。実DB境界/障害・Galaxyは未完了。次は1000yen-agent。
   quota_reset_time: unavailable
-  next_repository: masakasakasama/AI-Assistant_handmade
+  next_repository: masakasakasama/1000yen-agent
 work_cycle:
   status: review_pending
-  updated_at: '2026-10-04T00:08:45.941673+00:00'
+  updated_at: '2026-10-04T01:24:21.962353+00:00'
   processed_repositories: []
   remaining_repositories:
   - masakasakasama/Daily_check
@@ -520,7 +520,7 @@ work_cycle:
   - masakasakasama/Fitness
   - masakasakasama/Home
   - masakasakasama/Alarm
-  next_repository: masakasakasama/AI-Assistant_handmade
+  next_repository: masakasakasama/1000yen-agent
   note: Use live metadata and select_work.py; next_repository is a hint, never a reason
     to skip blocked rechecks.
   previous_cycle_processed_repositories:
