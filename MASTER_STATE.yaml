@@ -39,21 +39,18 @@ projects:
   priority: null
   status: blocked
   codex_thread: null
-  next: 7fcfd94のBackend Jev simple_chat回帰失敗によりWeb/APKリリース失敗。Android build実行中のためworker編集を保留。完了後/新headで担当状況とCI修正を確認し、既存実DB/実機受入Nextを維持。
-  last_checkpoint: '2026-10-04T04:44:49.312883+00:00'
+  next: 最新df8dd99で以前のCI失敗は解消。実DB境界/store障害とGalaxy受入は接続待ち。最新CODEX_STATE参照。
+  last_checkpoint: '2026-10-04T12:34:59.600535+00:00'
   observed_pushed_at: '2026-10-04T01:23:52Z'
-  last_commit: 3633f0586078466fcb1eea1b5c748d1e1f3c4ee5
-  verification: CODEX_STATE.md参照。最新CI成功、health200/未認証401。実DB資格情報/adb端末なし。既存fixture結果は過去headの記録で新head全体の再実行ではない。
-  latest_verified_commit: 3633f0586078466fcb1eea1b5c748d1e1f3c4ee5
+  last_commit: 8623a959773edbb7e6b4fa82b62c944b1eece34c
+  verification: CODEX_STATE.md参照。最新Backend/Web/Android CI成功・以前のJev CI障害解消、health200/未認証401。実DB資格情報/adb端末なし。既存fixture結果は過去headの記録で新head全体の再実行ではない。
+  latest_verified_commit: 8623a959773edbb7e6b4fa82b62c944b1eece34c
   latest_verified_pushed_at: '2026-10-04T01:23:52Z'
-  latest_observed_commit: 7fcfd9499778a54c44eba3d2296f3af613276694
-  last_controller_review: '2026-10-04T11:07:32.061904+00:00'
-  controller_review_result: 'New CI blocker: Web run37197491035 npm test fails Jev
-    simple_chat routes to Luna after Jev, dispatch-jev.test.mjs:32 expected true actual
-    false. APK run37197538434 fails its Web verification step. Android run37197491078
-    still running; worker left untouched. Runtime219 no bound credentials/capabilities.
-    Latest changes resolve device commands before model routing and reject unknown
-    explicit targets; no physical acceptance proof.'
+  latest_observed_commit: 8623a959773edbb7e6b4fa82b62c944b1eece34c
+  last_controller_review: '2026-10-04T12:34:59.600535+00:00'
+  controller_review_result: Previous backend CI failure resolved on df8dd99; Backend,
+    Web/browser and Android CI success. Runtime223 no credentials/device; real acceptance
+    pending.
 - repo: masakasakasama/english-news-app
   default_branch: main
   visibility: private
