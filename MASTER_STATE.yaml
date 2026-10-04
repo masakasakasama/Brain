@@ -458,16 +458,20 @@ projects:
   priority: null
   status: completed
   codex_thread: null
-  next: ユーザー指示の全Pagesドメイン復旧は完了。新たな明示的作業指示待ち。
+  next: ユーザー指示の元GitHub Pages URL復旧は完了。保存Nextに追加作業なし。
   last_checkpoint: '2026-10-04T03:48:11.806944+00:00'
   observed_pushed_at: '2026-10-02T14:59:45Z'
   latest_verified_pushed_at: '2026-10-02T14:59:45Z'
   blockers: []
   latest_verified_commit: 0997bf2a7ee6525c0f826b059654fea10d8dbcd5
   latest_observed_commit: 0997bf2a7ee6525c0f826b059654fea10d8dbcd5
-  last_controller_review: '2026-10-02T21:05:26.134518+00:00'
-  controller_review_result: 'Requested URL restoration complete: FDE directory/index
-    and nine other Home links verified HTTP 200 at original HTTPS URLs'
+  last_controller_review: '2026-10-04T15:06:32.846016+00:00'
+  controller_review_result: 0997bf2 is the previous controller state-only checkpoint,
+    not new external activity. Latest CODEX_STATE Next explicitly complete; CNAME
+    absent, Pages cname=null/original HTTPS/enforced, deployment CI success. Parent
+    and FDE canonical URLs return200 without redirects. Requested restoration completed;
+    no worker commit, target expansion or automation changes.
+  last_commit: 0997bf2a7ee6525c0f826b059654fea10d8dbcd5
 - repo: masakasakasama/Business_English
   default_branch: main
   visibility: public
