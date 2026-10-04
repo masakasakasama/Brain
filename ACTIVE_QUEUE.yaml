@@ -7,7 +7,7 @@ policy:
   blocked_review_hours: 6
   lease_minutes: 60
   metadata_refresh: true
-next_repository: masakasakasama/AI-Assistant_handmade
+next_repository: masakasakasama/1000yen-agent
 repositories:
 - repo: masakasakasama/Daily_check
   status: blocked
@@ -19,14 +19,12 @@ repositories:
   last_review_at: '2026-10-04T00:08:45.941673+00:00'
 - repo: masakasakasama/AI-Assistant_handmade
   status: blocked
-  next: Backend上限/rate limit/秘匿ログの隔離検証は完了。実Redis/Deployment設定とGalaxy受入待ち。
-  last_checkpoint: '2026-10-03T03:51:23.959415+00:00'
+  next: Neon対応・公開health/未認証401を確認。実DB境界/store障害・Galaxy受入は接続待ち。最新CODEX_STATE参照。
+  last_checkpoint: '2026-10-04T01:24:21.962353+00:00'
   qualifying_activity_at: '2026-10-03T10:55:27Z'
-  last_reviewed_head: ca62f5feeb9a97763f115aade6a2a8ff5d652d93
-  review_after: '2026-10-03T22:00:00Z'
-  lease:
-    owner: controller-review-20261004-ai
-    expires_at: '2026-10-04T02:20:21.213519+00:00'
+  last_reviewed_head: ede0f4090e520e2d03c121aa3d0291448e2a2ec5
+  review_after: '2026-10-04T07:24:21.962353+00:00'
+  last_review_at: '2026-10-04T01:24:21.962353+00:00'
 - repo: masakasakasama/english-news-app
   status: blocked
   next: Vercel接続から対象project/deploymentが見えずH09公開一致/preview確認待ち。CODEX_STATE.md参照。
