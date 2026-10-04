@@ -7,7 +7,7 @@ policy:
   blocked_review_hours: 6
   lease_minutes: 60
   metadata_refresh: true
-next_repository: masakasakasama/Design_system
+next_repository: masakasakasama/Trip_Plan
 repositories:
 - repo: masakasakasama/Daily_check
   status: blocked
@@ -50,19 +50,17 @@ repositories:
   review_after: '2026-10-04T16:05:25.416895+00:00'
   last_review_at: '2026-10-04T10:05:25.416895+00:00'
 - repo: masakasakasama/Design_system
-  status: in_progress
-  next: 'CODEX_STATE.md: Trip_Planの次の小さなsurfaceまたは別の最近更新consumerを選び、同じrevision pin方式で導入・UI比較・buildを行う。'
-  last_checkpoint: '2026-10-02T20:59:23.423662+00:00'
-  qualifying_activity_at: '2026-09-21T12:40:19Z'
-  last_reviewed_head: a955c5f7dbf7301674f3b1b769e2ea0a53fa4a70
-  review_after: '2026-10-03T22:00:00Z'
-  lease:
-    owner: resume-20261004-worker-review-13
-    expires_at: '2026-10-04T17:47:11.892447+00:00'
-- repo: masakasakasama/Trip_Plan
   status: blocked
-  next: 本番read-only同期の合格を維持。Galaxy測定と安全な本番書込み/競合/復旧は接続条件待ち。5008831はlastUpdatedのみ、worker
-    state/コード変更不要。
+  next: Trip_Plan About本文色を既存pinで導入するworkerへ引継ぎ済み。consumer実装/UI/build後の確定commit・証跡を確認してADOPTIONへ保存。
+  last_checkpoint: '2026-10-04T16:50:04.226390+00:00'
+  qualifying_activity_at: '2026-09-21T12:40:19Z'
+  last_reviewed_head: 131abafb91876263018c3f911ccd8db0343e085e
+  review_after: '2026-10-04T22:50:04.226390+00:00'
+  last_review_at: '2026-10-04T16:50:04.226390+00:00'
+- repo: masakasakasama/Trip_Plan
+  status: in_progress
+  next: Design_system保存Nextで選定済みのAstra About本文色を既存pinで導入。docs/ADOPTION.mdの限定範囲とUI比較/data
+    test/buildを実施。その後、既存Galaxy性能/本番同期受入Nextを継続。
   last_checkpoint: '2026-10-04T07:13:15.159454+00:00'
   qualifying_activity_at: '2026-10-04T07:33:45Z'
   last_reviewed_head: 500883171339b34e0497eb5b7b60ec7d56c9191f
