@@ -7,7 +7,7 @@ policy:
   blocked_review_hours: 6
   lease_minutes: 60
   metadata_refresh: true
-next_repository: masakasakasama/AI-Assistant_handmade
+next_repository: masakasakasama/Design_system
 repositories:
 - repo: masakasakasama/Daily_check
   status: blocked
@@ -19,15 +19,12 @@ repositories:
   last_review_at: '2026-10-04T00:08:45.941673+00:00'
 - repo: masakasakasama/AI-Assistant_handmade
   status: blocked
-  next: 7fcfd94のBackend Jev simple_chat回帰失敗によりWeb/APKリリース失敗。Android build実行中のためworker編集を保留。完了後/新headで担当状況とCI修正を確認し、既存実DB/実機受入Nextを維持。
-  last_checkpoint: '2026-10-04T04:44:49.312883+00:00'
-  qualifying_activity_at: '2026-10-04T11:04:40Z'
-  last_reviewed_head: 7fcfd9499778a54c44eba3d2296f3af613276694
-  review_after: '2026-10-04T17:07:32.061904+00:00'
-  last_review_at: '2026-10-04T11:07:32.061904+00:00'
-  lease:
-    owner: resume-20261004-worker-review-9
-    expires_at: '2026-10-04T13:33:33.028315+00:00'
+  next: 最新df8dd99で以前のCI失敗は解消。実DB境界/store障害とGalaxy受入は接続待ち。最新CODEX_STATE参照。
+  last_checkpoint: '2026-10-04T12:34:59.600535+00:00'
+  qualifying_activity_at: '2026-10-04T11:30:44Z'
+  last_reviewed_head: 8623a959773edbb7e6b4fa82b62c944b1eece34c
+  review_after: '2026-10-04T18:34:59.600535+00:00'
+  last_review_at: '2026-10-04T12:34:59.600535+00:00'
 - repo: masakasakasama/english-news-app
   status: blocked
   next: Vercel接続から対象project/deploymentが見えずH09公開一致/preview確認待ち。CODEX_STATE.md参照。
