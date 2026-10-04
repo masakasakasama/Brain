@@ -448,19 +448,20 @@ projects:
   visibility: public
   enabled: true
   priority: null
-  status: blocked
+  status: in_progress
   codex_thread: null
-  next: 最新pushと他作業の担当範囲を確認。既存状態ファイル・開発Goalがないため、並行編集を避けて最新状態の参照から再開する。
-  last_checkpoint: '2026-10-02T15:18:19.800171+00:00'
+  next: ユーザー指示のPagesドメイン復旧は設定/配信済み。Microsoft-FDE/の古い301キャッシュ消失をread-only確認する。index.htmlは元のHTTPS
+    URLで200。
+  last_checkpoint: '2026-10-04T03:47:34.114123+00:00'
   observed_pushed_at: '2026-10-02T14:59:45Z'
   latest_verified_pushed_at: '2026-10-02T14:59:45Z'
   blockers:
-  - 直近の別作業によるcustom domain更新を検出。担当の重なりを避け、今回は参照のみ。
-  latest_verified_commit: b6baaabd760bbad7e9b97a573889f4fd7c62c276
-  latest_observed_commit: b6baaabd760bbad7e9b97a573889f4fd7c62c276
+  - FDEディレクトリURLの旧301 edge cache反映待ち。index.htmlと他9リンクは正常。
+  latest_verified_commit: 0a5e483083121b55882b3f980a88857b8219e459
+  latest_observed_commit: 0a5e483083121b55882b3f980a88857b8219e459
   last_controller_review: '2026-10-02T21:05:26.134518+00:00'
-  controller_review_result: blocked; no development Goal/state and previous concurrent
-    ownership unresolved
+  controller_review_result: User-requested domain restoration published and verified;
+    old FDE directory redirect cache pending
 - repo: masakasakasama/Business_English
   default_branch: main
   visibility: public
