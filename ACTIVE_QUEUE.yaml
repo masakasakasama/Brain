@@ -7,7 +7,7 @@ policy:
   blocked_review_hours: 6
   lease_minutes: 60
   metadata_refresh: true
-next_repository: masakasakasama/Microsoft-FDE
+next_repository: masakasakasama/Alarm
 repositories:
 - repo: masakasakasama/Daily_check
   status: blocked
@@ -108,6 +108,9 @@ repositories:
   qualifying_activity_at: '2026-09-22T08:10:09Z'
   last_reviewed_head: 90cb13665d6181c04ec961d51d616d04d17c6915
   review_after: '2026-10-03T22:00:00Z'
+  lease:
+    owner: resume-20261004-worker-review-17
+    expires_at: '2026-10-04T22:18:56.317146+00:00'
 rules:
 - 1 scheduled run = 1 worker repository; metadata checks may cover registered eligible
   repos
