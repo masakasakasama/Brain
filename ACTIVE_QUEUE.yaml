@@ -56,6 +56,9 @@ repositories:
   qualifying_activity_at: '2026-09-21T12:40:19Z'
   last_reviewed_head: a955c5f7dbf7301674f3b1b769e2ea0a53fa4a70
   review_after: '2026-10-03T22:00:00Z'
+  lease:
+    owner: resume-20261004-worker-review-13
+    expires_at: '2026-10-04T17:47:11.892447+00:00'
 - repo: masakasakasama/Trip_Plan
   status: blocked
   next: 本番read-only同期の合格を維持。Galaxy測定と安全な本番書込み/競合/復旧は接続条件待ち。5008831はlastUpdatedのみ、worker
