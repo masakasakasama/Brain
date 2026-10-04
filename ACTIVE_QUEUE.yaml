@@ -7,7 +7,7 @@ policy:
   blocked_review_hours: 6
   lease_minutes: 60
   metadata_refresh: true
-next_repository: masakasakasama/Fitness
+next_repository: masakasakasama/Alarm
 repositories:
 - repo: masakasakasama/Daily_check
   status: blocked
@@ -109,6 +109,9 @@ repositories:
   last_reviewed_head: 90cb13665d6181c04ec961d51d616d04d17c6915
   review_after: '2026-10-05T03:19:47.065521+00:00'
   last_review_at: '2026-10-04T21:19:47.065521+00:00'
+  lease:
+    owner: resume-20261004-worker-review-18
+    expires_at: '2026-10-05T00:40:16.493630+00:00'
 rules:
 - 1 scheduled run = 1 worker repository; metadata checks may cover registered eligible
   repos
