@@ -127,16 +127,22 @@ projects:
   visibility: public
   enabled: true
   priority: null
-  status: in_progress
+  status: blocked
   codex_thread: null
-  next: Trip_Plan確定e0daaa2e81e4c900a45091683349405c22c0fff1のAbout導入・mobile/desktop比較/data5件/build/pin不変をCODEX_STATEと限定diffから確認し、ADOPTIONへ確定commit/証跡を記録。実装/合格済みテストを再実行しない。
-  last_checkpoint: '2026-10-04T16:50:04.226390+00:00'
+  next: About導入・確定commit/証跡の記録Nextは完了。Android/他surfaceの具体scopeと受入条件が保存Nextで明確になった場合だけ続ける。移行対象を独自追加しない。
+  last_checkpoint: '2026-10-04T18:24:19.341415+00:00'
   observed_pushed_at: '2026-10-02T20:59:25Z'
-  last_commit: 131abafb91876263018c3f911ccd8db0343e085e
+  last_commit: c1e1b53c7dc802cb8f62db73f16b7a0d29fd9f83
   verification: 次consumerと限定scope/pin/受入条件を確定した文書のみ。consumerコード/UI/build未実施。
-  latest_verified_commit: 131abafb91876263018c3f911ccd8db0343e085e
+  latest_verified_commit: c1e1b53c7dc802cb8f62db73f16b7a0d29fd9f83
   latest_verified_pushed_at: '2026-10-02T20:59:25Z'
-  latest_observed_commit: 131abafb91876263018c3f911ccd8db0343e085e
+  latest_observed_commit: c1e1b53c7dc802cb8f62db73f16b7a0d29fd9f83
+  last_controller_review: '2026-10-04T18:24:19.341415+00:00'
+  controller_review_result: Recorded verified Trip consumer e0daaa2 About adoption,
+    limited source diff and mobile/desktop UI/data5/build/pin evidence in ADOPTION
+    and CODEX_STATE. Consumer Pages CI success. Documentation-only worker commit c1e1b53;
+    no repeated tests, generated tokens unchanged. Android/other adoption still unverified;
+    specific next consumer scope absent.
 - repo: masakasakasama/Marriage_procedure
   default_branch: main
   visibility: public
