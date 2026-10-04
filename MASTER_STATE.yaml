@@ -39,21 +39,21 @@ projects:
   priority: null
   status: blocked
   codex_thread: null
-  next: 最新b0737c7のAndroid/Web pairing・暗号化保存・Jev一括対象変更とCI成功を確認。実DB/実機受入は接続条件待ち。CODEX_STATEの保存Nextを維持。
+  next: 7fcfd94のBackend Jev simple_chat回帰失敗によりWeb/APKリリース失敗。Android build実行中のためworker編集を保留。完了後/新headで担当状況とCI修正を確認し、既存実DB/実機受入Nextを維持。
   last_checkpoint: '2026-10-04T04:44:49.312883+00:00'
   observed_pushed_at: '2026-10-04T01:23:52Z'
   last_commit: 3633f0586078466fcb1eea1b5c748d1e1f3c4ee5
   verification: CODEX_STATE.md参照。最新CI成功、health200/未認証401。実DB資格情報/adb端末なし。既存fixture結果は過去headの記録で新head全体の再実行ではない。
   latest_verified_commit: 3633f0586078466fcb1eea1b5c748d1e1f3c4ee5
   latest_verified_pushed_at: '2026-10-04T01:23:52Z'
-  latest_observed_commit: b0737c784eb2a9eab9af334145c50d6f046db188
-  last_controller_review: '2026-10-04T09:31:05.834076+00:00'
-  controller_review_result: 'Read-only review of b0737c7: current AGENTS now requires
-    encrypted IndexedDB vault and Android pairing; device target/Jev grouping changes
-    noted. Release APK 37191453554 and Web checks 37191443888 succeeded. Runtime211
-    no credentials/capabilities, adb empty; public health200/unauth dispatch401. No
-    independent implementation in saved acceptance Next; worker code/state/test runs
-    unchanged.'
+  latest_observed_commit: 7fcfd9499778a54c44eba3d2296f3af613276694
+  last_controller_review: '2026-10-04T11:07:32.061904+00:00'
+  controller_review_result: 'New CI blocker: Web run37197491035 npm test fails Jev
+    simple_chat routes to Luna after Jev, dispatch-jev.test.mjs:32 expected true actual
+    false. APK run37197538434 fails its Web verification step. Android run37197491078
+    still running; worker left untouched. Runtime219 no bound credentials/capabilities.
+    Latest changes resolve device commands before model routing and reject unknown
+    explicit targets; no physical acceptance proof.'
 - repo: masakasakasama/english-news-app
   default_branch: main
   visibility: private

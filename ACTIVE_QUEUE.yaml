@@ -7,7 +7,7 @@ policy:
   blocked_review_hours: 6
   lease_minutes: 60
   metadata_refresh: true
-next_repository: masakasakasama/AI-Assistant_handmade
+next_repository: masakasakasama/Microsoft-FDE
 repositories:
 - repo: masakasakasama/Daily_check
   status: blocked
@@ -19,15 +19,12 @@ repositories:
   last_review_at: '2026-10-04T00:08:45.941673+00:00'
 - repo: masakasakasama/AI-Assistant_handmade
   status: blocked
-  next: 最新b0737c7のAndroid/Web pairing・暗号化保存・Jev一括対象変更とCI成功を確認。実DB/実機受入は接続条件待ち。CODEX_STATEの保存Nextを維持。
+  next: 7fcfd94のBackend Jev simple_chat回帰失敗によりWeb/APKリリース失敗。Android build実行中のためworker編集を保留。完了後/新headで担当状況とCI修正を確認し、既存実DB/実機受入Nextを維持。
   last_checkpoint: '2026-10-04T04:44:49.312883+00:00'
-  qualifying_activity_at: '2026-10-04T09:13:09Z'
-  last_reviewed_head: b0737c784eb2a9eab9af334145c50d6f046db188
-  review_after: '2026-10-04T15:31:05.834076+00:00'
-  last_review_at: '2026-10-04T09:31:05.834076+00:00'
-  lease:
-    owner: resume-20261004-worker-review-8
-    expires_at: '2026-10-04T12:06:29.468804+00:00'
+  qualifying_activity_at: '2026-10-04T11:04:40Z'
+  last_reviewed_head: 7fcfd9499778a54c44eba3d2296f3af613276694
+  review_after: '2026-10-04T17:07:32.061904+00:00'
+  last_review_at: '2026-10-04T11:07:32.061904+00:00'
 - repo: masakasakasama/english-news-app
   status: blocked
   next: Vercel接続から対象project/deploymentが見えずH09公開一致/preview確認待ち。CODEX_STATE.md参照。
