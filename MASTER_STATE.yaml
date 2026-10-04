@@ -39,17 +39,18 @@ projects:
   priority: null
   status: blocked
   codex_thread: null
-  next: 最新fd37d8f描画修正/CI成功を確認。実DB境界/store障害とGalaxy受入は接続待ち。最新CODEX_STATE参照。
+  next: 実DB/実機受入の接続待ちは維持。f3d3176 Android build成功、Release APK実行中のためworkerを編集せず参照のみ。CI完了後/新head/期限で再確認。
   last_checkpoint: '2026-10-04T04:44:49.312883+00:00'
   observed_pushed_at: '2026-10-04T01:23:52Z'
   last_commit: 3633f0586078466fcb1eea1b5c748d1e1f3c4ee5
   verification: CODEX_STATE.md参照。最新CI成功、health200/未認証401。実DB資格情報/adb端末なし。既存fixture結果は過去headの記録で新head全体の再実行ではない。
   latest_verified_commit: 3633f0586078466fcb1eea1b5c748d1e1f3c4ee5
   latest_verified_pushed_at: '2026-10-04T01:23:52Z'
-  latest_observed_commit: 3633f0586078466fcb1eea1b5c748d1e1f3c4ee5
-  last_controller_review: '2026-10-04T04:44:49.312883+00:00'
-  controller_review_result: Latest mascot-only changes and successful CI reviewed;
-    runtime191 credentials/physical device absent, acceptance blocked
+  latest_observed_commit: f3d3176c3055e24eca0bc469c4abb88a0a6f0a68
+  last_controller_review: '2026-10-04T05:47:14.775747+00:00'
+  controller_review_result: 'Read-only review: f3d3176 Android build succeeded; Release
+    APK run 37180545970 still in progress, so worker left untouched. No scoped DB
+    credentials or adb device; saved acceptance Next unchanged.'
 - repo: masakasakasama/english-news-app
   default_branch: main
   visibility: private
