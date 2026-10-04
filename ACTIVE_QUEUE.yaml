@@ -7,7 +7,7 @@ policy:
   blocked_review_hours: 6
   lease_minutes: 60
   metadata_refresh: true
-next_repository: masakasakasama/Microsoft-FDE
+next_repository: masakasakasama/Trip_Plan
 repositories:
 - repo: masakasakasama/Daily_check
   status: blocked
@@ -63,6 +63,9 @@ repositories:
   qualifying_activity_at: '2026-09-13T11:06:21Z'
   last_reviewed_head: c84b9e1e21dc86b0f7cf54e9d70d43904455c096
   review_after: '2026-10-03T22:00:00Z'
+  lease:
+    owner: resume-20261004-worker-review-4
+    expires_at: '2026-10-04T08:11:04.600670+00:00'
 - repo: masakasakasama/Calender
   status: in_progress
   next: 'CODEX_STATE.md: isolated Firebase Emulatorでserver故障・復元済み予定・private calendar除外を検証した後、資格情報の範囲でFunctions反映を確認する。'
