@@ -24,6 +24,9 @@ repositories:
   qualifying_activity_at: '2026-10-03T10:55:27Z'
   last_reviewed_head: ca62f5feeb9a97763f115aade6a2a8ff5d652d93
   review_after: '2026-10-03T22:00:00Z'
+  lease:
+    owner: controller-review-20261004-ai
+    expires_at: '2026-10-04T02:20:21.213519+00:00'
 - repo: masakasakasama/english-news-app
   status: blocked
   next: Vercel接続から対象project/deploymentが見えずH09公開一致/preview確認待ち。CODEX_STATE.md参照。
