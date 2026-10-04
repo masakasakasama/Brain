@@ -7,7 +7,7 @@ policy:
   blocked_review_hours: 6
   lease_minutes: 60
   metadata_refresh: true
-next_repository: masakasakasama/Microsoft-FDE
+next_repository: masakasakasama/Design_system
 repositories:
 - repo: masakasakasama/Daily_check
   status: blocked
@@ -42,15 +42,13 @@ repositories:
   review_after: '2026-10-04T08:10:08.756451+00:00'
   last_review_at: '2026-10-04T02:10:08.756451+00:00'
 - repo: masakasakasama/Microsoft-FDE
-  status: in_progress
-  next: 'CODEX_STATE.md: 公式試験ページから提供言語・試験時間を照合し、未確認metadataを根拠付きで整合する。料金は地域/予約時点依存を明記する。'
-  last_checkpoint: '2026-10-02T21:48:38.671279+00:00'
+  status: blocked
+  next: AB-100公式/正規予約画面に試験時間の根拠が得られたら未確認表示を更新。言語/GH・AI時間/地域料金注記は完了。
+  last_checkpoint: '2026-10-04T03:04:26.786838+00:00'
   qualifying_activity_at: '2026-09-08T11:49:44Z'
-  last_reviewed_head: 1cc3f970b0892a3de351ff46917c1a38ac5d1cb3
-  review_after: '2026-10-03T22:00:00Z'
-  lease:
-    owner: controller-run-20261004-fde
-    expires_at: '2026-10-04T04:00:36.830884+00:00'
+  last_reviewed_head: c45a5d3c524b074ac67946bba6e157e8d055b0f4
+  review_after: '2026-10-04T09:04:26.786838+00:00'
+  last_review_at: '2026-10-04T03:04:26.786838+00:00'
 - repo: masakasakasama/Design_system
   status: in_progress
   next: 'CODEX_STATE.md: Trip_Planの次の小さなsurfaceまたは別の最近更新consumerを選び、同じrevision pin方式で導入・UI比較・buildを行う。'

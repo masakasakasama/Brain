@@ -197,17 +197,17 @@ projects:
   visibility: public
   enabled: true
   priority: null
-  status: in_progress
+  status: blocked
   codex_thread: null
-  next: 'CODEX_STATE.md: 公式試験ページから提供言語・試験時間を照合し、未確認metadataを根拠付きで整合する。料金は地域/予約時点依存を明記する。'
-  last_checkpoint: '2026-10-02T21:48:38.671279+00:00'
-  observed_pushed_at: '2026-10-02T21:03:51Z'
-  last_commit: 1cc3f970b0892a3de351ff46917c1a38ac5d1cb3
-  verification: 'See CODEX_STATE.md: parser 3/3, preserved question/module identities,
-    Chrome progress compatibility passed'
-  latest_verified_commit: 1cc3f970b0892a3de351ff46917c1a38ac5d1cb3
-  latest_verified_pushed_at: '2026-10-02T21:03:51Z'
-  latest_observed_commit: bab6cd01677b23d60094e6b564a71d1e849c46b6
+  next: AB-100公式/正規予約画面に試験時間の根拠が得られたら未確認表示を更新。言語/GH・AI時間/地域料金注記は完了。
+  last_checkpoint: '2026-10-04T03:04:26.786838+00:00'
+  observed_pushed_at: '2026-10-04T03:03:56Z'
+  last_commit: c45a5d3c524b074ac67946bba6e157e8d055b0f4
+  verification: CODEX_STATE.md/GUIDE_AUDIT.md参照。公式言語・GH100分/AI120分を照合。parser3/3、syntax、390px
+    Chromeと既存進捗保持成功。AB時間だけ根拠待ち。
+  latest_verified_commit: c45a5d3c524b074ac67946bba6e157e8d055b0f4
+  latest_verified_pushed_at: '2026-10-04T03:03:56Z'
+  latest_observed_commit: c45a5d3c524b074ac67946bba6e157e8d055b0f4
 - repo: masakasakasama/Calender
   default_branch: main
   visibility: public
@@ -492,18 +492,18 @@ automation:
     CAS lease; suppress unchanged notifications
   prompt_updated_at: '2026-10-03T23:01:32.443230+00:00'
 controller_checkpoint:
-  updated_at: '2026-10-04T02:10:08.756451+00:00'
-  pass_status: changed_head_review_checkpointed
+  updated_at: '2026-10-04T03:04:26.786838+00:00'
+  pass_status: worker_implementation_checkpointed
   active_repositories: 13
   excluded_stale_repositories: 23
   state_files_verified: 13
   automation_count_for_controller: 1
-  remaining_work: 1000yen最新mergeのRecovery手順を確認、OCI接続条件未成立。次の独立した保存NextはMicrosoft-FDE。
+  remaining_work: Microsoft-FDEの試験metadataを公式根拠で更新。AB時間だけ未確認。次はDesign_system保存Next。
   quota_reset_time: unavailable
-  next_repository: masakasakasama/Microsoft-FDE
+  next_repository: masakasakasama/Design_system
 work_cycle:
   status: review_pending
-  updated_at: '2026-10-04T02:10:08.756451+00:00'
+  updated_at: '2026-10-04T03:04:26.786838+00:00'
   processed_repositories: []
   remaining_repositories:
   - masakasakasama/Daily_check
@@ -519,7 +519,7 @@ work_cycle:
   - masakasakasama/Fitness
   - masakasakasama/Home
   - masakasakasama/Alarm
-  next_repository: masakasakasama/Microsoft-FDE
+  next_repository: masakasakasama/Design_system
   note: Use live metadata and select_work.py; next_repository is a hint, never a reason
     to skip blocked rechecks.
   previous_cycle_processed_repositories:
