@@ -7,7 +7,7 @@ policy:
   blocked_review_hours: 6
   lease_minutes: 60
   metadata_refresh: true
-next_repository: masakasakasama/1000yen-agent
+next_repository: masakasakasama/Microsoft-FDE
 repositories:
 - repo: masakasakasama/Daily_check
   status: blocked
@@ -36,13 +36,11 @@ repositories:
 - repo: masakasakasama/1000yen-agent
   status: blocked
   next: 隔離wait復帰fixtureは完了。OCI資格情報・Galaxy接続後の本番restore/restart/実機受入待ち。
-  last_checkpoint: '2026-10-03T02:42:47.878223+00:00'
+  last_checkpoint: '2026-10-04T02:10:08.756451+00:00'
   qualifying_activity_at: '2026-10-03T03:30:43Z'
-  last_reviewed_head: c85aec6caa715b03e28419f0314d0e3f1818ed2b
-  review_after: '2026-10-03T22:00:00Z'
-  lease:
-    owner: controller-review-20261004-1000yen
-    expires_at: '2026-10-04T03:07:51.027786+00:00'
+  last_reviewed_head: b6cde532ef8fae07ca842c5d16d6a02bdadf6db3
+  review_after: '2026-10-04T08:10:08.756451+00:00'
+  last_review_at: '2026-10-04T02:10:08.756451+00:00'
 - repo: masakasakasama/Microsoft-FDE
   status: in_progress
   next: 'CODEX_STATE.md: 公式試験ページから提供言語・試験時間を照合し、未確認metadataを根拠付きで整合する。料金は地域/予約時点依存を明記する。'
