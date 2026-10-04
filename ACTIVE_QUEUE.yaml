@@ -7,7 +7,7 @@ policy:
   blocked_review_hours: 6
   lease_minutes: 60
   metadata_refresh: true
-next_repository: masakasakasama/Trip_Plan
+next_repository: masakasakasama/Design_system
 repositories:
 - repo: masakasakasama/Daily_check
   status: blocked
@@ -50,25 +50,21 @@ repositories:
   review_after: '2026-10-04T16:05:25.416895+00:00'
   last_review_at: '2026-10-04T10:05:25.416895+00:00'
 - repo: masakasakasama/Design_system
-  status: blocked
-  next: Trip_Plan About本文色を既存pinで導入するworkerへ引継ぎ済み。consumer実装/UI/build後の確定commit・証跡を確認してADOPTIONへ保存。
+  status: in_progress
+  next: Trip_Plan確定e0daaa2e81e4c900a45091683349405c22c0fff1のAbout導入・mobile/desktop比較/data5件/build/pin不変をCODEX_STATEと限定diffから確認し、ADOPTIONへ確定commit/証跡を記録。実装/合格済みテストを再実行しない。
   last_checkpoint: '2026-10-04T16:50:04.226390+00:00'
   qualifying_activity_at: '2026-09-21T12:40:19Z'
   last_reviewed_head: 131abafb91876263018c3f911ccd8db0343e085e
   review_after: '2026-10-04T22:50:04.226390+00:00'
   last_review_at: '2026-10-04T16:50:04.226390+00:00'
 - repo: masakasakasama/Trip_Plan
-  status: in_progress
-  next: Design_system保存Nextで選定済みのAstra About本文色を既存pinで導入。docs/ADOPTION.mdの限定範囲とUI比較/data
-    test/buildを実施。その後、既存Galaxy性能/本番同期受入Nextを継続。
-  last_checkpoint: '2026-10-04T07:13:15.159454+00:00'
+  status: blocked
+  next: Astra About本文色導入/UI比較/data5件/buildは完了。既存Galaxy性能と本番書込み/競合/復旧の接続条件待ち。最新CODEX_STATE参照。
+  last_checkpoint: '2026-10-04T17:19:55.330877+00:00'
   qualifying_activity_at: '2026-10-04T07:33:45Z'
-  last_reviewed_head: 500883171339b34e0497eb5b7b60ec7d56c9191f
-  review_after: '2026-10-04T14:25:28.863466+00:00'
-  last_review_at: '2026-10-04T08:25:28.863466+00:00'
-  lease:
-    owner: resume-20261004-worker-review-14
-    expires_at: '2026-10-04T18:15:56.320071+00:00'
+  last_reviewed_head: e0daaa2e81e4c900a45091683349405c22c0fff1
+  review_after: '2026-10-04T23:19:55.330877+00:00'
+  last_review_at: '2026-10-04T17:19:55.330877+00:00'
 - repo: masakasakasama/Calender
   status: in_progress
   next: 'CODEX_STATE.md: isolated Firebase Emulatorでserver故障・復元済み予定・private calendar除外を検証した後、資格情報の範囲でFunctions反映を確認する。'

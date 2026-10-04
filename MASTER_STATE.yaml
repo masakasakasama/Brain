@@ -127,9 +127,9 @@ projects:
   visibility: public
   enabled: true
   priority: null
-  status: blocked
+  status: in_progress
   codex_thread: null
-  next: Trip_Plan About本文色を既存pinで導入するworkerへ引継ぎ済み。consumer実装/UI/build後の確定commit・証跡を確認してADOPTIONへ保存。
+  next: Trip_Plan確定e0daaa2e81e4c900a45091683349405c22c0fff1のAbout導入・mobile/desktop比較/data5件/build/pin不変をCODEX_STATEと限定diffから確認し、ADOPTIONへ確定commit/証跡を記録。実装/合格済みテストを再実行しない。
   last_checkpoint: '2026-10-04T16:50:04.226390+00:00'
   observed_pushed_at: '2026-10-02T20:59:25Z'
   last_commit: 131abafb91876263018c3f911ccd8db0343e085e
@@ -179,17 +179,17 @@ projects:
   visibility: public
   enabled: true
   priority: null
-  status: in_progress
+  status: blocked
   codex_thread: null
-  next: Design_system保存Nextで選定済みのAstra About本文色を既存pinで導入。docs/ADOPTION.mdの限定範囲とUI比較/data
-    test/buildを実施。その後、既存Galaxy性能/本番同期受入Nextを継続。
-  last_checkpoint: '2026-10-04T07:13:15.159454+00:00'
+  next: Astra About本文色導入/UI比較/data5件/buildは完了。既存Galaxy性能と本番書込み/競合/復旧の接続条件待ち。最新CODEX_STATE参照。
+  last_checkpoint: '2026-10-04T17:19:55.330877+00:00'
   observed_pushed_at: '2026-10-02T20:58:44Z'
-  last_commit: e520f0d69be10e644070bd9e958d837f2f7ab82f
-  verification: 本番health/state200、GitHub正本JSON/ETag一致・Pages CORS合格。productionWrites=0。Galaxy性能/実書込み・競合・復旧は未確認。
-  latest_verified_commit: e520f0d69be10e644070bd9e958d837f2f7ab82f
+  last_commit: e0daaa2e81e4c900a45091683349405c22c0fff1
+  verification: About本文色のみ限定導入。mobile/desktop geometry/links/font不変、token色一致、開閉・通常credit維持・JS
+    errors=[]。data5/5/build成功、data/pin/hash不変。Galaxy/本番書込み受入は別途未完了。
+  latest_verified_commit: e0daaa2e81e4c900a45091683349405c22c0fff1
   latest_verified_pushed_at: '2026-10-02T20:58:44Z'
-  latest_observed_commit: 500883171339b34e0497eb5b7b60ec7d56c9191f
+  latest_observed_commit: e0daaa2e81e4c900a45091683349405c22c0fff1
   last_controller_review: '2026-10-04T08:25:28.863466+00:00'
   controller_review_result: 5008831 changes lastUpdated only. Production GET200 with
     current JSON/ETag/Pages CORS match; productionWrites=0. Pages and backup CI success.
