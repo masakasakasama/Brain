@@ -25,3 +25,5 @@ Updated at: 2026-10-04T03:47:34.114123+00:00
 
 Root final checkpoint: 0a5e483083121b55882b3f980a88857b8219e459
 User request takes precedence over scheduled selection for this direct Pages repair. Existing automation and queue scope unchanged.
+
+Final verification: cached Microsoft-FDE/ redirect cleared; both directory and index.html return HTTP 200 at the original HTTPS address. Requested restoration complete. Root verified checkpoint: 0997bf2a7ee6525c0f826b059654fea10d8dbcd5
