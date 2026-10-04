@@ -75,13 +75,13 @@ projects:
   status: blocked
   codex_thread: null
   next: 10/4監査・週次は修復/検証済み。残る過去5監査の実証跡待ち。新headまたは再確認期限で再評価。
-  last_checkpoint: '2026-10-03T23:01:32.443230+00:00'
-  observed_pushed_at: '2026-10-03T23:00:39Z'
-  last_commit: 67c9baf3849fc88730987f9a440121def4936b70
-  verification: 16/16 tests、10/4 daily、publication21日成功。collection history過去5証跡不足は未完了。docs/controller-recheck-2026-10-04.md参照。
-  latest_verified_commit: 67c9baf3849fc88730987f9a440121def4936b70
-  latest_verified_pushed_at: '2026-10-03T23:00:39Z'
-  latest_observed_commit: 67c9baf3849fc88730987f9a440121def4936b70
+  last_checkpoint: '2026-10-04T00:08:45.941673+00:00'
+  observed_pushed_at: '2026-10-04T00:08:21Z'
+  last_commit: 7d92071f7d16d87006fce27bedd7ffcd8d5da272
+  verification: CODEX_STATE.md参照。dc12d8aはindex.htmlのみ変更、inline JS構文1/1成功。監査コード/データ不変更につき既存検証を再実行せず保持。過去証跡待ちは継続。
+  latest_verified_commit: 7d92071f7d16d87006fce27bedd7ffcd8d5da272
+  latest_verified_pushed_at: '2026-10-04T00:08:21Z'
+  latest_observed_commit: 7d92071f7d16d87006fce27bedd7ffcd8d5da272
 - repo: masakasakasama/Home
   default_branch: main
   visibility: public
@@ -493,18 +493,18 @@ automation:
     CAS lease; suppress unchanged notifications
   prompt_updated_at: '2026-10-03T23:01:32.443230+00:00'
 controller_checkpoint:
-  updated_at: '2026-10-03T23:47:25.742005+00:00'
+  updated_at: '2026-10-04T00:08:45.941673+00:00'
   pass_status: changed_head_review_checkpointed
   active_repositories: 13
   excluded_stale_repositories: 23
   state_files_verified: 13
   automation_count_for_controller: 1
-  remaining_work: english-news-appの新data-only headを確認、Nextの接続条件は未成立。6時間後または新headで再評価。次はAI-Assistant_handmade。
+  remaining_work: Daily_checkの新表示修正dc12d8aを構文確認。監査証跡の追加なし。6時間後または新headで再評価。次はAI-Assistant_handmade。
   quota_reset_time: unavailable
   next_repository: masakasakasama/AI-Assistant_handmade
 work_cycle:
   status: review_pending
-  updated_at: '2026-10-03T23:47:25.742005+00:00'
+  updated_at: '2026-10-04T00:08:45.941673+00:00'
   processed_repositories: []
   remaining_repositories:
   - masakasakasama/Daily_check
