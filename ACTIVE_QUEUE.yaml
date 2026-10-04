@@ -7,7 +7,7 @@ policy:
   blocked_review_hours: 6
   lease_minutes: 60
   metadata_refresh: true
-next_repository: masakasakasama/AI-Assistant_handmade
+next_repository: masakasakasama/Microsoft-FDE
 repositories:
 - repo: masakasakasama/Daily_check
   status: blocked
@@ -19,15 +19,12 @@ repositories:
   last_review_at: '2026-10-04T00:08:45.941673+00:00'
 - repo: masakasakasama/AI-Assistant_handmade
   status: blocked
-  next: 実DB/実機受入の接続待ちは維持。f3d3176 Android build成功、Release APK実行中のためworkerを編集せず参照のみ。CI完了後/新head/期限で再確認。
+  next: 実DB/実機受入の接続待ちは維持。ef87975は描画再接続のテスト変更のみ、Release APK/Android build成功。runtime201に資格情報/接続端末なし。新head/期限で再確認。
   last_checkpoint: '2026-10-04T04:44:49.312883+00:00'
-  qualifying_activity_at: '2026-10-04T05:39:57Z'
-  last_reviewed_head: f3d3176c3055e24eca0bc469c4abb88a0a6f0a68
-  review_after: '2026-10-04T11:47:14.775747+00:00'
-  last_review_at: '2026-10-04T05:47:14.775747+00:00'
-  lease:
-    owner: resume-20261004-worker-review-3
-    expires_at: '2026-10-04T07:39:08.119655+00:00'
+  qualifying_activity_at: '2026-10-04T05:50:56Z'
+  last_reviewed_head: ef8797522e3693c42a67c6058906bfa73a8cf7d0
+  review_after: '2026-10-04T12:39:58.538493+00:00'
+  last_review_at: '2026-10-04T06:39:58.538493+00:00'
 - repo: masakasakasama/english-news-app
   status: blocked
   next: Vercel接続から対象project/deploymentが見えずH09公開一致/preview確認待ち。CODEX_STATE.md参照。
