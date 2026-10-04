@@ -7,19 +7,16 @@ policy:
   blocked_review_hours: 6
   lease_minutes: 60
   metadata_refresh: true
-next_repository: masakasakasama/Daily_check
+next_repository: masakasakasama/AI-Assistant_handmade
 repositories:
 - repo: masakasakasama/Daily_check
   status: blocked
   next: 10/4監査・週次は修復/検証済み。残る過去5監査の実証跡待ち。新headまたは再確認期限で再評価。
-  last_checkpoint: '2026-10-03T23:01:32.443230+00:00'
-  qualifying_activity_at: '2026-10-03T22:48:53Z'
-  last_reviewed_head: 67c9baf3849fc88730987f9a440121def4936b70
-  review_after: '2026-10-04T05:01:32.443230+00:00'
-  last_review_at: '2026-10-03T23:01:32.443230+00:00'
-  lease:
-    owner: controller-review-20261004-daily
-    expires_at: '2026-10-04T01:07:17.680803+00:00'
+  last_checkpoint: '2026-10-04T00:08:45.941673+00:00'
+  qualifying_activity_at: '2026-10-03T23:14:46Z'
+  last_reviewed_head: 7d92071f7d16d87006fce27bedd7ffcd8d5da272
+  review_after: '2026-10-04T06:08:45.941673+00:00'
+  last_review_at: '2026-10-04T00:08:45.941673+00:00'
 - repo: masakasakasama/AI-Assistant_handmade
   status: blocked
   next: Backend上限/rate limit/秘匿ログの隔離検証は完了。実Redis/Deployment設定とGalaxy受入待ち。
