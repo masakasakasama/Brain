@@ -66,6 +66,9 @@ repositories:
   last_reviewed_head: 500883171339b34e0497eb5b7b60ec7d56c9191f
   review_after: '2026-10-04T14:25:28.863466+00:00'
   last_review_at: '2026-10-04T08:25:28.863466+00:00'
+  lease:
+    owner: resume-20261004-worker-review-14
+    expires_at: '2026-10-04T18:15:56.320071+00:00'
 - repo: masakasakasama/Calender
   status: in_progress
   next: 'CODEX_STATE.md: isolated Firebase Emulatorでserver故障・復元済み予定・private calendar除外を検証した後、資格情報の範囲でFunctions反映を確認する。'
