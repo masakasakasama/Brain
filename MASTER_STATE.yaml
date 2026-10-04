@@ -448,20 +448,18 @@ projects:
   visibility: public
   enabled: true
   priority: null
-  status: in_progress
+  status: completed
   codex_thread: null
-  next: ユーザー指示のPagesドメイン復旧は設定/配信済み。Microsoft-FDE/の古い301キャッシュ消失をread-only確認する。index.htmlは元のHTTPS
-    URLで200。
-  last_checkpoint: '2026-10-04T03:47:34.114123+00:00'
+  next: ユーザー指示の全Pagesドメイン復旧は完了。新たな明示的作業指示待ち。
+  last_checkpoint: '2026-10-04T03:48:11.806944+00:00'
   observed_pushed_at: '2026-10-02T14:59:45Z'
   latest_verified_pushed_at: '2026-10-02T14:59:45Z'
-  blockers:
-  - FDEディレクトリURLの旧301 edge cache反映待ち。index.htmlと他9リンクは正常。
-  latest_verified_commit: 0a5e483083121b55882b3f980a88857b8219e459
-  latest_observed_commit: 0a5e483083121b55882b3f980a88857b8219e459
+  blockers: []
+  latest_verified_commit: 0997bf2a7ee6525c0f826b059654fea10d8dbcd5
+  latest_observed_commit: 0997bf2a7ee6525c0f826b059654fea10d8dbcd5
   last_controller_review: '2026-10-02T21:05:26.134518+00:00'
-  controller_review_result: User-requested domain restoration published and verified;
-    old FDE directory redirect cache pending
+  controller_review_result: 'Requested URL restoration complete: FDE directory/index
+    and nine other Home links verified HTTP 200 at original HTTPS URLs'
 - repo: masakasakasama/Business_English
   default_branch: main
   visibility: public
