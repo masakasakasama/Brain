@@ -7,7 +7,7 @@ policy:
   blocked_review_hours: 6
   lease_minutes: 60
   metadata_refresh: true
-next_repository: masakasakasama/Trip_Plan
+next_repository: masakasakasama/Microsoft-FDE
 repositories:
 - repo: masakasakasama/Daily_check
   status: blocked
@@ -57,15 +57,13 @@ repositories:
   last_reviewed_head: a955c5f7dbf7301674f3b1b769e2ea0a53fa4a70
   review_after: '2026-10-03T22:00:00Z'
 - repo: masakasakasama/Trip_Plan
-  status: in_progress
-  next: 'CODEX_STATE.md: 実GalaxyでGPU/fps/発熱を測定し、利用可能なCloudflare資格情報で本番同期の受入を確認する。'
-  last_checkpoint: '2026-10-02T20:58:41.868005+00:00'
-  qualifying_activity_at: '2026-09-13T11:06:21Z'
-  last_reviewed_head: c84b9e1e21dc86b0f7cf54e9d70d43904455c096
-  review_after: '2026-10-03T22:00:00Z'
-  lease:
-    owner: resume-20261004-worker-review-4
-    expires_at: '2026-10-04T08:11:04.600670+00:00'
+  status: blocked
+  next: 本番Worker health/state読取・正本JSON/ETag/CORSは合格。Galaxy性能と本番書込み/競合/復旧は接続条件待ち。最新CODEX_STATE参照。
+  last_checkpoint: '2026-10-04T07:13:15.159454+00:00'
+  qualifying_activity_at: '2026-10-04T05:22:47Z'
+  last_reviewed_head: e520f0d69be10e644070bd9e958d837f2f7ab82f
+  review_after: '2026-10-04T13:13:15.159454+00:00'
+  last_review_at: '2026-10-04T07:13:15.159454+00:00'
 - repo: masakasakasama/Calender
   status: in_progress
   next: 'CODEX_STATE.md: isolated Firebase Emulatorでserver故障・復元済み予定・private calendar除外を検証した後、資格情報の範囲でFunctions反映を確認する。'

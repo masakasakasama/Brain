@@ -181,19 +181,19 @@ projects:
   visibility: public
   enabled: true
   priority: null
-  status: in_progress
+  status: blocked
   codex_thread: null
-  next: 'CODEX_STATE.md: 実GalaxyでGPU/fps/発熱を測定し、利用可能なCloudflare資格情報で本番同期の受入を確認する。'
-  last_checkpoint: '2026-10-02T20:58:41.868005+00:00'
+  next: 本番Worker health/state読取・正本JSON/ETag/CORSは合格。Galaxy性能と本番書込み/競合/復旧は接続条件待ち。最新CODEX_STATE参照。
+  last_checkpoint: '2026-10-04T07:13:15.159454+00:00'
   observed_pushed_at: '2026-10-02T20:58:44Z'
-  last_commit: c84b9e1e21dc86b0f7cf54e9d70d43904455c096
-  verification: Astra build and data 5/5 passed; git diff --check passed; Chrome pinned
-    footer colors/focus/About passed; screenshot reviewed; JS errors=[]; external
-    APIs blocked; Vendored SHA-256 matches pinned source; no runtime token fetch;
-    Previous isolated Worker/Chrome sync E2E passed; productionRequests=0
-  latest_verified_commit: c84b9e1e21dc86b0f7cf54e9d70d43904455c096
+  last_commit: e520f0d69be10e644070bd9e958d837f2f7ab82f
+  verification: 本番health/state200、GitHub正本JSON/ETag一致・Pages CORS合格。productionWrites=0。Galaxy性能/実書込み・競合・復旧は未確認。
+  latest_verified_commit: e520f0d69be10e644070bd9e958d837f2f7ab82f
   latest_verified_pushed_at: '2026-10-02T20:58:44Z'
-  latest_observed_commit: c84b9e1e21dc86b0f7cf54e9d70d43904455c096
+  latest_observed_commit: e520f0d69be10e644070bd9e958d837f2f7ab82f
+  last_controller_review: '2026-10-04T07:13:15.159454+00:00'
+  controller_review_result: Production read acceptance verified with browser headers;
+    no production writes. Galaxy and Cloudflare management access absent.
 - repo: masakasakasama/Microsoft-FDE
   default_branch: main
   visibility: public
