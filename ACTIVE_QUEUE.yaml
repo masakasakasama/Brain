@@ -48,6 +48,9 @@ repositories:
   qualifying_activity_at: '2026-09-08T11:49:44Z'
   last_reviewed_head: 1cc3f970b0892a3de351ff46917c1a38ac5d1cb3
   review_after: '2026-10-03T22:00:00Z'
+  lease:
+    owner: controller-run-20261004-fde
+    expires_at: '2026-10-04T04:00:36.830884+00:00'
 - repo: masakasakasama/Design_system
   status: in_progress
   next: 'CODEX_STATE.md: Trip_Planの次の小さなsurfaceまたは別の最近更新consumerを選び、同じrevision pin方式で導入・UI比較・buildを行う。'
