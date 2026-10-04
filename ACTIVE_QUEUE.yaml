@@ -40,6 +40,9 @@ repositories:
   qualifying_activity_at: '2026-10-03T03:30:43Z'
   last_reviewed_head: c85aec6caa715b03e28419f0314d0e3f1818ed2b
   review_after: '2026-10-03T22:00:00Z'
+  lease:
+    owner: controller-review-20261004-1000yen
+    expires_at: '2026-10-04T03:07:51.027786+00:00'
 - repo: masakasakasama/Microsoft-FDE
   status: in_progress
   next: 'CODEX_STATE.md: 公式試験ページから提供言語・試験時間を照合し、未確認metadataを根拠付きで整合する。料金は地域/予約時点依存を明記する。'
