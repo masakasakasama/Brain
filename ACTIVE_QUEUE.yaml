@@ -7,7 +7,7 @@ policy:
   blocked_review_hours: 6
   lease_minutes: 60
   metadata_refresh: true
-next_repository: masakasakasama/Alarm
+next_repository: masakasakasama/Fitness
 repositories:
 - repo: masakasakasama/Daily_check
   status: blocked
@@ -105,13 +105,10 @@ repositories:
   status: blocked
   next: 'CODEX_STATE.md: READMEのGalaxy手動テストを実機で実施: 鳴動/停止/スヌーズ、Doze、再起動PIN前、権限失効/復帰、更新後の予約保持、同時刻複数件。'
   last_checkpoint: '2026-10-02T10:53:11.879090+00:00'
-  qualifying_activity_at: '2026-09-22T08:10:09Z'
-  last_reviewed_head: 90cb13665d6181c04ec961d51d616d04d17c6915
-  review_after: '2026-10-05T03:19:47.065521+00:00'
-  last_review_at: '2026-10-04T21:19:47.065521+00:00'
-  lease:
-    owner: resume-20261004-worker-review-18
-    expires_at: '2026-10-05T00:40:16.493630+00:00'
+  qualifying_activity_at: '2026-10-04T22:45:45Z'
+  last_reviewed_head: 5fede5bd62bf43b44cc44f26e699c7338992000a
+  review_after: '2026-10-05T05:40:59.733722+00:00'
+  last_review_at: '2026-10-04T23:40:59.733722+00:00'
 rules:
 - 1 scheduled run = 1 worker repository; metadata checks may cover registered eligible
   repos
