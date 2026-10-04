@@ -22,14 +22,13 @@ projects:
   codex_thread: null
   next: 'CODEX_STATE.md: OCI SSH/本番DB資格情報が利用可能になったらoff-provider backup・停止後restore・container
     restartと永続性を確認する。資格情報がなければ本番変更を行わない。'
-  last_checkpoint: '2026-10-03T02:42:14.353070+00:00'
-  observed_pushed_at: '2026-10-03T02:42:16Z'
-  last_commit: c85aec6caa715b03e28419f0314d0e3f1818ed2b
-  verification: CODEX_STATE.md / docs/controller-verification-2026-10-03.md参照。build/139
-    tests/secret scan成功。本番OCIと実機受入は接続待ち。
-  latest_verified_commit: c85aec6caa715b03e28419f0314d0e3f1818ed2b
-  latest_verified_pushed_at: '2026-10-03T02:42:16Z'
-  latest_observed_commit: c85aec6caa715b03e28419f0314d0e3f1818ed2b
+  last_checkpoint: '2026-10-04T02:10:08.756451+00:00'
+  observed_pushed_at: '2026-10-04T02:09:38Z'
+  last_commit: b6cde532ef8fae07ca842c5d16d6a02bdadf6db3
+  verification: CODEX_STATE.md参照。最新6cb1b3dのRecovery手順と接続条件を確認。runtime169にOCI資格情報なし。139テストは以前のc85aec6結果であり、今回のmergeを再検証したとは扱わない。
+  latest_verified_commit: b6cde532ef8fae07ca842c5d16d6a02bdadf6db3
+  latest_verified_pushed_at: '2026-10-04T02:09:38Z'
+  latest_observed_commit: b6cde532ef8fae07ca842c5d16d6a02bdadf6db3
   last_controller_review: '2026-10-02T21:05:26.134518+00:00'
   controller_review_result: blocked; OCI production credentials and Galaxy connection
     absent
@@ -493,18 +492,18 @@ automation:
     CAS lease; suppress unchanged notifications
   prompt_updated_at: '2026-10-03T23:01:32.443230+00:00'
 controller_checkpoint:
-  updated_at: '2026-10-04T01:24:21.962353+00:00'
+  updated_at: '2026-10-04T02:10:08.756451+00:00'
   pass_status: changed_head_review_checkpointed
   active_repositories: 13
   excluded_stale_repositories: 23
   state_files_verified: 13
   automation_count_for_controller: 1
-  remaining_work: AI-Assistantの最新Neon実装・公開認証設定を確認し古いblocked根拠を更新。実DB境界/障害・Galaxyは未完了。次は1000yen-agent。
+  remaining_work: 1000yen最新mergeのRecovery手順を確認、OCI接続条件未成立。次の独立した保存NextはMicrosoft-FDE。
   quota_reset_time: unavailable
-  next_repository: masakasakasama/1000yen-agent
+  next_repository: masakasakasama/Microsoft-FDE
 work_cycle:
   status: review_pending
-  updated_at: '2026-10-04T01:24:21.962353+00:00'
+  updated_at: '2026-10-04T02:10:08.756451+00:00'
   processed_repositories: []
   remaining_repositories:
   - masakasakasama/Daily_check
@@ -520,7 +519,7 @@ work_cycle:
   - masakasakasama/Fitness
   - masakasakasama/Home
   - masakasakasama/Alarm
-  next_repository: masakasakasama/1000yen-agent
+  next_repository: masakasakasama/Microsoft-FDE
   note: Use live metadata and select_work.py; next_repository is a hint, never a reason
     to skip blocked rechecks.
   previous_cycle_processed_repositories:
