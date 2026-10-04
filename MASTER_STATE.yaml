@@ -224,18 +224,25 @@ projects:
   visibility: public
   enabled: true
   priority: null
-  status: in_progress
+  status: blocked
   codex_thread: null
-  next: 'CODEX_STATE.md: isolated Firebase Emulatorでserver故障・復元済み予定・private calendar除外を検証した後、資格情報の範囲でFunctions反映を確認する。'
-  last_checkpoint: '2026-10-02T20:53:02.988626+00:00'
+  next: 実Firestore Emulatorで故障/復元/private除外の検証完了。本番Functions反映・実Google受入はFirebase資格情報/担当・バックアップ条件が整ったら確認。成功済みfixtureを繰り返さない。
+  last_checkpoint: '2026-10-04T20:36:46.577642+00:00'
   observed_pushed_at: '2026-10-02T20:53:32Z'
-  last_commit: 587754e54ae1191f8efc17e8c1b0d4f5165d86c0
+  last_commit: 4a3a0deca260d74d37720249400d6199d3c2f39e
   verification: 'npm test: 10/10 passed; npm run build: TS/Vite/PWA passed; functions
     npm run build passed; UTC/Tokyo/Los Angeles date-only同一、timed offsetと明示emoji/null・error・private・既存ID・tombstone保持を確認;
     git diff --check passed; existing bundle-size warning'
-  latest_verified_commit: 587754e54ae1191f8efc17e8c1b0d4f5165d86c0
+  latest_verified_commit: 4a3a0deca260d74d37720249400d6199d3c2f39e
   latest_verified_pushed_at: '2026-10-02T20:53:32Z'
-  latest_observed_commit: 587754e54ae1191f8efc17e8c1b0d4f5165d86c0
+  latest_observed_commit: 4a3a0deca260d74d37720249400d6199d3c2f39e
+  last_controller_review: '2026-10-04T20:36:46.577642+00:00'
+  controller_review_result: 'Isolated Firestore Emulator safety verification complete:
+    upstream/write faults preserve data, restored/private/tombstone records retained,
+    repeated imports one ID, private config/auth refused. Integration1 passed, existing10
+    tests passed, Functions/root build passed. appVersion0.38.13. Runtime250 no Firebase
+    credentials; production Functions/Google acceptance pending. Compiled handler
+    run with fixtures is not Functions HTTP/production acceptance.'
 - repo: masakasakasama/mf-dashboard
   default_branch: main
   visibility: public
