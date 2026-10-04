@@ -206,15 +206,17 @@ projects:
   priority: null
   status: blocked
   codex_thread: null
-  next: AB-100公式/正規予約画面に試験時間の根拠が得られたら未確認表示を更新。言語/GH・AI時間/地域料金注記は完了。
-  last_checkpoint: '2026-10-04T03:04:26.786838+00:00'
+  next: 自信度記録後の次問遷移の公開main一致を確認。AB-100公式時間は未掲載のまま、根拠が得られたら更新。
+  last_checkpoint: '2026-10-04T10:05:25.416895+00:00'
   observed_pushed_at: '2026-10-04T03:03:56Z'
-  last_commit: c45a5d3c524b074ac67946bba6e157e8d055b0f4
-  verification: CODEX_STATE.md/GUIDE_AUDIT.md参照。公式言語・GH100分/AI120分を照合。parser3/3、syntax、390px
-    Chromeと既存進捗保持成功。AB時間だけ根拠待ち。
-  latest_verified_commit: c45a5d3c524b074ac67946bba6e157e8d055b0f4
+  last_commit: 8a1ca25425ea77d4e385ef6bda1c953a5d9e8b6c
+  verification: 公開app.js/content.jsは最新0178027一致、syntax/Pages CI成功。自信度browser回帰scriptは参照のみ。AB公式2ページ再確認、数値時間なし。
+  latest_verified_commit: 8a1ca25425ea77d4e385ef6bda1c953a5d9e8b6c
   latest_verified_pushed_at: '2026-10-04T03:03:56Z'
-  latest_observed_commit: c45a5d3c524b074ac67946bba6e157e8d055b0f4
+  latest_observed_commit: 8a1ca25425ea77d4e385ef6bda1c953a5d9e8b6c
+  last_controller_review: '2026-10-04T10:05:25.416895+00:00'
+  controller_review_result: Latest confidence change public assets match main and
+    syntax/Pages CI passed; AB-100 official numeric duration still absent.
 - repo: masakasakasama/Calender
   default_branch: main
   visibility: public
