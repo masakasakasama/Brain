@@ -7,7 +7,7 @@ policy:
   blocked_review_hours: 6
   lease_minutes: 60
   metadata_refresh: true
-next_repository: masakasakasama/AI-Assistant_handmade
+next_repository: masakasakasama/Design_system
 repositories:
 - repo: masakasakasama/Daily_check
   status: blocked
@@ -19,15 +19,12 @@ repositories:
   last_review_at: '2026-10-04T00:08:45.941673+00:00'
 - repo: masakasakasama/AI-Assistant_handmade
   status: blocked
-  next: Neon対応・公開health/未認証401を確認。実DB境界/store障害・Galaxy受入は接続待ち。最新CODEX_STATE参照。
-  last_checkpoint: '2026-10-04T01:24:21.962353+00:00'
-  qualifying_activity_at: '2026-10-03T10:55:27Z'
-  last_reviewed_head: ede0f4090e520e2d03c121aa3d0291448e2a2ec5
-  review_after: '2026-10-04T07:24:21.962353+00:00'
-  last_review_at: '2026-10-04T01:24:21.962353+00:00'
-  lease:
-    owner: resume-20261004-ai-fd37d8f
-    expires_at: '2026-10-04T05:43:22.817398+00:00'
+  next: 最新fd37d8f描画修正/CI成功を確認。実DB境界/store障害とGalaxy受入は接続待ち。最新CODEX_STATE参照。
+  last_checkpoint: '2026-10-04T04:44:49.312883+00:00'
+  qualifying_activity_at: '2026-10-04T04:13:20Z'
+  last_reviewed_head: 3633f0586078466fcb1eea1b5c748d1e1f3c4ee5
+  review_after: '2026-10-04T10:44:49.312883+00:00'
+  last_review_at: '2026-10-04T04:44:49.312883+00:00'
 - repo: masakasakasama/english-news-app
   status: blocked
   next: Vercel接続から対象project/deploymentが見えずH09公開一致/preview確認待ち。CODEX_STATE.md参照。

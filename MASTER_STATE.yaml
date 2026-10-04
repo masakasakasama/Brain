@@ -39,17 +39,17 @@ projects:
   priority: null
   status: blocked
   codex_thread: null
-  next: Neon対応・公開health/未認証401を確認。実DB境界/store障害・Galaxy受入は接続待ち。最新CODEX_STATE参照。
-  last_checkpoint: '2026-10-04T01:24:21.962353+00:00'
+  next: 最新fd37d8f描画修正/CI成功を確認。実DB境界/store障害とGalaxy受入は接続待ち。最新CODEX_STATE参照。
+  last_checkpoint: '2026-10-04T04:44:49.312883+00:00'
   observed_pushed_at: '2026-10-04T01:23:52Z'
-  last_commit: ede0f4090e520e2d03c121aa3d0291448e2a2ec5
-  verification: CODEX_STATE.md参照。新Neon対応の関連6/6テスト成功。公開health200/未認証dispatch401。実DB資格情報/端末なし、境界/障害受入未確認。コード変更なし。
-  latest_verified_commit: ede0f4090e520e2d03c121aa3d0291448e2a2ec5
+  last_commit: 3633f0586078466fcb1eea1b5c748d1e1f3c4ee5
+  verification: CODEX_STATE.md参照。最新CI成功、health200/未認証401。実DB資格情報/adb端末なし。既存fixture結果は過去headの記録で新head全体の再実行ではない。
+  latest_verified_commit: 3633f0586078466fcb1eea1b5c748d1e1f3c4ee5
   latest_verified_pushed_at: '2026-10-04T01:23:52Z'
-  latest_observed_commit: ede0f4090e520e2d03c121aa3d0291448e2a2ec5
-  last_controller_review: '2026-10-02T23:23:02.844048+00:00'
-  controller_review_result: blocked; real shared Redis/deployment configuration and
-    Galaxy acceptance pending
+  latest_observed_commit: 3633f0586078466fcb1eea1b5c748d1e1f3c4ee5
+  last_controller_review: '2026-10-04T04:44:49.312883+00:00'
+  controller_review_result: Latest mascot-only changes and successful CI reviewed;
+    runtime191 credentials/physical device absent, acceptance blocked
 - repo: masakasakasama/english-news-app
   default_branch: main
   visibility: private
