@@ -49,6 +49,9 @@ repositories:
   last_reviewed_head: c45a5d3c524b074ac67946bba6e157e8d055b0f4
   review_after: '2026-10-04T09:04:26.786838+00:00'
   last_review_at: '2026-10-04T03:04:26.786838+00:00'
+  lease:
+    owner: resume-20261004-worker-review-7
+    expires_at: '2026-10-04T11:03:42.859928+00:00'
 - repo: masakasakasama/Design_system
   status: in_progress
   next: 'CODEX_STATE.md: Trip_Planの次の小さなsurfaceまたは別の最近更新consumerを選び、同じrevision pin方式で導入・UI比較・buildを行う。'
