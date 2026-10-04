@@ -39,19 +39,21 @@ projects:
   priority: null
   status: blocked
   codex_thread: null
-  next: 実DB/実機受入の接続待ちは維持。ef87975は描画再接続のテスト変更のみ、Release APK/Android build成功。runtime201に資格情報/接続端末なし。新head/期限で再確認。
+  next: 最新b0737c7のAndroid/Web pairing・暗号化保存・Jev一括対象変更とCI成功を確認。実DB/実機受入は接続条件待ち。CODEX_STATEの保存Nextを維持。
   last_checkpoint: '2026-10-04T04:44:49.312883+00:00'
   observed_pushed_at: '2026-10-04T01:23:52Z'
   last_commit: 3633f0586078466fcb1eea1b5c748d1e1f3c4ee5
   verification: CODEX_STATE.md参照。最新CI成功、health200/未認証401。実DB資格情報/adb端末なし。既存fixture結果は過去headの記録で新head全体の再実行ではない。
   latest_verified_commit: 3633f0586078466fcb1eea1b5c748d1e1f3c4ee5
   latest_verified_pushed_at: '2026-10-04T01:23:52Z'
-  latest_observed_commit: ef8797522e3693c42a67c6058906bfa73a8cf7d0
-  last_controller_review: '2026-10-04T06:39:58.538493+00:00'
-  controller_review_result: 'Read-only review: ef87975 changes Android mascot lifecycle
-    tests only; Release APK 37181058179 and Android build 37181058151 succeeded. Runtime201
-    credentials absent and adb empty. No independent work in saved Next; no repeated
-    worker state commit or test run.'
+  latest_observed_commit: b0737c784eb2a9eab9af334145c50d6f046db188
+  last_controller_review: '2026-10-04T09:31:05.834076+00:00'
+  controller_review_result: 'Read-only review of b0737c7: current AGENTS now requires
+    encrypted IndexedDB vault and Android pairing; device target/Jev grouping changes
+    noted. Release APK 37191453554 and Web checks 37191443888 succeeded. Runtime211
+    no credentials/capabilities, adb empty; public health200/unauth dispatch401. No
+    independent implementation in saved acceptance Next; worker code/state/test runs
+    unchanged.'
 - repo: masakasakasama/english-news-app
   default_branch: main
   visibility: private
