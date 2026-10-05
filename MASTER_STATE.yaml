@@ -52,12 +52,15 @@ projects:
   latest_verified_commit: 8623a959773edbb7e6b4fa82b62c944b1eece34c
   latest_verified_pushed_at: '2026-10-04T01:23:52Z'
   latest_observed_commit: a12b185497cadc82d287268597029685ffcfa5d7
-  last_controller_review: '2026-10-04T14:18:31.418391+00:00'
-  controller_review_result: a12b185 changes AlarmMigrationTest database close handling
-    only. Android build37205016419, APK Release37205016320, native rendering37205095989
-    all success; previous in-progress release resolved. Runtime230 current with no
-    credentials/capabilities; adb empty. Saved real DB/Galaxy Next unchanged; no redundant
-    worker state commit or test run.
+  last_controller_review: '2026-10-05T09:13:49.080249+00:00'
+  controller_review_result: Due read-only review at unchangeda12b185. Connected Vercel
+    now exposes project and READY production deployment dpl_CXJZZW4wt7MS7r2hTPJTh2SGEDkb,
+    exact a12b185 and canonical alias match. Deployment metadata visibility confirmed,
+    not DB/owner credentials. Runtime304 current with no credential/identity/device
+    bindings; adb empty. Public health200 and unauthenticated empty dispatch401. Saved
+    real-store boundary/fail-closed and Galaxy/Phase0C Next remain blocked; historical
+    Neon12 concurrency evidence not rerun. No worker edits, provider calls or repeated
+    tests; six-hour cooldown.
 - repo: masakasakasama/english-news-app
   default_branch: main
   visibility: private
