@@ -7,7 +7,7 @@ policy:
   blocked_review_hours: 6
   lease_minutes: 60
   metadata_refresh: true
-next_repository: masakasakasama/Marriage_procedure
+next_repository: masakasakasama/1000yen-agent
 repositories:
 - repo: masakasakasama/Daily_check
   status: blocked
@@ -79,10 +79,8 @@ repositories:
   last_checkpoint: '2026-10-02T19:33:10.616417+00:00'
   qualifying_activity_at: '2026-09-17T00:46:57Z'
   last_reviewed_head: 5f3e3d58ff621b079e993a9d95284e4ff54d3b20
-  review_after: '2026-10-03T22:00:00Z'
-  lease:
-    owner: resume-20261005-worker-review-23
-    expires_at: '2026-10-05T05:41:32.834619+00:00'
+  review_after: '2026-10-05T10:42:08.005652+00:00'
+  last_review_at: '2026-10-05T04:42:08.005652+00:00'
 - repo: masakasakasama/masakasakasama.github.io
   status: completed
   next: ユーザー指示の元GitHub Pages URL復旧は完了。保存Nextに追加作業なし。
