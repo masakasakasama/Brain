@@ -25,6 +25,9 @@ repositories:
   last_reviewed_head: a12b185497cadc82d287268597029685ffcfa5d7
   review_after: '2026-10-04T20:18:31.418391+00:00'
   last_review_at: '2026-10-04T14:18:31.418391+00:00'
+  lease:
+    owner: resume-20261005-worker-review-26
+    expires_at: '2026-10-05T10:12:35.438339+00:00'
 - repo: masakasakasama/english-news-app
   status: blocked
   next: H09 READY deployment/alias一致・390px公開assets隔離旧履歴検証完了。実端末/マイク・本番Redis/Gemini受入条件待ち。
