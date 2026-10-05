@@ -7,7 +7,7 @@ policy:
   blocked_review_hours: 6
   lease_minutes: 60
   metadata_refresh: true
-next_repository: masakasakasama/Fitness
+next_repository: masakasakasama/Home
 repositories:
 - repo: masakasakasama/Daily_check
   status: blocked
@@ -90,14 +90,12 @@ repositories:
   last_review_at: '2026-10-04T15:06:32.846016+00:00'
 - repo: masakasakasama/Fitness
   status: blocked
-  next: 'CODEX_STATE.md: Galaxyでv0.5.4 APKのローカル保存/復元、休憩アラーム、アプリ中断/復帰、旧データ移行を検証する。'
-  last_checkpoint: '2026-10-02T10:56:05.348637+00:00'
+  next: 移行/bridge隔離fixture5件とmarker保存のみ失敗時の誤表示修正は完了。Galaxy接続後に実WebView保存/移行・休憩通知・復帰を検証する。
+  last_checkpoint: '2026-10-05T01:59:47.110933+00:00'
   qualifying_activity_at: '2026-09-13T13:41:44Z'
-  last_reviewed_head: 6bcc2238a42f952421a3ec40e2a33849f10bbf39
-  review_after: '2026-10-03T22:00:00Z'
-  lease:
-    owner: resume-20261005-worker-review-21
-    expires_at: '2026-10-05T02:57:04.424135+00:00'
+  last_reviewed_head: 4a6ec3ed46b713ed6a1246e242a6dddb827a2ac4
+  review_after: '2026-10-05T07:59:47.110933+00:00'
+  last_review_at: '2026-10-05T01:59:47.110933+00:00'
 - repo: masakasakasama/Home
   status: blocked
   next: Galaxy実機確認待ち

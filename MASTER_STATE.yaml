@@ -199,17 +199,27 @@ projects:
   priority: null
   status: blocked
   codex_thread: null
-  next: 'CODEX_STATE.md: Galaxyでv0.5.4 APKのローカル保存/復元、休憩アラーム、アプリ中断/復帰、旧データ移行を検証する。'
-  last_checkpoint: '2026-10-02T10:56:05.348637+00:00'
+  next: 移行/bridge隔離fixture5件とmarker保存のみ失敗時の誤表示修正は完了。Galaxy接続後に実WebView保存/移行・休憩通知・復帰を検証する。
+  last_checkpoint: '2026-10-05T01:59:47.110933+00:00'
   observed_pushed_at: '2026-10-02T10:56:07Z'
-  last_commit: 6bcc2238a42f952421a3ec40e2a33849f10bbf39
-  verification: '全root *.js node --check: passed; agent-browser local Web: 主要タブ/日付/機材導線表示、errors=[];
-    既存e9c82ce Android CI: success (今回の新APK検証とは区別); git diff --check: passed'
-  latest_verified_commit: 6bcc2238a42f952421a3ec40e2a33849f10bbf39
+  last_commit: 4a6ec3ed46b713ed6a1246e242a6dddb827a2ac4
+  verification: Migration/bridge isolation5/5 passed; primary save failure preserves
+    existing records/no success/reload; successful merge Japanese records retained;
+    optional marker failure no false error; native absence/throw retains base UI.
+    JS syntax and diffcheck passed. Actual Galaxy/APK acceptance unverified, no Android
+    build claim.
+  latest_verified_commit: 4a6ec3ed46b713ed6a1246e242a6dddb827a2ac4
   latest_verified_pushed_at: '2026-10-02T10:56:07Z'
-  latest_observed_commit: 6bcc2238a42f952421a3ec40e2a33849f10bbf39
-  last_controller_review: '2026-10-02T21:05:26.134518+00:00'
-  controller_review_result: blocked; no Galaxy device
+  latest_observed_commit: 4a6ec3ed46b713ed6a1246e242a6dddb827a2ac4
+  last_controller_review: '2026-10-05T01:59:47.110933+00:00'
+  controller_review_result: Unchanged base head had independent saved Next for legacy
+    import/native bridge error fixtures. Reproduced false migration failure when authoritative
+    data saved but optional timestamp write failed; made timestamp bookkeeping best
+    effort. Five isolated storage/native callback tests and JS syntax/diff checks
+    passed. Worker4a6ec3e touches importer/test/state only, real records and Android
+    configuration unchanged. Node VM does not certify Android WebView, rest notification
+    or installed APK; runtime283 no device capabilities and adb empty. Original non-controller
+    activity date retained.
 - repo: masakasakasama/Trip_Plan
   default_branch: main
   visibility: public
