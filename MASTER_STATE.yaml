@@ -115,18 +115,24 @@ projects:
   priority: null
   status: blocked
   codex_thread: null
-  next: 'CODEX_STATE.md: GalaxyでREPSの直接起動、SEN Web遷移、HomeのAPK更新を確認。結果が得られるまで実機合格としない。'
-  last_checkpoint: '2026-10-02T10:51:40.578855+00:00'
+  next: ReleaseClientのRelease unit testをCI APK build前に必須化、ローカル2/2成功。新commitのCI完了を確認し、Galaxy接続後にREPS/SEN/自己更新を受入する。
+  last_checkpoint: '2026-10-05T03:34:28.635003+00:00'
   observed_pushed_at: '2026-10-02T10:55:04Z'
-  last_commit: 783e587b8604df1a29db6fe6111c4d136c4f57cc
-  verification: 'ANDROID_HOME=/workspace/android-sdk JAVA_HOME=/workspace/jdk17 ./gradlew
-    :app:testDebugUnitTest :app:assembleDebug: passed; JUnit 2/2 passed、SDK/JDKのproxy
-    CAを保持してビルド; Config DEFAULTS=20件、READMEアプリ表=20件、git diff --check passed'
-  latest_verified_commit: 783e587b8604df1a29db6fe6111c4d136c4f57cc
+  last_commit: 4e4455503286992509144b2928c005d1335716ad
+  verification: Gradle :app:testReleaseUnitTest BUILD SUCCESSFUL; Release JUnit2/2
+    failures0/errors0; diffcheck passed. Required test step before APK build/publish;
+    app runtime unchanged. New CI/actual Galaxy acceptance not yet confirmed.
+  latest_verified_commit: 4e4455503286992509144b2928c005d1335716ad
   latest_verified_pushed_at: '2026-10-02T10:55:04Z'
-  latest_observed_commit: 783e587b8604df1a29db6fe6111c4d136c4f57cc
-  last_controller_review: '2026-10-02T21:05:26.134518+00:00'
-  controller_review_result: blocked; no Galaxy device
+  latest_observed_commit: 4e4455503286992509144b2928c005d1335716ad
+  last_controller_review: '2026-10-05T03:34:28.635003+00:00'
+  controller_review_result: 'Independent saved Next to consider updater tests before
+    release is implemented: required testReleaseUnitTest step before APK build/publication,
+    original version env and failure behavior retained. Local Release JUnit2/2 and
+    Gradle build successful; diffcheck passed. Worker4e44555 workflow/state only;
+    runtime/signing/catalog unchanged. Own new CI completion is not yet certified;
+    prior CI success belongs to783e587. Runtime287 has no device capabilities and
+    adb empty; real Galaxy acceptance remains blocked.'
 - repo: masakasakasama/Alarm
   default_branch: main
   visibility: public
