@@ -7,19 +7,16 @@ policy:
   blocked_review_hours: 6
   lease_minutes: 60
   metadata_refresh: true
-next_repository: masakasakasama/Daily_check
+next_repository: masakasakasama/Fitness
 repositories:
 - repo: masakasakasama/Daily_check
   status: blocked
-  next: 10/4監査・週次は修復/検証済み。残る過去5監査の実証跡待ち。新headまたは再確認期限で再評価。
-  last_checkpoint: '2026-10-04T00:08:45.941673+00:00'
-  qualifying_activity_at: '2026-10-03T23:14:46Z'
-  last_reviewed_head: 7d92071f7d16d87006fce27bedd7ffcd8d5da272
-  review_after: '2026-10-04T06:08:45.941673+00:00'
-  last_review_at: '2026-10-04T00:08:45.941673+00:00'
-  lease:
-    owner: resume-20261005-worker-review-20
-    expires_at: '2026-10-05T02:14:04.157308+00:00'
+  next: 10/5週次の保存日別記事欠落1件を補完・検証済み。残る9/25〜9/29監査実証跡と07:30 recovery設定確認待ち。
+  last_checkpoint: '2026-10-05T01:16:14.484114+00:00'
+  qualifying_activity_at: '2026-10-04T22:07:45Z'
+  last_reviewed_head: b632d9616ed1ef4a58e88b92e022e1e2a4d900e5
+  review_after: '2026-10-05T07:16:14.484114+00:00'
+  last_review_at: '2026-10-05T01:16:14.484114+00:00'
 - repo: masakasakasama/AI-Assistant_handmade
   status: blocked
   next: a12b185のRoom migrationテスト修正後、Android/Release/描画CI成功。実DB境界/store障害とGalaxy受入Nextは接続条件待ち。新head/期限で再確認。
