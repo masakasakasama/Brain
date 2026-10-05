@@ -275,9 +275,13 @@ projects:
   latest_verified_commit: 8a1ca25425ea77d4e385ef6bda1c953a5d9e8b6c
   latest_verified_pushed_at: '2026-10-04T03:03:56Z'
   latest_observed_commit: 8a1ca25425ea77d4e385ef6bda1c953a5d9e8b6c
-  last_controller_review: '2026-10-04T10:05:25.416895+00:00'
-  controller_review_result: Latest confidence change public assets match main and
-    syntax/Pages CI passed; AB-100 official numeric duration still absent.
+  last_controller_review: '2026-10-05T06:32:47.469057+00:00'
+  controller_review_result: 'Due read-only review: latest unchanged8a1ca25 state Next
+    is official AB-100 duration evidence only. Official exam and certification pages
+    both HTTP200 with no numerical duration/time mention in visible text. No booking
+    evidence available; keep unknown without inference. Prior confidence/public-asset
+    checks remain Done. No worker edit, redundant browser/tests or dependency change;
+    next probe after six hours; unchanged notification suppressed.'
 - repo: masakasakasama/Calender
   default_branch: main
   visibility: public
