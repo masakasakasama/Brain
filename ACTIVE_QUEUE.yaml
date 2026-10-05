@@ -7,7 +7,7 @@ policy:
   blocked_review_hours: 6
   lease_minutes: 60
   metadata_refresh: true
-next_repository: masakasakasama/Home
+next_repository: masakasakasama/Marriage_procedure
 repositories:
 - repo: masakasakasama/Daily_check
   status: blocked
@@ -98,13 +98,12 @@ repositories:
   last_review_at: '2026-10-05T01:59:47.110933+00:00'
 - repo: masakasakasama/Home
   status: blocked
-  next: Galaxy実機確認待ち
+  next: ReleaseClientのRelease unit testをCI APK build前に必須化、ローカル2/2成功。新commitのCI完了を確認し、Galaxy接続後にREPS/SEN/自己更新を受入する。
   qualifying_activity_at: '2026-09-28T22:41:02Z'
-  last_reviewed_head: 783e587b8604df1a29db6fe6111c4d136c4f57cc
-  review_after: '2026-10-03T22:00:00Z'
-  lease:
-    owner: resume-20261005-worker-review-22
-    expires_at: '2026-10-05T04:31:30.983705+00:00'
+  last_reviewed_head: 4e4455503286992509144b2928c005d1335716ad
+  review_after: '2026-10-05T09:34:28.635003+00:00'
+  last_review_at: '2026-10-05T03:34:28.635003+00:00'
+  last_checkpoint: '2026-10-05T03:34:28.635003+00:00'
 - repo: masakasakasama/Alarm
   status: blocked
   next: 'CODEX_STATE.md: READMEのGalaxy手動テストを実機で実施: 鳴動/停止/スヌーズ、Doze、再起動PIN前、権限失効/復帰、更新後の予約保持、同時刻複数件。'
