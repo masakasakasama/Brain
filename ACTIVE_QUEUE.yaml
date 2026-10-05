@@ -7,7 +7,7 @@ policy:
   blocked_review_hours: 6
   lease_minutes: 60
   metadata_refresh: true
-next_repository: masakasakasama/english-news-app
+next_repository: masakasakasama/Fitness
 repositories:
 - repo: masakasakasama/Daily_check
   status: blocked
@@ -27,15 +27,12 @@ repositories:
   last_review_at: '2026-10-04T14:18:31.418391+00:00'
 - repo: masakasakasama/english-news-app
   status: blocked
-  next: Vercel接続から対象project/deploymentが見えずH09公開一致/preview確認待ち。CODEX_STATE.md参照。
-  last_checkpoint: '2026-10-03T23:47:25.742005+00:00'
-  qualifying_activity_at: '2026-10-03T23:39:43Z'
-  last_reviewed_head: d5e5bb779708b99b22f5e3372fb692e483da2cc3
-  review_after: '2026-10-04T05:47:25.742005+00:00'
-  last_review_at: '2026-10-03T23:47:25.742005+00:00'
-  lease:
-    owner: resume-20261005-worker-review-19
-    expires_at: '2026-10-05T01:45:32.866987+00:00'
+  next: H09 READY deployment/alias一致・390px公開assets隔離旧履歴検証完了。実端末/マイク・本番Redis/Gemini受入条件待ち。
+  last_checkpoint: '2026-10-05T00:51:28.126148+00:00'
+  qualifying_activity_at: '2026-10-04T23:53:59Z'
+  last_reviewed_head: 94dadb1e1231036f36c0c4f2e99199ba5ca6797b
+  review_after: '2026-10-05T06:51:28.126148+00:00'
+  last_review_at: '2026-10-05T00:51:28.126148+00:00'
 - repo: masakasakasama/1000yen-agent
   status: blocked
   next: 隔離wait復帰fixtureは完了。OCI資格情報・Galaxy接続後の本番restore/restart/実機受入待ち。

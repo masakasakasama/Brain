@@ -60,15 +60,27 @@ projects:
   priority: null
   status: blocked
   codex_thread: null
-  next: 'CODEX_STATE.md: 接続Vercelでenglish-news-appのproject/deploymentを閲覧できるようになったらREADY
-    deploymentのgit SHAとproduction aliasを照合し、同期/有料APIを遮断した隔離previewで旧履歴fixtureと390px端末操作を検証する。'
-  last_checkpoint: '2026-10-03T23:47:25.742005+00:00'
+  next: H09 READY deployment/alias一致・390px公開assets隔離旧履歴検証完了。実端末/マイク・本番Redis/Gemini受入条件待ち。
+  last_checkpoint: '2026-10-05T00:51:28.126148+00:00'
   observed_pushed_at: '2026-10-03T23:46:47Z'
-  last_commit: d5e5bb779708b99b22f5e3372fb692e483da2cc3
-  verification: CODEX_STATE.md参照。最新a4a95aeはdata-only、Vercel status success。project0/deployment404/deployments403継続。コード変更・再buildなし。
-  latest_verified_commit: d5e5bb779708b99b22f5e3372fb692e483da2cc3
+  last_commit: 94dadb1e1231036f36c0c4f2e99199ba5ca6797b
+  verification: 'Deployed587156c: READY/alias SHA matched;390px history/quota/restart/legacy
+    browser passed with sync503/provider mocks, errors=[]; upstream API/writes0. Worker94dadb1
+    test-only isolation fix plus evidence/state; syntax check passed. Real device/providers
+    unverified; prior build/lint not rerun.'
+  latest_verified_commit: 94dadb1e1231036f36c0c4f2e99199ba5ca6797b
   latest_verified_pushed_at: '2026-10-03T23:46:47Z'
-  latest_observed_commit: d5e5bb779708b99b22f5e3372fb692e483da2cc3
+  latest_observed_commit: 94dadb1e1231036f36c0c4f2e99199ba5ca6797b
+  last_controller_review: '2026-10-05T00:51:28.126148+00:00'
+  controller_review_result: 'Vercel access blocker resolved: project visible; dpl_ANKNYKWpuo7MhcUKfnfugJw9aQAq
+    READY with git587156c and production alias matched before/after tests. Deployed
+    assets through read-only localhost preview:390px quota/export/retry/no-rescore/full
+    Chromium restart and legacy/detailed history preservation passed; errors=[]; upstream
+    API/writes=0. Initial envelope timestamp mismatch traced to successful-empty sync
+    mock; regression now uses503 unavailable sync without weakening equality assertions.
+    Worker94dadb1 records evidence/test-only fix, no app/dependency changes. Real
+    device/mic/production providers remain unverified; checkpoint deployment not certified
+    by prior SHA result.'
 - repo: masakasakasama/Daily_check
   default_branch: main
   visibility: public
