@@ -568,7 +568,7 @@ projects:
 automation:
   id: 6abf867959d081918d4642eb29266ada
   title: Brain 開発司令塔
-  schedule: hourly condition watch
+  schedule: every 4 hours condition watch (25% of previous frequency)
   status: enabled
   quota_visibility: No tool exposes Codex remaining usage or reset time; runs must
     not claim exact recovery detection.
