@@ -198,6 +198,14 @@ projects:
   latest_observed_commit: 5f3e3d58ff621b079e993a9d95284e4ff54d3b20
   blockers:
   - 実利用者の二端末受入結果がない。Emulatorは成功、本番データに試験書込みをしていない。
+  last_controller_review: '2026-10-05T04:42:08.005652+00:00'
+  controller_review_result: 'Due read-only recheck: unchanged head and latest state
+    Next require real users two-device acceptance; legal-content edits are conditional,
+    no new source-change request. Runtime290 current with no device capabilities/bound
+    identities; adb empty, no new acceptance evidence. Latest Pages CI successful
+    at5f3e3d5. Existing isolated SDK/emulator/unit results retained, not rerun or
+    promoted to real-device acceptance. No worker edit, legal-content change or production
+    data probe/write. Next review after six hours.'
 - repo: masakasakasama/Fitness
   default_branch: claude/gym-tracking-app-SVUkz
   visibility: public
