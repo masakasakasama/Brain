@@ -49,6 +49,9 @@ repositories:
   last_reviewed_head: 8a1ca25425ea77d4e385ef6bda1c953a5d9e8b6c
   review_after: '2026-10-04T16:05:25.416895+00:00'
   last_review_at: '2026-10-04T10:05:25.416895+00:00'
+  lease:
+    owner: resume-20261005-worker-review-25
+    expires_at: '2026-10-05T07:31:50.039848+00:00'
 - repo: masakasakasama/Design_system
   status: blocked
   next: About導入・確定commit/証跡の記録Nextは完了。Android/他surfaceの具体scopeと受入条件が保存Nextで明確になった場合だけ続ける。移行対象を独自追加しない。
