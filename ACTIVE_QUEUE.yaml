@@ -7,7 +7,7 @@ policy:
   blocked_review_hours: 6
   lease_minutes: 60
   metadata_refresh: true
-next_repository: masakasakasama/Fitness
+next_repository: masakasakasama/english-news-app
 repositories:
 - repo: masakasakasama/Daily_check
   status: blocked
@@ -33,6 +33,9 @@ repositories:
   last_reviewed_head: d5e5bb779708b99b22f5e3372fb692e483da2cc3
   review_after: '2026-10-04T05:47:25.742005+00:00'
   last_review_at: '2026-10-03T23:47:25.742005+00:00'
+  lease:
+    owner: resume-20261005-worker-review-19
+    expires_at: '2026-10-05T01:45:32.866987+00:00'
 - repo: masakasakasama/1000yen-agent
   status: blocked
   next: 隔離wait復帰fixtureは完了。OCI資格情報・Galaxy接続後の本番restore/restart/実機受入待ち。
