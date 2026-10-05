@@ -88,14 +88,26 @@ projects:
   priority: null
   status: blocked
   codex_thread: null
-  next: 10/4監査・週次は修復/検証済み。残る過去5監査の実証跡待ち。新headまたは再確認期限で再評価。
-  last_checkpoint: '2026-10-04T00:08:45.941673+00:00'
+  next: 10/5週次の保存日別記事欠落1件を補完・検証済み。残る9/25〜9/29監査実証跡と07:30 recovery設定確認待ち。
+  last_checkpoint: '2026-10-05T01:16:14.484114+00:00'
   observed_pushed_at: '2026-10-04T00:08:21Z'
-  last_commit: 7d92071f7d16d87006fce27bedd7ffcd8d5da272
-  verification: CODEX_STATE.md参照。dc12d8aはindex.htmlのみ変更、inline JS構文1/1成功。監査コード/データ不変更につき既存検証を再実行せず保持。過去証跡待ちは継続。
-  latest_verified_commit: 7d92071f7d16d87006fce27bedd7ffcd8d5da272
+  last_commit: b632d9616ed1ef4a58e88b92e022e1e2a4d900e5
+  verification: 10/5 daily validator passed; publication22 days/0 failures; collection11
+    audits/5 unchanged historical failures. Weekly missing saved reference restored
+    unchanged, referencecount27. diffcheck passed; no app/validator changes or repeated
+    build/unit tests.
+  latest_verified_commit: b632d9616ed1ef4a58e88b92e022e1e2a4d900e5
   latest_verified_pushed_at: '2026-10-04T00:08:21Z'
-  latest_observed_commit: 7d92071f7d16d87006fce27bedd7ffcd8d5da272
+  latest_observed_commit: b632d9616ed1ef4a58e88b92e022e1e2a4d900e5
+  last_controller_review: '2026-10-05T01:16:14.484114+00:00'
+  controller_review_result: External daily headba75f45 added October5 collection.
+    Daily validator found one saved October3 AI reference absent from weekly union.
+    Copied exact saved object, reference26to27; day/audit/collection flags and timestamps
+    unchanged. October5 daily validation passed; publication22 days/0 failures; collection11
+    modern audits/unchanged5 historical evidence failures. Automation read-only probe
+    finds enabled07:00 Daily Check, no07:30 recovery and exactly1 controller; no automation
+    edits. Workerb632d96 contains only weekly data correction and minimal state. Past
+    observations remain blocked.
 - repo: masakasakasama/Home
   default_branch: main
   visibility: public
