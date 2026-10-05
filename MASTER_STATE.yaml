@@ -29,9 +29,14 @@ projects:
   latest_verified_commit: b6cde532ef8fae07ca842c5d16d6a02bdadf6db3
   latest_verified_pushed_at: '2026-10-04T02:09:38Z'
   latest_observed_commit: b6cde532ef8fae07ca842c5d16d6a02bdadf6db3
-  last_controller_review: '2026-10-02T21:05:26.134518+00:00'
-  controller_review_result: blocked; OCI production credentials and Galaxy connection
-    absent
+  last_controller_review: '2026-10-05T05:42:21.912429+00:00'
+  controller_review_result: 'Due read-only recheck: latest unchanged b6cde53 state
+    Next requires scoped OCI SSH/production DB and Galaxy/USB microphone. Runtime295
+    observations current, credentials/identities/capabilities empty; adb has no devices.
+    Connection prerequisites remain unmet; isolated waiting/backup fixtures already
+    done. No independent implementation Next, worker edits, repeated tests or production
+    mutations. Existing139-test result remains historical c85aec6 proof, not latest
+    merge validation. Retry after six hours; unchanged blocker notification suppressed.'
 - repo: masakasakasama/AI-Assistant_handmade
   default_branch: main
   visibility: public

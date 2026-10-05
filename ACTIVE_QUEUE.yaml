@@ -7,7 +7,7 @@ policy:
   blocked_review_hours: 6
   lease_minutes: 60
   metadata_refresh: true
-next_repository: masakasakasama/1000yen-agent
+next_repository: masakasakasama/Microsoft-FDE
 repositories:
 - repo: masakasakasama/Daily_check
   status: blocked
@@ -39,11 +39,8 @@ repositories:
   last_checkpoint: '2026-10-04T02:10:08.756451+00:00'
   qualifying_activity_at: '2026-10-03T03:30:43Z'
   last_reviewed_head: b6cde532ef8fae07ca842c5d16d6a02bdadf6db3
-  review_after: '2026-10-04T08:10:08.756451+00:00'
-  last_review_at: '2026-10-04T02:10:08.756451+00:00'
-  lease:
-    owner: resume-20261005-worker-review-24
-    expires_at: '2026-10-05T06:41:35.207808+00:00'
+  review_after: '2026-10-05T11:42:21.912429+00:00'
+  last_review_at: '2026-10-05T05:42:21.912429+00:00'
 - repo: masakasakasama/Microsoft-FDE
   status: blocked
   next: 自信度記録後の次問遷移の公開main一致を確認。AB-100公式時間は未掲載のまま、根拠が得られたら更新。
