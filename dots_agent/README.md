@@ -1,35 +1,46 @@
-# Tatsu Dots (Windows-PC proof of concept)
+# Tatsu Dots News (local Windows MVP)
 
-Small local monitor using GPT-6 Luna for **triage only after changes**. This lives alongside Brain and does not change the existing Codex automation. Supports GitHub commits, RSS/Atom feeds and Notion page edit timestamps (with a separately created Notion integration). It is **not yet** equivalent to a full autonomous Dots agent with browser interaction and app-write permissions.
+The default agent watches what is trending in Japan and around the world, not repository commits. It runs via Windows Task Scheduler and processes each fresh news batch using one GPT-6 Luna triage call followed by one GPT-6.1 Sol reasoning call.
 
-## Windows setup
+## News sources by default
 
-1. Install Python 3.10 or later; no third-party Python packages required.
-2. Copy `config.example.json` to `config.json` and adjust source IDs/targets.
-3. Set `OPENAI_API_KEY` in your Windows user environment, not in the repository. Restart PowerShell after using `setx OPENAI_API_KEY "..." `. Use a dedicated low-limit API key.
-4. Optionally set `GITHUB_TOKEN` (private repositories or higher rate limits), `NOTION_API_TOKEN` (Notion integration), and `TELEGRAM_BOT_TOKEN` plus `TELEGRAM_CHAT_ID` (notifications). NEVER commit them.
-5. Run `python dots_agent/agent.py` once. The first scan **only baselines** existing events, to avoid old-event spam.
-6. Run `powershell -ExecutionPolicy Bypass -File .\dots_agent\install_windows.ps1` to register an hourly Windows Task Scheduler task. Set the task to run when the user is not logged in only if the Windows account/permissions allow it.
-7. For immediate testing: `schtasks /Run /TN TatsuDotsLuna`. Check `%USERPROFILE%\.tatsu-dots\events.jsonl` and Task Scheduler history.
+- Google News Japan top headlines and AI topic search
+- BBC World, Business, Technology
+- Google Trends Japan trending-search RSS
+- Hacker News RSS (technology community signals)
 
-## How it works
+RSS availability may vary; inaccessible feeds fail individually without stopping healthy sources. The watcher analyzes headlines and feed snippets, **not full articles**. It explicitly treats headlines as unverified leads, so do not use these results as proof of a breaking event. Significant AI items (75/100+) and other significant news (85/100+) are eligible for notifications. Reports and actual model token usage are logged locally.
 
-Windows scheduled task → GitHub/RSS/Notion read → local SQLite deduplication → (only for new or modified items) OpenAI Responses API (`gpt-6-luna`) → save local audit log → optional Telegram alert on high-impact changes.
+## Installation on your Lenovo Windows PC
 
-- The model does **not** continuously generate tokens or watch a microphone.
-- Data remains locally stored under `%USERPROFILE%\.tatsu-dots`; item excerpts go to OpenAI only for triage. Do not watch sensitive content until its handling is explicitly configured.
-- Credential values never belong in GitHub. The Brain repository is public.
-- Incoming content is untrusted and cannot directly trigger shell commands, browser actions or writes to other apps.
-- The agent is read-only, and no outgoing Telegram notification is sent unless both Telegram variables exist.
-- OpenAI API metering is request/token based. External services and PC electricity are separate.
-- If the PC sleeps, is offline, Windows Task Scheduler is disabled, or the system reboots without automatic startup, no monitoring occurs.
-- The Notion source detects page modification time, but does not currently read the body. For an enabled `notion_page` source, add e.g. `{"id":"my-notion-page","type":"notion_page","page_id":"<page_uuid>","label":"My page"}`.
-- Gmail, Google Calendar, semantic memory, real computer/browser control, and approval-gated write actions are **planned**, not implemented. Native ChatGPT connector credentials are not transferrable to a standalone Windows process.
+1. Install Python 3.10 or newer. No pip dependencies.
+2. Clone the repo or download this directory. Copy `dots_agent/config.example.json` to `dots_agent/config.json`. Edit sources and thresholds if needed.
+3. Set a *dedicated low-budget* `OPENAI_API_KEY` as a Windows user environment variable (never in GitHub). Restart PowerShell after setting it.
+4. Optionally configure `TELEGRAM_BOT_TOKEN` and `TELEGRAM_CHAT_ID`. Without them, important alerts are logged locally but **not pushed** to your phone.
+5. Run `python dots_agent/news_watch.py` once; this builds the initial baseline for each feed, with no API calls or alerts for old headlines.
+6. Register the task: `powershell -ExecutionPolicy Bypass -File .\dots_agent\install_windows.ps1`.
+7. Check the next scheduled run or run `schtasks /Run /TN TatsuDotsLuna`. Look at `%USERPROFILE%\.tatsu-dots\events.jsonl`, `news.sqlite3`, and Task Scheduler History.
 
-## Cost controls
+The task is hourly. Windows sleep or shutdown pauses monitoring. Keep the PC on AC power, avoid sleep, and configure Windows updates / restart behavior. A 100W power adapter has a maximum rated output; measured wall consumption depends on actual workload.
 
-At most `max_items_per_source` (4 by default) new items per source per hourly run are evaluated. No new items means zero Luna API calls. Even after this cap, API billing depends on content length and actual output token usage. To prevent unexpected costs, set a monthly spend threshold/limit in the API billing console.
+## Agent behavior
 
-## Deactivate
+- RSS feeds are polled on each scheduled run; previously processed items are deduplicated in local SQLite
+- Newly encountered items are scored in one **batched** Luna call; the top 12 candidates then receive one **batched** Sol reasoning call, even when Luna scored them low
+- No new headlines = **no Luna or Sol calls**. Every Luna run containing new headlines is followed by Sol (not one Sol request for every individual headline)
+- Feed errors and model errors do not mark new items as processed; they can be retried at the next run
+- Per-run cap: `max_items_per_run` (24 default), per feed: `per_source` (6 default)
+- The model cannot perform commands, alter GitHub/Notion, send messages other than configured Telegram notifications, or remotely control a browser
+- No credentials are checked in. The existing `agent.py` is a separate old proof of concept; news monitoring uses `news_watch.py`
 
-`schtasks /Delete /TN TatsuDotsLuna /F`. Delete `%USERPROFILE%\.tatsu-dots` to remove local event data. The repository itself does not run any code on the PC.
+## Billing
+
+The low-activity estimate of about ¥1,600/month assumes a combined Luna and Sol batch every hour, Luna input 2k/output 300 tokens, Sol input 2k/output 1k tokens, 720 runs and $1=¥158. Real news batches can have significantly longer inputs, especially with high reasoning effort (hidden reasoning tokens are billed as output). One Sol call per article would multiply costs. Check actual `usage` values in the events log and cap monthly API spending. RSS access is generally free; paid APIs and hosting are not required for this MVP. PC power is billed separately.
+
+## Status
+
+The GitHub changes only provide code and scheduling configuration. No process is currently running on the user's PC. This is an MVP, not a complete replacement for Dots: persistent autonomous planning, Gmail/Calendar, full-page verification, browser actions, and approval-gated app writes are not built.
+
+## Remove
+
+`schtasks /Delete /TN TatsuDotsLuna /F`. Local data lives under `%USERPROFILE%\.tatsu-dots`.
