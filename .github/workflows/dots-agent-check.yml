@@ -1,0 +1,22 @@
+name: Tatsu Dots Tests
+on:
+  pull_request:
+    paths:
+      - 'dots_agent/**'
+      - '.github/workflows/dots-agent-check.yml'
+  push:
+    paths:
+      - 'dots_agent/**'
+      - '.github/workflows/dots-agent-check.yml'
+jobs:
+  unittest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Compile Python
+        run: python -m py_compile dots_agent/agent.py dots_agent/news_watch.py dots_agent/test_agent.py dots_agent/test_news_watch.py
+      - name: Unit tests
+        run: python -m unittest discover -s dots_agent -p 'test_*.py' -v
