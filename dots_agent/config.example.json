@@ -1,0 +1,8 @@
+{
+  "priorities": "重大なAI/SDV/セキュリティ変化、GitHubプロジェクトの重大な障害。根拠不十分なニュースや微小な変更は通知しない",
+  "max_items_per_source": 4,
+  "sources": [
+    {"id": "brain", "type": "github", "repo": "masakasakasama/Brain"},
+    {"id": "tatsu-home", "type": "github", "repo": "masakasakasama/AI-Assistant_handmade"}
+  ]
+}
