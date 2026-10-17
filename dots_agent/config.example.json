@@ -1,0 +1,43 @@
+{
+  "priorities": "日本と世界の話題、AI、経済、国際情勢、科学、テクノロジー。AIは75点以上、一般ニュースは85点以上を通知。未検証の見出しを事実として断言しない。リポジトリ更新の監視は不要。",
+  "sol_reasoning": "high",
+  "per_source": 6,
+  "max_items_per_run": 24,
+  "sources": [
+    {
+      "id": "japan-top",
+      "type": "rss",
+      "url": "https://news.google.com/rss?hl=ja&gl=JP&ceid=JP:ja"
+    },
+    {
+      "id": "world-news",
+      "type": "rss",
+      "url": "https://feeds.bbci.co.uk/news/world/rss.xml"
+    },
+    {
+      "id": "business-news",
+      "type": "rss",
+      "url": "https://feeds.bbci.co.uk/news/business/rss.xml"
+    },
+    {
+      "id": "ai-news",
+      "type": "rss",
+      "url": "https://news.google.com/rss/search?q=AI&hl=ja&gl=JP&ceid=JP:ja"
+    },
+    {
+      "id": "technology-news",
+      "type": "rss",
+      "url": "https://feeds.bbci.co.uk/news/technology/rss.xml"
+    },
+    {
+      "id": "japan-trending",
+      "type": "rss",
+      "url": "https://trends.google.com/trending/rss?geo=JP"
+    },
+    {
+      "id": "hackernews",
+      "type": "rss",
+      "url": "https://news.ycombinator.com/rss"
+    }
+  ]
+}
