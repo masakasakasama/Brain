@@ -154,6 +154,35 @@ def analyze(items, cfg):
     return ranked, reviewed, [usage_luna, usage_sol]
 
 
+
+def flush_home_outbox(db, cfg):
+    """Retry bounded local deliveries through the existing authenticated Home Backend."""
+    token = os.environ.get("TATSU_HOME_AUTH_TOKEN", "").strip()
+    if not token:
+        print("Home delivery pending: configure TATSU_HOME_AUTH_TOKEN")
+        return
+    base = str(cfg.get("home_backend_url", "https://ai-assistant-handmade.vercel.app")).rstrip("/")
+    if not base.startswith("https://"):
+        print("Home delivery skipped: HTTPS URL required", file=sys.stderr)
+        return
+    rows = db.execute(
+        "SELECT batch_id, payload FROM home_outbox WHERE delivered=0 ORDER BY queued_at LIMIT 10"
+    ).fetchall()
+    for batch_id, payload in rows:
+        try:
+            result = core.request_json(base + "/api/news",
+                headers={"Authorization": "Bearer " + token},
+                payload=json.loads(payload), timeout=15)
+            if result.get("accepted") is not True or result.get("batchId") != batch_id:
+                raise ValueError("Home did not acknowledge the batch")
+            db.execute("UPDATE home_outbox SET delivered=1 WHERE batch_id=?", (batch_id,))
+            db.commit()
+            print("Delivered Home news batch", batch_id[:12])
+        except Exception as error:
+            print("Home delivery deferred: " + type(error).__name__, file=sys.stderr)
+            break
+
+
 def run():
     config_path = core.CONFIG
     cfg = json.loads(config_path.read_text(encoding="utf-8"))
@@ -164,11 +193,13 @@ def run():
     with sqlite3.connect(core.ROOT / "news.sqlite3") as db:
         db.execute("CREATE TABLE IF NOT EXISTS news_seen (source TEXT, item_key TEXT, hash TEXT, PRIMARY KEY(source, item_key))")
         db.execute("CREATE TABLE IF NOT EXISTS news_initialized (source TEXT PRIMARY KEY)")
+        db.execute("CREATE TABLE IF NOT EXISTS home_outbox (batch_id TEXT PRIMARY KEY, queued_at TEXT NOT NULL, payload TEXT NOT NULL, delivered INTEGER NOT NULL DEFAULT 0)")
         items, succeeded = read_updates(
             db, sources, per_source=max(1, min(12, int(cfg.get("per_source", 6)))),
             max_batch=max(1, min(48, int(cfg.get("max_items_per_run", 24)))))
         if not items:
             print(f"No new news ({succeeded} feeds succeeded): no API calls.")
+            flush_home_outbox(db, cfg)
             return
         # API errors stop the run without acknowledging items so they can be retried.
         ranked, reviewed, usage = analyze(items, cfg)
@@ -198,15 +229,24 @@ def run():
             db.execute("INSERT OR REPLACE INTO news_seen VALUES (?,?,?)",
                        (item["source"], item["item_key"], item["hash"]))
         db.commit()
-        for alert in alerts[:5]:
-            try:
-                sent = core.notify_telegram(
-                    f"Tatsu News {alert['score']}/100 [{alert['source']}]\n"
-                    f"{alert['summary']}\n{alert['url']}")
-                if not sent:
-                    print("Telegram is not configured; alert recorded locally")
-            except Exception as exc:
-                print("Telegram failed: " + type(exc).__name__, file=sys.stderr)
+        batch_id = hashlib.sha256(json.dumps(
+            [(item["source"], item["item_key"], item["hash"]) for item in items],
+            ensure_ascii=False, sort_keys=True,
+        ).encode("utf-8")).hexdigest()
+        safe_alerts = [alert for alert in alerts[:5]
+                       if isinstance(alert.get("url"), str)
+                       and alert["url"].startswith(("https://", "http://"))]
+        home_payload = {
+            "batchId": batch_id,
+            "capturedAt": record["at"],
+            "headlineCount": len(items),
+            "digest": record["digest"],
+            "alerts": safe_alerts,
+        }
+        db.execute("INSERT OR IGNORE INTO home_outbox (batch_id,queued_at,payload) VALUES (?,?,?)",
+                   (batch_id, record["at"], json.dumps(home_payload, ensure_ascii=False)))
+        db.commit()
+        flush_home_outbox(db, cfg)
         print(json.dumps(record, ensure_ascii=False))
 
 
