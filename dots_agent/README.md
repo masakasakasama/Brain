@@ -16,7 +16,7 @@ RSS availability may vary; inaccessible feeds fail individually without stopping
 1. Install Python 3.10 or newer. No pip dependencies.
 2. Clone the repo or download this directory. Copy `dots_agent/config.example.json` to `dots_agent/config.json`. Edit sources and thresholds if needed.
 3. Set a *dedicated low-budget* `OPENAI_API_KEY` as a Windows user environment variable (never in GitHub). Restart PowerShell after setting it.
-4. Optionally configure `TELEGRAM_BOT_TOKEN` and `TELEGRAM_CHAT_ID`. Without them, important alerts are logged locally but **not pushed** to your phone.
+4. Add `TATSU_HOME_AUTH_TOKEN` to the Windows user environment, with the same value as the existing Tatsu Home Backend `AI_BACKEND_TOKEN`. This is not the OpenAI API key. Do not paste it into GitHub. Without it, the watcher queues deliveries locally.
 5. Run `python dots_agent/news_watch.py` once; this builds the initial baseline for each feed, with no API calls or alerts for old headlines.
 6. Register the task: `powershell -ExecutionPolicy Bypass -File .\dots_agent\install_windows.ps1`.
 7. Check the next scheduled run or run `schtasks /Run /TN TatsuDotsLuna`. Look at `%USERPROFILE%\.tatsu-dots\events.jsonl`, `news.sqlite3`, and Task Scheduler History.
@@ -30,16 +30,20 @@ The task is hourly. Windows sleep or shutdown pauses monitoring. Keep the PC on 
 - No new headlines = **no Luna or Sol calls**. Every Luna run containing new headlines is followed by Sol (not one Sol request for every individual headline)
 - Feed errors and model errors do not mark new items as processed; they can be retried at the next run
 - Per-run cap: `max_items_per_run` (24 default), per feed: `per_source` (6 default)
-- The model cannot perform commands, alter GitHub/Notion, send messages other than configured Telegram notifications, or remotely control a browser
+- The model cannot perform commands, alter GitHub/Notion, or remotely control a browser. The only outgoing result is to the authenticated Tatsu Home Backend
 - No credentials are checked in. The existing `agent.py` is a separate old proof of concept; news monitoring uses `news_watch.py`
 
 ## Billing
 
-The low-activity estimate of about ¥1,600/month assumes a combined Luna and Sol batch every hour, Luna input 2k/output 300 tokens, Sol input 2k/output 1k tokens, 720 runs and $1=¥158. Real news batches can have significantly longer inputs, especially with high reasoning effort (hidden reasoning tokens are billed as output). One Sol call per article would multiply costs. Check actual `usage` values in the events log and cap monthly API spending. RSS access is generally free; paid APIs and hosting are not required for this MVP. PC power is billed separately.
+The low-activity estimate of about ¥1,600/month assumes a combined Luna and Sol batch every hour, Luna input 2k/output 300 tokens, Sol input 2k/output 1k tokens, 720 runs and $1=¥158. Real news batches can have significantly longer inputs, especially with high reasoning effort (hidden reasoning tokens are billed as output). One Sol call per article would multiply costs. Check actual `usage` values in the events log and cap monthly API spending. RSS access is generally free. Tatsu Home reuses its existing Neon database and Vercel deployment. PC power is billed separately.
 
 ## Status
 
 The GitHub changes only provide code and scheduling configuration. No process is currently running on the user's PC. This is an MVP, not a complete replacement for Dots: persistent autonomous planning, Gmail/Calendar, full-page verification, browser actions, and approval-gated app writes are not built.
+
+## Existing Home App integration
+
+This watcher sends each analysed batch to the **existing Tatsu Home** `/api/news` endpoint using the Windows-only `TATSU_HOME_AUTH_TOKEN` environment variable. Telegram and LINE are not used. Failed network deliveries remain in a local SQLite outbox and are retried even when there is no new news. The Home Android app handles notification display on the phone via Android's normal local notification system. The Home web and Android apps show history. Deploy the Home endpoint and app changes before expecting news to appear. See `docs/BRAIN_NEWS.md` in the `AI-Assistant_handmade` repository.
 
 ## Remove
 
