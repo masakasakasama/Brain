@@ -41,9 +41,16 @@ The low-activity estimate of about ¥1,600/month assumes a combined Luna and Sol
 
 The GitHub changes only provide code and scheduling configuration. No process is currently running on the user's PC. This is an MVP, not a complete replacement for Dots: persistent autonomous planning, Gmail/Calendar, full-page verification, browser actions, and approval-gated app writes are not built.
 
-## Existing Home App integration
+## Private Home App integration
 
-This watcher sends each analysed batch to the **existing Tatsu Home** `/api/news` endpoint using the Windows-only `TATSU_HOME_AUTH_TOKEN` environment variable. Telegram and LINE are not used. Failed network deliveries remain in a local SQLite outbox and are retried even when there is no new news. The Home Android app handles notification display on the phone via Android's normal local notification system. The Home web and Android apps show history. Deploy the Home endpoint and app changes before expecting news to appear. See `docs/BRAIN_NEWS.md` in the `AI-Assistant_handmade` repository.
+The Brain PC watcher sends **public RSS news analyses only** to the existing authenticated `https://ai-assistant-handmade.vercel.app/api/news` transport. No personal email, calendar, Gmail metadata or secrets are placed in the shared Tatsu Home UI or Backend. The Tatsu Home family Android/Web News screen and its local alert worker have been removed.
+
+The result is now consumed by the separate **personal [Home Android app](https://github.com/masakasakasama/Home)**, under its own "更新情報" screen. The Home app shows public RSS headlines without the backend token. The analysed Brain feed requires the existing backend owner token entered once on the phone (encrypted with Android Keystore). Gmail new-notification counts are obtained only on the user's own Android device after optional notification-listener permission and never uploaded to the backend.
+
+Install the current Brain watcher and set `TATSU_HOME_AUTH_TOKEN` on Windows with the existing Backend `AI_BACKEND_TOKEN`. Without it, batches remain safely in the local retry outbox. The personal Home app currently fetches Brain items when its update screen is opened or refreshed; **background Brain-news push notifications from the Home app are not implemented**. Android Gmail notification counting is automatic once explicitly enabled.
+
+See `docs/PERSONAL_UPDATES.md` in the [Home repository](https://github.com/masakasakasama/Home).
+
 
 ## Remove
 
